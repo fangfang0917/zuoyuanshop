@@ -1087,3 +1087,7 @@ function AuthUserParam(array $data=[]){
     }
 }
 
+
+function banner($posid){
+   return $list = Db('banner')->where(array('posid'=>$posid))->select();
+}

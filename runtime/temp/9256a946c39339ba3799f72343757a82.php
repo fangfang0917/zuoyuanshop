@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:74:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\index\index.html";i:1576484810;s:76:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\template\base.html";i:1576483021;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:74:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\index\index.html";i:1576488944;s:76:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\template\base.html";i:1576483021;s:78:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\template\banner.html";i:1576489143;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -79,16 +79,17 @@
 
 <div id="main" class="clearfloat warp">
     <div class="mui-content">
-        <!--banner开始-->
-        <div class="banner swiper-container">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide"><a href="javascript:void(0)"><img class="swiper-lazy" data-src="__STATIC__/upload/banner.jpg" alt=""></a></div>
-                <div class="swiper-slide"><a href="javascript:void(0)"><img class="swiper-lazy" data-src="__STATIC__/upload/banner.jpg" alt=""></a></div>
-                <div class="swiper-slide"><a href="javascript:void(0)"><img class="swiper-lazy" data-src="__STATIC__/upload/banner.jpg" alt=""></a></div>
-                <div class="swiper-slide"><a href="javascript:void(0)"><img class="swiper-lazy" data-src="__STATIC__/upload/banner.jpg" alt=""></a></div>
-            </div>
-        </div>
-        <!--banner结束-->
+        
+<!--banner开始-->
+<div class="banner swiper-container">
+    <div class="swiper-wrapper">
+        <?php $_result=banner(1);if(is_array($_result) || $_result instanceof \think\Collection || $_result instanceof \think\Paginator): $i = 0; $__LIST__ = $_result;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$r): $mod = ($i % 2 );++$i;?>
+        <div class="swiper-slide"><a href="javascript:void(0)"><img class="swiper-lazy" data-src="<?php echo $r['banner']; ?>" alt=""></a></div>
+        <?php endforeach; endif; else: echo "" ;endif; ?>
+    </div>
+</div>
+<!--banner结束-->
+
         <!--第一栏分类开始-->
         <div class="cation clearfloat box-s">
             <ul>

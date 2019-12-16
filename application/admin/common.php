@@ -465,6 +465,32 @@ function get_model($modelName)
     return $db;
 }
 
+function GetPos($posid = 0){
+
+    $list = Db('position')->select();
+    $select_html_start = "<select name='posid' class='select-box'>";
+    $html = '<option value="0">请选择推荐位</option>';
+   foreach($list as $key =>$value){
+       if($posid != 0){
+              if($posid == $value['id']){
+                  $html = $html.'<option value="'.$value['id'].'" selected>'.$value['name'].'</option>';
+
+              }else{
+                  $html = $html.'<option value="'.$value['id'].'">'.$value['name'].'</option>';
+
+              }
+
+        }else{
+           $html = $html.'<option value="'.$value['id'].'">'.$value['name'].'</option>';
+
+       }
+   }
+   $select_html_end = '</select>';
+   $select_html =$select_html_start .$html.$select_html_end;
+    return $select_html;
+}
+
+
 /**
  * 验证规则扩展
  */

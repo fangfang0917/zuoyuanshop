@@ -4,23 +4,42 @@
     <form class="form form-horizontal" id="form" method="post" action="{:\\think\\Request::instance()->baseUrl()}">
         <input type="hidden" name="id" value="{$vo.id ?? ''}">
         <div class="row cl">
-            <label class="form-label col-xs-3 col-sm-3">banner：</label>
+            <label class="form-label col-xs-3 col-sm-3"><span class="c-red">*</span>图片：</label>
             <div class="formControls col-xs-6 col-sm-6">
-                <input type="text" class="input-text" placeholder="banner" name="banner" value="{$vo.banner ?? ''}" >
+                <input type="text" class="input-text" id="upload" name="banner" placeholder="请点击后面的上传按钮" datatype="*"
+                       nullmsg="请填写图片url" style="width: 70%"   value="{$vo.banner ?? ''}">
+                <button type="button" class="btn btn-primary radius"
+                        onclick="layer_open('文件上传','{:\\think\\Url::build(\'Upload/index\', [\'id\' => \'upload\'])}')">
+                    上传
+                </button>
+                <a onclick="$('#img').attr('src', $('#upload').val());$('#img').show()" type="button" class="btn btn-success radius"
+                   data-lightbox="preview">预览</a>
+                <img id="img" src="{$vo.banner ?? ''}" alt="" {if isset($vo)}style="display:block;width:100%"{else}style="display:none;width:100%"{/if}>
             </div>
             <div class="col-xs-3 col-sm-3"></div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-3 col-sm-3">位置：</label>
             <div class="formControls col-xs-6 col-sm-6">
-                <input type="text" class="input-text" placeholder="位置" name="position" value="{$vo.position ?? ''}" >
+                {if isset($vo)}
+                {:GetPos($vo.posid)}
+                {else}
+                {:GetPos()}
+                {/if}
+            </div>
+            <div class="col-xs-3 col-sm-3"></div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-3 col-sm-3">位置：</label>
+            <div class="formControls col-xs-6 col-sm-6">
+                <input type="text" class="input-text" placeholder="位置" name="position" value="{$vo.position ?? ''}">
             </div>
             <div class="col-xs-3 col-sm-3"></div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-3 col-sm-3">地址：</label>
             <div class="formControls col-xs-6 col-sm-6">
-                <input type="text" class="input-text" placeholder="地址" name="url" value="{$vo.url ?? ''}" >
+                <input type="text" class="input-text" placeholder="地址" name="url" value="{$vo.url ?? ''}">
             </div>
             <div class="col-xs-3 col-sm-3"></div>
         </div>
@@ -50,7 +69,7 @@
             tiptype: 2,
             ajaxPost: true,
             showAllError: true,
-            callback: function (ret){
+            callback: function (ret) {
                 ajax_progress(ret);
             }
         });

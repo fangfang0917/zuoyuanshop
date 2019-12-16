@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:74:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\banner\edit.html";i:1576484754;s:76:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\template\base.html";i:1488899632;s:87:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\template\javascript_vars.html";i:1488899632;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:74:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\banner\edit.html";i:1576488460;s:76:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\template\base.html";i:1488899632;s:87:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\template\javascript_vars.html";i:1488899632;}*/ ?>
 ﻿<!DOCTYPE HTML>
 <html>
 <head>
@@ -48,23 +48,40 @@
     <form class="form form-horizontal" id="form" method="post" action="<?php echo \think\Request::instance()->baseUrl(); ?>">
         <input type="hidden" name="id" value="<?php echo isset($vo['id']) ? $vo['id'] :  ''; ?>">
         <div class="row cl">
-            <label class="form-label col-xs-3 col-sm-3">banner：</label>
+            <label class="form-label col-xs-3 col-sm-3"><span class="c-red">*</span>图片：</label>
             <div class="formControls col-xs-6 col-sm-6">
-                <input type="text" class="input-text" placeholder="banner" name="banner" value="<?php echo isset($vo['banner']) ? $vo['banner'] :  ''; ?>" >
+                <input type="text" class="input-text" id="upload" name="banner" placeholder="请点击后面的上传按钮" datatype="*"
+                       nullmsg="请填写图片url" style="width: 70%"   value="<?php echo isset($vo['banner']) ? $vo['banner'] :  ''; ?>">
+                <button type="button" class="btn btn-primary radius"
+                        onclick="layer_open('文件上传','<?php echo \think\Url::build('Upload/index', ['id' => 'upload']); ?>')">
+                    上传
+                </button>
+                <a onclick="$('#img').attr('src', $('#upload').val());$('#img').show()" type="button" class="btn btn-success radius"
+                   data-lightbox="preview">预览</a>
+                <img id="img" src="<?php echo isset($vo['banner']) ? $vo['banner'] :  ''; ?>" alt="" <?php if(isset($vo)): ?>style="display:block;width:100%"<?php else: ?>style="display:none;width:100%"<?php endif; ?>>
             </div>
             <div class="col-xs-3 col-sm-3"></div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-3 col-sm-3">位置：</label>
             <div class="formControls col-xs-6 col-sm-6">
-                <input type="text" class="input-text" placeholder="位置" name="position" value="<?php echo isset($vo['position']) ? $vo['position'] :  ''; ?>" >
+                <?php if(isset($vo)): ?>
+                <?php echo GetPos($vo['posid']); else: ?>
+                <?php echo GetPos(); endif; ?>
+            </div>
+            <div class="col-xs-3 col-sm-3"></div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-3 col-sm-3">位置：</label>
+            <div class="formControls col-xs-6 col-sm-6">
+                <input type="text" class="input-text" placeholder="位置" name="position" value="<?php echo isset($vo['position']) ? $vo['position'] :  ''; ?>">
             </div>
             <div class="col-xs-3 col-sm-3"></div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-3 col-sm-3">地址：</label>
             <div class="formControls col-xs-6 col-sm-6">
-                <input type="text" class="input-text" placeholder="地址" name="url" value="<?php echo isset($vo['url']) ? $vo['url'] :  ''; ?>" >
+                <input type="text" class="input-text" placeholder="地址" name="url" value="<?php echo isset($vo['url']) ? $vo['url'] :  ''; ?>">
             </div>
             <div class="col-xs-3 col-sm-3"></div>
         </div>
@@ -100,7 +117,7 @@
             tiptype: 2,
             ajaxPost: true,
             showAllError: true,
-            callback: function (ret){
+            callback: function (ret) {
                 ajax_progress(ret);
             }
         });

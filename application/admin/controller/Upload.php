@@ -34,7 +34,7 @@ class Upload extends Controller
         if (!$info) {
             return ajax_return_error($file->getError());
         }
-        $data = $this->request->root() . '/tmp/uploads/' . $info->getSaveName();
+        $data =  '/public/tmp/uploads/' . $info->getSaveName();
         $insert = [
             'cate'     => 3,
             'name'     => $data,
@@ -45,7 +45,6 @@ class Upload extends Controller
             'mtime'    => time(),
         ];
         Db::name('File')->insert($insert);
-
         return ajax_return(['name' => $data]);
     }
 
@@ -59,8 +58,7 @@ class Upload extends Controller
         $name = ROOT_PATH . 'public/tmp/uploads/' . get_random();
         $name = \File::downloadImage($url, $name);
 
-        $ret = $this->request->root() . '/tmp/uploads/' . basename($name);
-
+        $ret = '/public/tmp/uploads/' . basename($name);
         return ajax_return(['url' => $ret], '抓取成功');
     }
 
