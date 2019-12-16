@@ -1,4 +1,7 @@
 <?php
+/**
+ *
+ */
 namespace app\index;
 
 use think\Session;
@@ -10,16 +13,16 @@ class Base extends Controller{
 
         parent::_initialize();
 
-        $uid =Session::get('USERID');
+        $uid =session('USERID');
         if($uid === null){
             $this ->NotLogin();
-        }else{
-            $this->redirect('index/index/index');
         }
+        //获取当前的控制器
+        $this->view->assign('Controller',request()->controller());
+        //获取当前的方法
+        $this->view->assign('Action',request()->action());
     }
-
-
     public function NotLogin(){
-        $this->redirect('index/login/index','请先登录后操作');
+        $this->redirect('login/index','请先登录后操作');
     }
 }
