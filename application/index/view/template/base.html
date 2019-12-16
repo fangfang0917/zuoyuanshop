@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>登录</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <script src="js/rem.js"></script> 
+    <script src="js/jquery.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/css/page.css"/>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/css/all.css"/>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/css/mui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/css/loaders.min.css"/>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/css/loading.css"/>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/slick/slick.css"/>
+    {block name='ST'}
+    {/block}
+<script type="text/javascript">
+	$(window).load(function(){
+		$(".loading").addClass("loader-chanage")
+		$(".loading").fadeOut(300)
+	})
+</script>
+</head>
+<!--loading页开始-->
+<div class="loading">
+	<div class="loader">
+        <div class="loader-inner pacman">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+	</div>
+</div>
+<!--loading页结束-->
+
+{block name='C'}
+{/block}
+
+</body>
+{block name='S'}
+{/block}
+
+</html>
