@@ -3,7 +3,7 @@
 <div class="banner swiper-container">
     <div class="swiper-wrapper">
         {volist name=':banner(1)' id='r'}
-        <div class="swiper-slide"><a href="{$r.url}"><img class="swiper-lazy" data-src="{$r.banner}" alt=""></a></div>
+        <div class="swiper-slide"><a href="{$r.url ?? 'javascript:;'}"><img class="swiper-lazy" data-src="{$r.banner}" alt=""></a></div>
         {/volist}
     </div>
 </div>

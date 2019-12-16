@@ -44996,3 +44996,406 @@ CREATE TABLE `tp_banner` (
 [ sql ] [ SQL ] SELECT * FROM `tp_banner` WHERE  `posid` = 1 [ RunTime:0.000284s ]
 
 ---------------------------------------------------------------
+[ 2019-12-16T17:55:22+08:00 ] 127.0.0.1 127.0.0.1 GET /public/index.php/index/index/index.html
+[ log ] shop.vip/public/index.php/index/index/index.html [运行时间：0.058166s][吞吐率：17.19req/s] [内存消耗：2,404.38kb] [文件加载：56]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\shop\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=43n13i361qevsg6ser9133a2i5',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'close',
+  'host' => 'shop.vip',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\phpstudy_pro\WWW\shop\application\index\controller\Index.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\shop\public/../application/index\view\index\index.html [ array (
+  0 => 'Controller',
+  1 => 'Action',
+) ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000956s ] mysql:dbname=shop;host=127.0.0.1;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_banner` [ RunTime:0.001645s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_banner` WHERE  `posid` = 1 [ RunTime:0.000507s ]
+
+---------------------------------------------------------------
+[ 2019-12-16T17:55:27+08:00 ] 127.0.0.1 127.0.0.1 GET /public/index.php/index/index/index.html
+[ log ] shop.vip/public/index.php/index/index/index.html [运行时间：0.024362s][吞吐率：41.05req/s] [内存消耗：2,222.52kb] [文件加载：54]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\shop\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=43n13i361qevsg6ser9133a2i5',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://shop.vip/public/index.php/index/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'shop.vip',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\phpstudy_pro\WWW\shop\application\index\controller\Index.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\shop\public/../application/index\view\index\index.html [ array (
+  0 => 'Controller',
+  1 => 'Action',
+) ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000653s ] mysql:dbname=shop;host=127.0.0.1;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_banner` [ RunTime:0.001914s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_banner` WHERE  `posid` = 1 [ RunTime:0.000242s ]
+
+---------------------------------------------------------------
+[ 2019-12-16T17:55:29+08:00 ] 127.0.0.1 127.0.0.1 GET /public/index.php/index/index/index.html
+[ log ] shop.vip/public/index.php/index/index/index.html [运行时间：0.041085s][吞吐率：24.34req/s] [内存消耗：2,222.52kb] [文件加载：54]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\shop\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=43n13i361qevsg6ser9133a2i5',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://shop.vip/public/index.php/index/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'shop.vip',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\phpstudy_pro\WWW\shop\application\index\controller\Index.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\shop\public/../application/index\view\index\index.html [ array (
+  0 => 'Controller',
+  1 => 'Action',
+) ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000623s ] mysql:dbname=shop;host=127.0.0.1;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_banner` [ RunTime:0.001390s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_banner` WHERE  `posid` = 1 [ RunTime:0.000650s ]
+
+---------------------------------------------------------------
+[ 2019-12-16T17:55:51+08:00 ] 127.0.0.1 127.0.0.1 GET /public/index.php/index/index/index.html
+[ log ] shop.vip/public/index.php/index/index/index.html [运行时间：0.052155s][吞吐率：19.17req/s] [内存消耗：2,404.66kb] [文件加载：56]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\shop\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=43n13i361qevsg6ser9133a2i5',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://shop.vip/public/index.php/index/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'close',
+  'host' => 'shop.vip',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\phpstudy_pro\WWW\shop\application\index\controller\Index.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\shop\public/../application/index\view\index\index.html [ array (
+  0 => 'Controller',
+  1 => 'Action',
+) ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001401s ] mysql:dbname=shop;host=127.0.0.1;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_banner` [ RunTime:0.001627s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_banner` WHERE  `posid` = 1 [ RunTime:0.000364s ]
+
+---------------------------------------------------------------
+[ 2019-12-16T17:55:53+08:00 ] 127.0.0.1 127.0.0.1 GET /public/index.php/index/index/index.html
+[ log ] shop.vip/public/index.php/index/index/index.html [运行时间：0.026710s][吞吐率：37.44req/s] [内存消耗：2,222.56kb] [文件加载：54]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\shop\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=43n13i361qevsg6ser9133a2i5',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://shop.vip/public/index.php/index/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'shop.vip',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\phpstudy_pro\WWW\shop\application\index\controller\Index.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\shop\public/../application/index\view\index\index.html [ array (
+  0 => 'Controller',
+  1 => 'Action',
+) ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000728s ] mysql:dbname=shop;host=127.0.0.1;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_banner` [ RunTime:0.001554s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_banner` WHERE  `posid` = 1 [ RunTime:0.000613s ]
+
+---------------------------------------------------------------
+[ 2019-12-16T17:56:07+08:00 ] 127.0.0.1 127.0.0.1 GET /public/index.php/index/index/index.html
+[ log ] shop.vip/public/index.php/index/index/index.html [运行时间：0.037512s][吞吐率：26.66req/s] [内存消耗：2,222.64kb] [文件加载：54]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\shop\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=43n13i361qevsg6ser9133a2i5',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://shop.vip/public/index.php/index/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'close',
+  'host' => 'shop.vip',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\phpstudy_pro\WWW\shop\application\index\controller\Index.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\shop\public/../application/index\view\index\index.html [ array (
+  0 => 'Controller',
+  1 => 'Action',
+) ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000903s ] mysql:dbname=shop;host=127.0.0.1;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_banner` [ RunTime:0.001577s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_banner` WHERE  `posid` = 1 [ RunTime:0.000301s ]
+
+---------------------------------------------------------------
+[ 2019-12-16T17:56:09+08:00 ] 127.0.0.1 127.0.0.1 GET /public/index.php/index/index/index.html
+[ log ] shop.vip/public/index.php/index/index/index.html [运行时间：0.027692s][吞吐率：36.11req/s] [内存消耗：2,222.71kb] [文件加载：54]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\shop\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=43n13i361qevsg6ser9133a2i5',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://shop.vip/public/index.php/index/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'connection' => 'close',
+  'host' => 'shop.vip',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\phpstudy_pro\WWW\shop\application\index\controller\Index.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\shop\public/../application/index\view\index\index.html [ array (
+  0 => 'Controller',
+  1 => 'Action',
+) ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000652s ] mysql:dbname=shop;host=127.0.0.1;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_banner` [ RunTime:0.001729s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_banner` WHERE  `posid` = 1 [ RunTime:0.000697s ]
+
+---------------------------------------------------------------
+[ 2019-12-16T17:56:11+08:00 ] 127.0.0.1 127.0.0.1 GET /public/index.php/index/index/index.html
+[ log ] shop.vip/public/index.php/index/index/index.html [运行时间：0.027016s][吞吐率：37.02req/s] [内存消耗：2,222.71kb] [文件加载：54]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\shop\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=43n13i361qevsg6ser9133a2i5',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://shop.vip/public/index.php/index/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'connection' => 'close',
+  'host' => 'shop.vip',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\phpstudy_pro\WWW\shop\application\index\controller\Index.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\shop\public/../application/index\view\index\index.html [ array (
+  0 => 'Controller',
+  1 => 'Action',
+) ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000672s ] mysql:dbname=shop;host=127.0.0.1;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_banner` [ RunTime:0.001441s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_banner` WHERE  `posid` = 1 [ RunTime:0.000276s ]
+
+---------------------------------------------------------------
+[ 2019-12-16T17:58:03+08:00 ] 127.0.0.1 127.0.0.1 GET /public/index.php/index/index/index.html
+[ log ] shop.vip/public/index.php/index/index/index.html [运行时间：0.062956s][吞吐率：15.88req/s] [内存消耗：2,428.66kb] [文件加载：56]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\shop\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=43n13i361qevsg6ser9133a2i5',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://shop.vip/public/index.php/index/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'close',
+  'host' => 'shop.vip',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\phpstudy_pro\WWW\shop\application\index\controller\Index.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\shop\public/../application/index\view\index\index.html [ array (
+  0 => 'Controller',
+  1 => 'Action',
+) ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000885s ] mysql:dbname=shop;host=127.0.0.1;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_banner` [ RunTime:0.001760s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_banner` WHERE  `posid` = 1 [ RunTime:0.000394s ]
+
+---------------------------------------------------------------

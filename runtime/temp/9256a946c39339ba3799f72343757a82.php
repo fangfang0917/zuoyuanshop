@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:74:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\index\index.html";i:1576488944;s:76:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\template\base.html";i:1576483021;s:78:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\template\banner.html";i:1576489143;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:74:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\index\index.html";i:1576490274;s:76:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\template\base.html";i:1576490274;s:78:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\template\banner.html";i:1576490149;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -84,7 +84,7 @@
 <div class="banner swiper-container">
     <div class="swiper-wrapper">
         <?php $_result=banner(1);if(is_array($_result) || $_result instanceof \think\Collection || $_result instanceof \think\Paginator): $i = 0; $__LIST__ = $_result;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$r): $mod = ($i % 2 );++$i;?>
-        <div class="swiper-slide"><a href="javascript:void(0)"><img class="swiper-lazy" data-src="<?php echo $r['banner']; ?>" alt=""></a></div>
+        <div class="swiper-slide"><a href="<?php echo isset($r['url']) ? $r['url'] :  'javascript:;'; ?>"><img class="swiper-lazy" data-src="<?php echo $r['banner']; ?>" alt=""></a></div>
         <?php endforeach; endif; else: echo "" ;endif; ?>
     </div>
 </div>
@@ -339,8 +339,10 @@
             </div>
         </div>
         <!--like end-->
-    </div
+    </div>
 </div>
+
+
 <!--footer star-->
 <footer class="page-footer fixed-footer" id="footer">
     <ul>
@@ -370,9 +372,36 @@
         </li>
     </ul>
 </footer>
+<!--footer end--><!--footer star-->
+<footer class="page-footer fixed-footer" id="footer">
+    <ul>
+        <li class="active">
+            <a href="index.html">
+                <i class="iconfont icon-shouye"></i>
+                <p>首页</p>
+            </a>
+        </li>
+        <li>
+            <a href="cation.html">
+                <i class="iconfont icon-icon04"></i>
+                <p>分类</p>
+            </a>
+        </li>
+        <li>
+            <a href="shopcar.html">
+                <i class="iconfont icon-gouwuche"></i>
+                <p>购物车</p>
+            </a>
+        </li>
+        <li>
+            <a href="login.html">
+                <i class="iconfont icon-yonghuming"></i>
+                <p>我的</p>
+            </a>
+        </li>
+    </ul>
+</footer>
 <!--footer end-->
-
-
 </body>
 <script type="text/javascript" src="__STATIC__/js/jquery-1.8.3.min.js?v=<?php echo time(); ?>" ></script>
 <!--<script src="__STATIC__/js/others.js?v=<?php echo time(); ?>"></script>-->
