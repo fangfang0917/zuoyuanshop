@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:74:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\login\index.html";i:1576481678;s:76:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\template\base.html";i:1576479897;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:74:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\login\index.html";i:1576481678;s:76:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\template\base.html";i:1576490274;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -108,8 +108,74 @@
 			</div>
 		</div>
 
-
+<!--footer star-->
+<footer class="page-footer fixed-footer" id="footer">
+    <ul>
+        <li class="active">
+            <a href="index.html">
+                <i class="iconfont icon-shouye"></i>
+                <p>首页</p>
+            </a>
+        </li>
+        <li>
+            <a href="cation.html">
+                <i class="iconfont icon-icon04"></i>
+                <p>分类</p>
+            </a>
+        </li>
+        <li>
+            <a href="shopcar.html">
+                <i class="iconfont icon-gouwuche"></i>
+                <p>购物车</p>
+            </a>
+        </li>
+        <li>
+            <a href="login.html">
+                <i class="iconfont icon-yonghuming"></i>
+                <p>我的</p>
+            </a>
+        </li>
+    </ul>
+</footer>
+<!--footer end--><!--footer star-->
+<footer class="page-footer fixed-footer" id="footer">
+    <ul>
+        <li class="active">
+            <a href="index.html">
+                <i class="iconfont icon-shouye"></i>
+                <p>首页</p>
+            </a>
+        </li>
+        <li>
+            <a href="cation.html">
+                <i class="iconfont icon-icon04"></i>
+                <p>分类</p>
+            </a>
+        </li>
+        <li>
+            <a href="shopcar.html">
+                <i class="iconfont icon-gouwuche"></i>
+                <p>购物车</p>
+            </a>
+        </li>
+        <li>
+            <a href="login.html">
+                <i class="iconfont icon-yonghuming"></i>
+                <p>我的</p>
+            </a>
+        </li>
+    </ul>
+</footer>
+<!--footer end-->
 </body>
+<script type="text/javascript" src="__STATIC__/js/jquery-1.8.3.min.js?v=<?php echo time(); ?>" ></script>
+<!--<script src="__STATIC__/js/others.js?v=<?php echo time(); ?>"></script>-->
+<script type="text/javascript" src="__STATIC__/js/hmt.js?v=<?php echo time(); ?>" ></script>
+<script src="__STATIC__/slick/slick.js?v=<?php echo time(); ?>" type="text/javascript" ></script>
+<!--插件-->
+<link rel="stylesheet" href="__STATIC__/css/swiper.min.css?v=<?php echo time(); ?>">
+<script src="__STATIC__/js/swiper.jquery.min.js?v=<?php echo time(); ?>"></script>
+<!--新闻资讯滚动-->
 <script src="__STATIC__/js/comm.js?v=<?php echo time(); ?>" type="text/javascript"></script>
 
 

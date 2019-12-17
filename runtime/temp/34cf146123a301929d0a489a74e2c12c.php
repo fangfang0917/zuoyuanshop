@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:74:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\banner\edit.html";i:1576571693;s:76:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\template\base.html";i:1488899632;s:87:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\template\javascript_vars.html";i:1488899632;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:82:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\goods_classify\edit.html";i:1576574226;s:76:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\template\base.html";i:1488899632;s:87:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\template\javascript_vars.html";i:1488899632;s:75:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\template\pos.html";i:1576571954;}*/ ?>
 ﻿<!DOCTYPE HTML>
 <html>
 <head>
@@ -47,48 +47,47 @@
 <div class="page-container">
     <form class="form form-horizontal" id="form" method="post" action="<?php echo \think\Request::instance()->baseUrl(); ?>">
         <input type="hidden" name="id" value="<?php echo isset($vo['id']) ? $vo['id'] :  ''; ?>">
+
         <div class="row cl">
-            <label class="form-label col-xs-3 col-sm-3"><span class="c-red">*</span>图片：</label>
+            <label class="form-label col-xs-3 col-sm-3"><span class="c-red">*</span>缩略图：</label>
             <div class="formControls col-xs-6 col-sm-6">
-                <input type="text" class="input-text" id="upload" name="banner" placeholder="请点击后面的上传按钮" datatype="*"
-                       nullmsg="请填写图片url" style="width: 70%"   value="<?php echo isset($vo['banner']) ? $vo['banner'] :  ''; ?>">
+                <input type="text" class="input-text" id="upload" name="thumb" placeholder="请点击后面的上传按钮" datatype="*"
+                       nullmsg="请填写图片url" style="width: 70%"   value="<?php echo isset($vo['thumb']) ? $vo['thumb'] :  ''; ?>">
                 <button type="button" class="btn btn-primary radius"
                         onclick="layer_open('文件上传','<?php echo \think\Url::build('Upload/index', ['id' => 'upload']); ?>')">
                     上传
                 </button>
                 <a onclick="$('#img').attr('src', $('#upload').val());$('#img').show()" type="button" class="btn btn-success radius"
                    data-lightbox="preview">预览</a>
-                <img id="img" src="<?php echo isset($vo['banner']) ? $vo['banner'] :  ''; ?>" alt="" <?php if(isset($vo)): ?>style="display:block;width:100%"<?php else: ?>style="display:none;width:100%"<?php endif; ?>>
+                <img id="img" src="<?php echo isset($vo['thumb']) ? $vo['thumb'] :  ''; ?>" alt="" <?php if(isset($vo)): ?>style="display:block;width:100%"<?php else: ?>style="display:none;width:100%"<?php endif; ?>>
             </div>
             <div class="col-xs-3 col-sm-3"></div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-3 col-sm-3">位置：</label>
+            <label class="form-label col-xs-3 col-sm-3"><span class="c-red">*</span>名称：</label>
             <div class="formControls col-xs-6 col-sm-6">
-                <div class="select-box">
-                    <?php if(isset($vo)): ?>
-                    <?php echo GetPos($vo['posid']); else: ?>
-                    <?php echo GetPos(); endif; ?>
-                </div>
-
+                <input type="text" class="input-text" placeholder="名称" name="name" value="<?php echo isset($vo['name']) ? $vo['name'] :  ''; ?>"  datatype="*" nullmsg="请填写名称">
             </div>
             <div class="col-xs-3 col-sm-3"></div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-3 col-sm-3">位置：</label>
+            <label class="form-label col-xs-3 col-sm-3"><span class="c-red">*</span>排序：</label>
             <div class="formControls col-xs-6 col-sm-6">
-                <input type="text" class="input-text" placeholder="位置" name="position" value="<?php echo isset($vo['position']) ? $vo['position'] :  ''; ?>">
+                <input type="text" class="input-text" placeholder="排序" name="sort" value="<?php echo isset($vo['sort']) ? $vo['sort'] :  '0'; ?>"  datatype="*" nullmsg="请填写排序">
             </div>
             <div class="col-xs-3 col-sm-3"></div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-3 col-sm-3">地址：</label>
-            <div class="formControls col-xs-6 col-sm-6">
-                <input type="text" class="input-text" placeholder="地址" name="url" value="<?php echo isset($vo['url']) ? $vo['url'] :  ''; ?>">
-            </div>
-            <div class="col-xs-3 col-sm-3"></div>
+    <label class="form-label col-xs-3 col-sm-3"><span class="c-red">*</span>推荐位：</label>
+    <div class="formControls col-xs-6 col-sm-6">
+        <div class="select-box" style="width:250px">
+            <?php if(isset($vo)): ?>
+            <?php echo GetPos($vo['posid']); else: ?>
+            <?php echo GetGoodsC(); endif; ?>
         </div>
-
+    </div>
+    <div class="col-xs-3 col-sm-3"></div>
+</div>
         <div class="row cl">
             <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
                 <button type="submit" class="btn btn-primary radius">&nbsp;&nbsp;提交&nbsp;&nbsp;</button>
@@ -120,7 +119,7 @@
             tiptype: 2,
             ajaxPost: true,
             showAllError: true,
-            callback: function (ret) {
+            callback: function (ret){
                 ajax_progress(ret);
             }
         });

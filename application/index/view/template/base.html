@@ -43,56 +43,31 @@
 {/block}
 <!--footer star-->
 <footer class="page-footer fixed-footer" id="footer">
+    <!--<?php dump($Controller);?>-->
     <ul>
-        <li class="active">
-            <a href="index.html">
+        <li {if $Controller == 'Index'}class="active" {/if}>
+            <a href="{:url('index/index')}">
                 <i class="iconfont icon-shouye"></i>
                 <p>首页</p>
             </a>
         </li>
-        <li>
-            <a href="cation.html">
+        <li {if $Controller == 'Category'}class="active" {/if}>
+
+        <a href="{:url('category/index')}">
                 <i class="iconfont icon-icon04"></i>
                 <p>分类</p>
             </a>
         </li>
-        <li>
-            <a href="shopcar.html">
+        <li {if $Controller == 'Shopcar'}class="active" {/if}>
+
+        <a href="{:url('shopcar/index')}">
                 <i class="iconfont icon-gouwuche"></i>
                 <p>购物车</p>
             </a>
         </li>
-        <li>
-            <a href="login.html">
-                <i class="iconfont icon-yonghuming"></i>
-                <p>我的</p>
-            </a>
-        </li>
-    </ul>
-</footer>
-<!--footer end--><!--footer star-->
-<footer class="page-footer fixed-footer" id="footer">
-    <ul>
-        <li class="active">
-            <a href="index.html">
-                <i class="iconfont icon-shouye"></i>
-                <p>首页</p>
-            </a>
-        </li>
-        <li>
-            <a href="cation.html">
-                <i class="iconfont icon-icon04"></i>
-                <p>分类</p>
-            </a>
-        </li>
-        <li>
-            <a href="shopcar.html">
-                <i class="iconfont icon-gouwuche"></i>
-                <p>购物车</p>
-            </a>
-        </li>
-        <li>
-            <a href="login.html">
+        <li {if $Controller == 'User'}class="active" {/if}>
+
+        <a href="{:url('user/index')}">
                 <i class="iconfont icon-yonghuming"></i>
                 <p>我的</p>
             </a>

@@ -22,4 +22,7 @@ return [
         '__STATIC__' => $basename . '/static/index',
         '__LIB__'    => $basename . '/static/index/lib',
     ],
+    'page_num'=>[
+        'goods'=>10
+    ]
 ];

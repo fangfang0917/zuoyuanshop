@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:74:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\index\index.html";i:1576490274;s:76:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\template\base.html";i:1576490274;s:78:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\template\banner.html";i:1576490149;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:5:{s:74:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\index\index.html";i:1576573353;s:76:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\template\base.html";i:1576574020;s:78:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\template\header.html";i:1576573339;s:80:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\template\leftmenu.html";i:1576573369;s:78:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\template\banner.html";i:1576490149;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -58,25 +58,19 @@
 </header>
 <!--header end-->
 
+
+<!-- 侧边导航 -->
 <!-- 侧边导航 -->
 <div class="slide-mask"></div>
 <aside class="slide-wrapper">
     <div>
         <ul>
-            <li><a href="list.html">家居家纺</a></li>
-            <li><a href="list.html">3C数码</a></li>
-            <li><a href="list.html">家用电器</a></li>
-            <li><a href="list.html">厨房小电</a></li>
-            <li><a href="list.html">零食小吃</a></li>
-            <li><a href="list.html">酒水饮料</a></li>
-            <li><a href="list.html">个护健康</a></li>
-            <li><a href="list.html">生活电器</a></li>
-            <li><a href="list.html">服饰</a></li>
-            <li><a href="list.html">五金家装</a></li>
+            <?php $_result=getlist('GoodsClassify');if(is_array($_result) || $_result instanceof \think\Collection || $_result instanceof \think\Paginator): $i = 0; $__LIST__ = $_result;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$r): $mod = ($i % 2 );++$i;?>
+               <li><a href="<?php echo url('category/list',array('id'=>$r['id'])); ?>"><?php echo $r['name']; ?></a></li>
+            <?php endforeach; endif; else: echo "" ;endif; ?>
         </ul>
     </div>
 </aside>
-
 <div id="main" class="clearfloat warp">
     <div class="mui-content">
         
@@ -345,56 +339,31 @@
 
 <!--footer star-->
 <footer class="page-footer fixed-footer" id="footer">
+    <?php dump($Controller);?>
     <ul>
-        <li class="active">
-            <a href="index.html">
+        <li <?php if($Controller == 'Index'): ?>class="active" <?php endif; ?>>
+            <a href="<?php echo url('index/index'); ?>">
                 <i class="iconfont icon-shouye"></i>
                 <p>首页</p>
             </a>
         </li>
-        <li>
-            <a href="cation.html">
+        <li <?php if($Controller == 'Category'): ?>class="active" <?php endif; ?>>
+
+        <a href="<?php echo url('category/index'); ?>">
                 <i class="iconfont icon-icon04"></i>
                 <p>分类</p>
             </a>
         </li>
-        <li>
-            <a href="shopcar.html">
+        <li <?php if($Controller == 'Shopcar'): ?>class="active" <?php endif; ?>>
+
+        <a href="<?php echo url('shopcar/index'); ?>">
                 <i class="iconfont icon-gouwuche"></i>
                 <p>购物车</p>
             </a>
         </li>
-        <li>
-            <a href="login.html">
-                <i class="iconfont icon-yonghuming"></i>
-                <p>我的</p>
-            </a>
-        </li>
-    </ul>
-</footer>
-<!--footer end--><!--footer star-->
-<footer class="page-footer fixed-footer" id="footer">
-    <ul>
-        <li class="active">
-            <a href="index.html">
-                <i class="iconfont icon-shouye"></i>
-                <p>首页</p>
-            </a>
-        </li>
-        <li>
-            <a href="cation.html">
-                <i class="iconfont icon-icon04"></i>
-                <p>分类</p>
-            </a>
-        </li>
-        <li>
-            <a href="shopcar.html">
-                <i class="iconfont icon-gouwuche"></i>
-                <p>购物车</p>
-            </a>
-        </li>
-        <li>
-            <a href="login.html">
+        <li <?php if($Controller == 'User'): ?>class="active" <?php endif; ?>>
+
+        <a href="<?php echo url('user/index'); ?>">
                 <i class="iconfont icon-yonghuming"></i>
                 <p>我的</p>
             </a>

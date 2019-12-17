@@ -1,0 +1,37 @@
+{extend name="template/base" /}
+{block name='C'}
+{include file='template/header' /}
+<div class="warp clearfloat">
+    <div class="lists clearfloat">
+        <div class="top clearfloat">
+            <ul>
+                <li>默认</li>
+                <li>价格<i class="iconfont icon-xiala"></i></li>
+                <li>销量<i class="iconfont icon-xiala"></i></li>
+            </ul>
+        </div>
+        <div class="bottom clearfloat">
+            {volist name="list" id='r'}
+            <div class="lie clearfloat">
+                <a href="detail.html">
+                    <div class="tu clearfloat fl">
+                        <img src="{$r.thumb}"/>
+                    </div>
+                </a>
+                <div class="right clearfloat fl">
+                    <a href="detail.html">
+                        <p class="tit">{$r.name}</p>
+                    </a>
+                    <div class="xia clearfloat">
+                        <a href="detail.html">
+                            <p class="jifen fl over">{$r.int}</p>
+                        </a>
+                        <span class="fr db"><img src="img/jia.png"/></span>
+                    </div>
+                </div>
+            </div>
+            {/volist}
+        </div>
+    </div>
+</div>
+{/block}

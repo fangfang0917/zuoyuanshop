@@ -21,6 +21,7 @@ class Base extends Controller{
         $this->view->assign('Controller',request()->controller());
         //获取当前的方法
         $this->view->assign('Action',request()->action());
+
     }
     public function NotLogin(){
         $this->redirect('login/index','请先登录后操作');

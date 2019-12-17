@@ -1,0 +1,26 @@
+{extend name="template/base" /}
+{block name='C'}
+{include file='template/header' /}
+
+<div class="warp clearfloat">
+    <!--cation star-->
+    <div class="cations clearfloat">
+        {volist name=":getlist('GoodsClassify')" id='r'}
+
+
+        <div class="list clearfloat fl">
+            <a href="{:url('category/list',array('id'=>$r['id']))}">
+                <p class="tit over box-s">{$r.name}</p>
+                <div class="tu">
+                    <img src="{$r['thumb']}"/>
+                </div>
+            </a>
+        </div>
+        {/volist}
+
+    </div>
+    <!--cation end-->
+</div>
+
+
+{/block}

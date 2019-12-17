@@ -1,41 +1,10 @@
 {extend name="template/base" /}
 {block name='C'}
-<!--header star-->
-<header class="mui-bar mui-bar-nav" id="header">
-    <a class="btn slide-menu" href="#">
-        <i class="iconfont icon-iconfontcaidan"></i>
-    </a>
-    <div class="top-sch-box flex-col">
-        <div class="centerflex">
-            <i class="fdj iconfont icon-sousuo"></i>
-            <input type="text" name="" id="" value="" class="sch-txt" placeholder="输入您要搜索的商品" />
-        </div>
-    </div>
-    <a class="btn" href="#">
-        <i class="iconfont icon-erweima"></i>
-    </a>
-</header>
-<!--header end-->
+{include file='template/header' /}
+
 
 <!-- 侧边导航 -->
-<div class="slide-mask"></div>
-<aside class="slide-wrapper">
-    <div>
-        <ul>
-            <li><a href="list.html">家居家纺</a></li>
-            <li><a href="list.html">3C数码</a></li>
-            <li><a href="list.html">家用电器</a></li>
-            <li><a href="list.html">厨房小电</a></li>
-            <li><a href="list.html">零食小吃</a></li>
-            <li><a href="list.html">酒水饮料</a></li>
-            <li><a href="list.html">个护健康</a></li>
-            <li><a href="list.html">生活电器</a></li>
-            <li><a href="list.html">服饰</a></li>
-            <li><a href="list.html">五金家装</a></li>
-        </ul>
-    </div>
-</aside>
-
+{include file='template/leftmenu' /}
 <div id="main" class="clearfloat warp">
     <div class="mui-content">
         {include file='template/banner' /}

@@ -1077,6 +1077,11 @@ function getOnlayUUID():string
     );
 }
 
+/**
+ * 验证用户提交的信息
+ * @param array $data
+ * @return \think\response\Json
+ */
 function AuthUserParam(array $data=[]){
     if(isEmpty($data['username'])){
         return return_json(0,'用户名未填写!');
@@ -1087,7 +1092,19 @@ function AuthUserParam(array $data=[]){
     }
 }
 
-
+/**
+ * 获取banner
+ * @param $posid
+ * @return false|PDOStatement|string|\think\Collection
+ * @throws \think\db\exception\DataNotFoundException
+ * @throws \think\db\exception\ModelNotFoundException
+ * @throws \think\exception\DbException
+ */
 function banner($posid){
    return $list = Db('banner')->where(array('posid'=>$posid))->select();
+}
+
+function getlist($Db,$id = 0){
+   $list = Db($Db)->select();
+   return $list;
 }

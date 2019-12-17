@@ -465,10 +465,17 @@ function get_model($modelName)
     return $db;
 }
 
+/**获取推荐位
+ * @param int $posid
+ * @return string
+ * @throws \think\db\exception\DataNotFoundException
+ * @throws \think\db\exception\ModelNotFoundException
+ * @throws \think\exception\DbException
+ */
 function GetPos($posid = 0){
 
     $list = Db('position')->select();
-    $select_html_start = "<select name='posid' class='select-box'>";
+    $select_html_start = "<select name='posid' class='select'>";
     $html = '<option value="0">请选择推荐位</option>';
    foreach($list as $key =>$value){
        if($posid != 0){
@@ -490,6 +497,60 @@ function GetPos($posid = 0){
     return $select_html;
 }
 
+/** 获取商品分类
+ * @param int $cid
+ * @return string
+ * @throws \think\db\exception\DataNotFoundException
+ * @throws \think\db\exception\ModelNotFoundException
+ * @throws \think\exception\DbException
+ */
+function GetGoodsC($cid = 0){
+
+    $list = Db('GoodsClassify')->select();
+    $select_html_start = "<select name='cid' class='select' datatype=\"*\" nullmsg=\"请选择商品分类\">";
+    $html = '<option value="0">请选择商品分类</option>';
+    foreach($list as $key =>$value){
+        if($cid != 0){
+            if($cid == $value['id']){
+                $html = $html.'<option value="'.$value['id'].'" selected>'.$value['name'].'</option>';
+
+            }else{
+                $html = $html.'<option value="'.$value['id'].'">'.$value['name'].'</option>';
+
+            }
+
+        }else{
+            $html = $html.'<option value="'.$value['id'].'">'.$value['name'].'</option>';
+
+        }
+    }
+    $select_html_end = '</select>';
+    $select_html =$select_html_start .$html.$select_html_end;
+    return $select_html;
+}
+
+/** 获取标题
+ * @param int $id
+ * @param string $Db   数据表明
+ * @return mixed
+ */
+function getName($id = 0,$Db = 'goods'){
+    return Db($Db)->where(array('id'=>$id))->value('name');
+}
+
+
+/**解析时间
+ * @param int $time
+ * @param string $z
+ * @return false|string
+ */
+function tt($time = 0,$z = 'Y-m-d H:i:s'){
+    return date($z,$time);
+}
+
+function Img($src,$alt='未定义'){
+return "<img src='".$src."' alt='".$alt."' style='width:120px'>";
+}
 
 /**
  * 验证规则扩展
