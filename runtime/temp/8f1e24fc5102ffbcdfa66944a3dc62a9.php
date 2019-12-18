@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:77:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\category\index.html";i:1576574403;s:76:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\template\base.html";i:1576574044;s:78:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\template\header.html";i:1576573339;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:77:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\category\index.html";i:1576631184;s:76:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\template\base.html";i:1576574044;s:78:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\template\header.html";i:1576573339;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -41,7 +41,6 @@
 <!--loading页结束-->
 
 
-<body>
 <!--header star-->
 <header class="mui-bar mui-bar-nav" id="header">
     <a class="btn slide-menu" href="#">
@@ -66,7 +65,7 @@
 
 
         <div class="list clearfloat fl">
-            <a href="<?php echo url('category/list',array('id'=>$r['id'])); ?>">
+            <a href="<?php echo url('category/goodslist', array('id' => $r['id'])); ?>">
                 <p class="tit over box-s"><?php echo $r['name']; ?></p>
                 <div class="tu">
                     <img src="<?php echo $r['thumb']; ?>"/>
@@ -78,8 +77,6 @@
     </div>
     <!--cation end-->
 </div>
-
-
 
 <!--footer star-->
 <footer class="page-footer fixed-footer" id="footer">

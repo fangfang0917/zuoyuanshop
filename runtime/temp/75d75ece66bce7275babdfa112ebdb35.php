@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:6:{s:74:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\goods\index.html";i:1576569164;s:76:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\template\base.html";i:1488899632;s:87:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\template\javascript_vars.html";i:1488899632;s:73:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\goods\form.html";i:1576572394;s:71:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\goods\th.html";i:1576571559;s:71:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\goods\td.html";i:1576571559;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:6:{s:74:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\goods\index.html";i:1576569164;s:76:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\template\base.html";i:1488899632;s:87:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\template\javascript_vars.html";i:1488899632;s:73:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\goods\form.html";i:1576572394;s:71:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\goods\th.html";i:1576571559;s:71:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\goods\td.html";i:1576638018;}*/ ?>
 ﻿<!DOCTYPE HTML>
 <html>
 <head>
@@ -87,8 +87,8 @@
         <tr class="text-c">
             <td><input type="checkbox" name="id[]" value="<?php echo $vo['id']; ?>"></td>
 <td><?php echo high_light($vo['id'],\think\Request::instance()->param('id')); ?></td>
-<td><?php echo getName($vo['posid'],'position'); ?></td>
-<td><?php echo getName($vo['id'],'GoodsClassify'); ?></td>
+            <td><?php echo getName($vo['posid'], 'position') ?? '--'; ?></td>
+            <td><?php echo getName($vo['cid'], 'GoodsClassify') ?? '--'; ?></td>
 <td><?php echo high_light($vo['name'],\think\Request::instance()->param('name')); ?></td>
 <td><?php echo Img($vo['thumb'],$vo['name']); ?></td>
 <td><?php echo $vo['description']; ?></td>

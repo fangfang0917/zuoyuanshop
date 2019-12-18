@@ -15,12 +15,13 @@ class Category extends Base
     use \app\index\traits\controller\Controller;
     public function index()
     {
-
         return $this ->view->fetch();
     }
 
 
     public function goodslist(){
+        $id = $this->request->param('id');
+        $this->view->assign('id', $id);
         return $this  ->view->fetch();
     }
 

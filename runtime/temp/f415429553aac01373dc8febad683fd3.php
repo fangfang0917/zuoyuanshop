@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:73:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\goods\edit.html";i:1576571657;s:76:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\template\base.html";i:1488899632;s:87:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\template\javascript_vars.html";i:1488899632;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:73:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\goods\edit.html";i:1576571997;s:76:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\template\base.html";i:1488899632;s:87:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\template\javascript_vars.html";i:1488899632;s:75:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\template\pos.html";i:1576571954;}*/ ?>
 ﻿<!DOCTYPE HTML>
 <html>
 <head>
@@ -59,12 +59,12 @@
             <div class="col-xs-3 col-sm-3"></div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-3 col-sm-3"><span class="c-red">*</span>所属分类：</label>
+            <label class="form-label col-xs-3 col-sm-3"><span class="c-red">*</span>推荐位：</label>
             <div class="formControls col-xs-6 col-sm-6">
                 <div class="select-box" style="width:250px">
-                    <?php if(isset($vo)): ?>
-                    <?php echo GetPos($vo['posid']); else: ?>
-                    <?php echo GetGoodsC(); endif; ?>
+                    <?php if (isset($vo)): ?>
+                        <?php echo GetPos($vo['posid']); else: ?>
+                        <?php echo GetGoodsC(); endif; ?>
                 </div>
             </div>
             <div class="col-xs-3 col-sm-3"></div>

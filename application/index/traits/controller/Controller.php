@@ -8,9 +8,6 @@
 
 namespace app\index\traits\controller;
 
-use think\Db;
-use think\Loader;
-use think\exception\HttpException;
 use think\Config;
 
 trait Controller
@@ -20,11 +17,15 @@ trait Controller
         $page = $this ->request->param('page');
         $num = Config::get('page_num')[$D];
         $map = [];
+        $url = '';
         if($this ->request->param('where')){
             $map = $this ->Map($this ->request->param('where'));
         }
         $list = Db($D)->where($map)->limit($page*$num,$page)->select();
-        return return_json(1,'获取成功','',$list);
+        if ($D == 'goods') {
+            $url = url('goods/detail');
+        }
+        return return_json(1, '获取成功', $url, $list);
     }
 
 
