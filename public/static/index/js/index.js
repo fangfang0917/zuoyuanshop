@@ -1,7 +1,7 @@
 $(function () {
     var page = 0;//页码数
     // dropload函数接口设置
-    $('.warp').dropload({
+    $('.like').dropload({
         scrollArea: window,
         // 下拉刷新模块显示内容
         autoLoad: true,
@@ -26,9 +26,9 @@ $(function () {
         },
         loadDownFn: function (me) {
             var url = $('#ajax-url').attr('data-ajax-url');
-            var id = $('#ajax-url').attr('data-ajax-id');
+            var posid = $('#ajax-url').attr('data-ajax-posid');
             var action = $('#ajax-url').attr('data-ajax-action');
-            var data = { page: page, D: action,cid:id};
+            var data = { page: page, D: action,posid:posid};
             _ajax(url, data, function (data) {
                 if (data.data.length <= 0) {
                     // 再往下已经没有数据
@@ -45,27 +45,20 @@ $(function () {
                 var html = '';
                 var list = data.data;
                 for (var i = 0; i < list.length; i++) {
-                    html += "<div class='lie clearfloat'>" +
-                        "                <a href='" + data.url + "?id=" + list[i].id + "'>" +
-                        "                    <div class='tu clearfloat fl'>" +
-                        "                        <img src='" + list[i].thumb + "'/>" +
-                        "                    </div>" +
-                        "                </a>" +
-                        "                <div class='right clearfloat fl'>" +
-                        "                    <a href='" + data.url + "?id=" + list[i].id + "'>" +
-                        "                        <p class='tit'>" + list[i].name + "</p>" +
-                        "                    </a>" +
-                        "                    <div class='xia clearfloat'>" +
-                        "                        <a href='" + data.url + "?id=" + list[i].id + "'>" +
-                        "                            <p class='jifen fl over'>" + list[i].int + "</p>" +
-                        "                        </a>" +
-                        "                        <span class='fr db'><img src='/public/static/index/img/jia.png'/></span>" +
-                        "                    </div>" +
-                        "                </div>" +
-                        "            </div>";
+                    html += " <div class='list clearfloat fl'>" +
+                                " <a href='"+data.url+"?id="+list[i].id+"'>" +
+                                "    <div class='tu clearfloat'>" +
+                                "       <img src='"+list[i].thumb+"'/>" +
+                                "    </div>" +
+                                "    <div class='bottom clearfloat box-s'>" +
+                                "       <p class='over'>"+list[i].name+"</p>" +
+                                "       <span>"+list[i].int+"</span>" +
+                                "    </div>" +
+                                "</a>" +
+                            "</div>";
                 }
                 // 加载 插入到原有 DOM 之后
-                $('.bottom').append(html);
+                $('.content').append(html);
                 page++; // 每次请求，页码加1
                 // 每次数据加载完，必须重置
                 me.resetload();

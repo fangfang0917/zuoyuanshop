@@ -25,10 +25,4 @@ class Category extends Base
         return $this  ->view->fetch();
     }
 
-    public function listPage(){
-        $page = $this ->request->param('page');
-        $id = $this ->request->param('id');
-        $num = Config::get('page_num')['goods'];
-        $list = Db()->where($map)->limit($page*$num,$num)->select();
-    }
 }

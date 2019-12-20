@@ -31,7 +31,7 @@ function tab($step = 1, $string = ' ', $size = 4)
  * @param string $value
  * @return bool
  */
-function isEmpty(string $value):bool
+function isEmpty(string $value=''):bool
 {
     if (!isset($value)) {
         return true;

@@ -101,5 +101,54 @@ $('.autoplay').slick({
 });
 
 
+$('[_btnuppass]').click(function () {
+    var newpass = $('[name=newPass]').val();
+    var oldpass = $('[name=oldPass]').val();
+    var data = {newpass:newpass,oldpass:oldpass};
+    var url = $('#ajax-data').attr('ajax-action');
+    if(newpass.length <6){
+        _msg({title:'请填写6-10位密码',time:1000},function () {
+            return false;
+        })
+    }
+    _ajax(url,data,function (e) {
+        console.log(e);
+        if(e.status == 1){
+            _msg({title:e.msg,time:1000},function () {
+                 location.href = e.url;
+            })
+        }else{
+            _msg({title:e.msg,time:1000},function () {
+                location.reload();
 
+            })
+        }
+    })
+})
 
+$('[_btnuprealname]').click(function () {
+    var realname = $('[name=realname]').val();
+    var data = {realname:realname};
+    var url = $('#ajax-data').attr('ajax-action');
+    if(realname.length <6 || realname.length >12){
+        _msg({title:'请填写6-12位汉字',time:1000})
+        return false;
+    }
+    var res=/^[\u4e00-\u9fa5]+$/;
+    if(!res.test(realname)) {
+        _msg({title:'格式不正确,请填写6-12位汉字',time:1000})
+        return false;
+    }
+        _ajax(url,data,function (e) {
+        console.log(e);
+        if(e.status == 1){
+            _msg({title:e.msg,time:1000},function () {
+                location.href = e.url;
+            })
+        }else{
+            _msg({title:e.msg,time:1000},function () {
+                location.reload();
+            })
+        }
+    })
+})

@@ -24,5 +24,16 @@ return [
     ],
     'page_num'=>[
         'goods'=>10
+    ],
+    'ajaxUrl'=>[
+        'index'=>url('index/index'),
+        'user'=>url('user/index'),
+        'login'=>url('login/index'),
+        'order'=>url('order/index'),
+        'checklogin'=>url('login/checklogin'),
+        'checkregister'=>url('register/checkregister'),
+        'uppass' => url('user/uppass'),
+        'uprealname' => url('user/uprealname'),
     ]
+    ,'NOTSHOWFOOTER' =>['order']
 ];

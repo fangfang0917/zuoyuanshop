@@ -1,6 +1,22 @@
 {extend name="template/base" /}
 {block name='C'}
-{include file='template/header' /}
+<!--header star-->
+<header class="mui-bar mui-bar-nav" id="header">
+    <a class="btn" href="javascript:history.go(-1)">
+        <i class="iconfont icon-fanhui"></i>
+    </a>
+    <div class="top-sch-box flex-col">
+        <div class="centerflex">
+            <i class="fdj iconfont icon-sousuo"></i>
+            <input type="text" name="" id="" value="" class="sch-txt" placeholder="输入您要搜索的商品" />
+        </div>
+    </div>
+    <a class="btn" href="#">
+        <i class="iconfont icon-gouwuche"></i>
+        <span>0</span>
+    </a>
+</header>
+<!--header end-->
 <div class="warp clearfloat">
     <div class="lists clearfloat">
         <!--<div class="top clearfloat">-->

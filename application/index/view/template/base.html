@@ -42,8 +42,8 @@
 {block name='C'}
 {/block}
 <!--footer star-->
+{if !in_array($Controller,$NOTSHOWFOOTER)}
 <footer class="page-footer fixed-footer" id="footer">
-    <!--<?php dump($Controller);?>-->
     <ul>
         <li {if $Controller == 'Index'}class="active" {/if}>
             <a href="{:url('index/index')}">
@@ -74,12 +74,14 @@
         </li>
     </ul>
 </footer>
+{/if}
 <!--footer end-->
 </body>
 <script type="text/javascript" src="__STATIC__/js/jquery-1.8.3.min.js?v={:time()}" ></script>
 <!--<script src="__STATIC__/js/others.js?v={:time()}"></script>-->
 <script type="text/javascript" src="__STATIC__/js/hmt.js?v={:time()}" ></script>
 <script src="__STATIC__/slick/slick.js?v={:time()}" type="text/javascript" ></script>
+<script src="__STATIC__/js/comm.js?v={:time()}" type="text/javascript"></script>
 <!--插件start-->
 <!--swiper-->
 <link rel="stylesheet" href="__STATIC__/css/swiper.min.css?v={:time()}">
@@ -88,9 +90,6 @@
 <link href="__STATIC__/css/dropload.css?v={:time()}" rel="stylesheet" type="text/css"/>
 <script src="__STATIC__/js/dropload.js?v={:time()}"></script>
 <!--插件end-->
-
-<!--新闻资讯滚动-->
-<script src="__STATIC__/js/comm.js?v={:time()}" type="text/javascript"></script>
 {block name='S'}
 {/block}
 

@@ -18,9 +18,13 @@ trait Controller
         $num = Config::get('page_num')[$D];
         $map = [];
         $url = '';
-        if($this ->request->param('where')){
-            $map = $this ->Map($this ->request->param('where'));
+        if($this ->request->param('cid')){
+            $map['cid'] = $this ->request->param('cid');
         }
+        if($this ->request->param('posid')){
+            $map['posid'] = $this->request->param('posid');
+        }
+
         $list = Db($D)->where($map)->limit($page*$num,$page)->select();
         if ($D == 'goods') {
             $url = url('goods/detail');

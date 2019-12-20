@@ -1,6 +1,7 @@
 <?php
 namespace app\index\controller;
 
+use think\Config;
 use think\Controller;
 use think\response\Redirect;
 
@@ -11,9 +12,12 @@ class Login extends Controller
         if($uid != null){
            $this->redirect('Index/index','已登录');
         }
+        $this->view->assign('Controller',request()->controller());
+        $this->view->assign('Action',request()->action());
+        $this ->view->assign('NOTSHOWFOOTER',Config::get('NOTSHOWFOOTER'));
     }
     public function index(){
-        $this->view->assign('ajaxUrl',url('login/checklogin'));
+        $this->view->assign('ajaxUrl',Config::get('ajaxUrl')['checklogin']);
         return $this ->view->fetch();
     }
 
@@ -28,6 +32,6 @@ class Login extends Controller
            return return_json(0,'用户名或密码错误!');
        }
        session('USERID',$userInfo['id']);
-       return  return_json(1,'登录成功!',url('index/index'));
+       return  return_json(1,'登录成功!',Config::get('ajaxUrl')['index']);
     }
 }

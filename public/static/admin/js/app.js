@@ -638,3 +638,20 @@ function _del_recycle_all(url, checkbox_group, msg, return_msg) {
 function _del_all(url, checkbox_group, msg) {
     _del_recycle_all(url, checkbox_group, msg, "已删除！")
 }
+
+function _msg(json, close) {
+    var title = json.title ? json.title : false;
+    var time = json.time ? json.time : 2000;
+    var offset = json.offset ? json.offset : 'auto';
+    layer.msg(title, {
+        time: time,
+        shade: 0,
+        offset: offset,
+        anim: parseInt(5 * Math.random() + 1),
+        tips: [2, '#000000']
+    }, function () {
+        if (jQuery.isFunction(close)) {
+            return close(close);
+        }
+    });
+}
