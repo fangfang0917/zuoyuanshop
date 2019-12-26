@@ -78,7 +78,7 @@
         <div class="row cl">
             <label class="form-label col-xs-3 col-sm-3"><span class="c-red">*</span>添加规格：</label>
             <div class="formControls col-xs-6 col-sm-6">
-                <input type="text" class="input-text" placeholder="点击添加规格" onclick="getattr(this)" id="cid" data-cid="0" datatype="*"  nullmsg="请添加规格">
+                <input type="text" class="input-text" placeholder="点击添加规格" onclick="getattr(this)" readonly id="cid" data-cid="{$vo.cid ?? ''}">
             </div>
             <div class="col-xs-3 col-sm-3"></div>
         </div>

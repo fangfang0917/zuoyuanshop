@@ -1,4 +1,7 @@
 $(function () {
+    /**
+     * banner轮播
+     */
     var banner = new Swiper('.banner',{
         autoplay: 5000,
         pagination : '.swiper-pagination',
@@ -17,14 +20,19 @@ $(function () {
         $('div.slide-mask').hide();
         $('aside.slide-wrapper').removeClass('moved');
     });
-
-
 });
 
 
-
-
-
+/**
+ * 提交ajax
+ * @param url
+ * @param data
+ * @param callback
+ * @param type
+ * @param dataType
+ * @returns {boolean}
+ * @private
+ */
 function _ajax(url,data,callback,type,dataType,) {
     var type  =  type ? type : 'post' ;
     var dataType  =  dataType ? dataType : 'json' ;
@@ -34,8 +42,7 @@ function _ajax(url,data,callback,type,dataType,) {
         console.error('is not function');
         return false;
     }
-    
-     $.ajax({
+    $.ajax({
          url:url,
          type:type,
          data:data,
@@ -48,7 +55,12 @@ function _ajax(url,data,callback,type,dataType,) {
 }
 
 
-
+/**
+ * 提示
+ * @param json
+ * @param close
+ * @private
+ */
 function _msg(json, close) {
     var title = json.title ? json.title : false;
     var time = json.time ? json.time : 2000;
@@ -73,7 +85,9 @@ $('[_but]').click(function () {
 })
 
 
-
+/**
+ * 登录
+ */
 $('[_login]').click(function () {
     var url = $(this).attr('data-ajax-url');
     var name = $('[name=username]').val();
@@ -100,7 +114,9 @@ $('.autoplay').slick({
     autoplaySpeed: 2000,
 });
 
-
+/**
+ * 修改密码
+ */
 $('[_btnuppass]').click(function () {
     var newpass = $('[name=newPass]').val();
     var oldpass = $('[name=oldPass]').val();
@@ -126,6 +142,10 @@ $('[_btnuppass]').click(function () {
     })
 })
 
+
+/**
+ * 修改用户昵称
+ */
 $('[_btnuprealname]').click(function () {
     var realname = $('[name=realname]').val();
     var data = {realname:realname};
@@ -151,4 +171,22 @@ $('[_btnuprealname]').click(function () {
             })
         }
     })
+})
+
+/**
+ * 加数量
+ */
+$('[_add]').click(function () {
+    var that = $(this).parent('li');
+    var num = that.prev().text();
+    that.prev().text(parseInt(num)+1);
+})
+
+
+$('[_reduce]').click(function () {
+    var that = $(this).parent('li');
+    var num = that.next().text();
+    if(num >1){
+        that.next().text(parseInt(num)-1);
+    }
 })

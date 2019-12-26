@@ -28,6 +28,7 @@ class Excel
 
             $objPHPExcel = new \PHPExcel();
             $sheetPHPExcel = $objPHPExcel->setActiveSheetIndex(0);
+
             $char_index = range("A", "Z");
 
             // Excel 表格头

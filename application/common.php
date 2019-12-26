@@ -1108,3 +1108,15 @@ function getlist($Db,$id = 0){
    $list = Db($Db)->select();
    return $list;
 }
+
+function getint($array = []){
+    $str = join(',',$array);
+    dump($str);
+}
+
+
+function gettableval($DB,$name,$id){
+    $map['id'] = $id;
+    $val = Db($DB)->where($map)->value($name);
+    return $val;
+}

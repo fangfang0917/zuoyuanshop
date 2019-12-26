@@ -18,5 +18,5 @@ return [
 
     // 登录地址
     'logout_url'        => 'Pub/logout',
-    'login_frame'       => 'Pub/loginFrame',
+    'login_frame'       => 'Pub/login',
 ];

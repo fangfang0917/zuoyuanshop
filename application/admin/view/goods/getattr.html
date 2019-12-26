@@ -56,7 +56,7 @@
     </ul>
     <ul>
         {foreach $v['attrval'] as $kk=>$vv}
-        <li><label style="position: relative;"><input type="checkbox"  class="sku_value nochecked" propvalid="{$vv['id']}"
+        <li><label style="position: relative;"><input type="checkbox" {if $vv['checked'] == 1} checked{/if}  class="sku_value nochecked" propvalid="{$vv['id']}"
             value="{$vv['name']}" /><div class="attr_font">{$vv['name']}</div></label></li>
         {/foreach}
     </ul>
@@ -158,10 +158,10 @@
         postJSON("{:url('AddGoodsAttr/deletesession')}",{},function (data) {
             layer.msg(data.msg,{icon:6,time:1000});
             setInterval(function () {
-                window.parent.setattr();
-                var index = parent.layer.getFrameIndex(window.name);
-                parent.layer.close(index);
-                layer_close()
+                // window.parent.setattr();
+                // var index = parent.layer.getFrameIndex(window.name);
+                // parent.layer.close(index);
+                // layer_close()
             },1000)
         })
     }

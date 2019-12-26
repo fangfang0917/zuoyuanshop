@@ -82,7 +82,7 @@
     </div>
     <div class="right clearfloat fl">
         <span class="btn fl" onClick="toshare()">加入购物车</span>
-        <a href="confirm.html" class="btn btnone fl">立即购买</a>
+        <a href="javascript:;" class="btn btnone fl" onClick="toshare()">立即购买</a>
     </div>
 </div>
 <!--footerone end-->
@@ -104,39 +104,35 @@
                     <span>{$show['int']}积分</span>
                 </div>
             </div>
-            <div class="middle clearfloat">
-                <p>颜色分类</p>
+            {volist name='class' id='r'}
+            <div class="middle clearfloat attrkey">
+                <p>{$r.name}</p>
                 <div class="xia clearfloat">
                     <ul>
-                        <li class="ra3 cur">金色</li>
-                        <li class="ra3">灰色</li>
+                        {volist name='$r["attrVal"]' id='rr'}
+                        <li class="ra3" _setattr  dataAttrValId="{$rr.id}" dataAttrKeyId="{$rr.attr_key_id}">{$rr.name}</li>
+                        {/volist}
                     </ul>
                 </div>
             </div>
-            <div class="middle clearfloat">
-                <p>机身内存</p>
-                <div class="xia clearfloat">
-                    <ul>
-                        <li class="ra3 cur">128G</li>
-                        <li class="ra3">16G</li>
-                    </ul>
-                </div>
-            </div>
+            {/volist}
+            <div id="goodsId" dataGoodsId="{$show['id']}"></div>
             <div class="bottom clearfloat">
                 <p class="fl">购买数量</p>
                 <div class="you clearfloat fr">
                     <ul>
-                        <li><img src="__STATIC__/img/jian.jpg"/></li>
-                        <li>1</li>
-                        <li><img src="__STATIC__/img/jia.jpg"/></li>
+                        <li><img src="__STATIC__/img/jian.jpg" _reduce/></li>
+                        <li class="num">1</li>
+                        <li><img src="__STATIC__/img/jia.jpg" _add/></li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
-    <a href="confirm.html" class="shop-btn db">确定</a>
+    <a href="javascript:;" class="shop-btn db" _buy addCartUrl="{$addCartUrl}">确定</a>
 </div>
 {/block}
 {block name='S'}
 <script src="__STATIC__/js/shopcar.js?v={:time()}"></script>
+<script src="__STATIC__/js/buy.js?v={:time()}"></script>
 {/block}
