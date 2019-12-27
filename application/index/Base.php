@@ -10,7 +10,7 @@ use think\Controller;
 use think\response\Redirect;
 
 class Base extends Controller{
-    private $userInfo;
+    protected $userInfo;
     public function _initialize(){
 
         parent::_initialize();

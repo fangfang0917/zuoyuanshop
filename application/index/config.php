@@ -23,7 +23,8 @@ return [
         '__LIB__'    => $basename . '/static/index/lib',
     ],
     'page_num'=>[
-        'goods'=>10
+        'goods'=>10,
+        'cart'=>10
     ],
     'ajaxUrl'=>[
         'index'=>url('index/index'),

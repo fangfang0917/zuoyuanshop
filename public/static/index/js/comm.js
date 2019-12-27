@@ -20,6 +20,26 @@ $(function () {
         $('div.slide-mask').hide();
         $('aside.slide-wrapper').removeClass('moved');
     });
+
+    /**
+     * 加数量
+     */
+    $('[_add]').on('click',function () {
+        var that = $(this).parent('li');
+        var num = that.prev().text();
+        that.prev().text(parseInt(num)+1);
+    })
+
+    /**
+     * 减数量
+     */
+    $('[_reduce]').on('click',function () {
+        var that = $(this).parent('li');
+        var num = that.next().text();
+        if(num >1){
+            that.next().text(parseInt(num)-1);
+        }
+    })
 });
 
 
@@ -173,20 +193,3 @@ $('[_btnuprealname]').click(function () {
     })
 })
 
-/**
- * 加数量
- */
-$('[_add]').click(function () {
-    var that = $(this).parent('li');
-    var num = that.prev().text();
-    that.prev().text(parseInt(num)+1);
-})
-
-
-$('[_reduce]').click(function () {
-    var that = $(this).parent('li');
-    var num = that.next().text();
-    if(num >1){
-        that.next().text(parseInt(num)-1);
-    }
-})

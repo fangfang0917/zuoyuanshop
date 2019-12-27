@@ -35,7 +35,7 @@ class Goods extends Controller
         if ($this->request->isAjax()) {
             $data = $this->request->param();
             $goodsId = DB('goods')->insertGetId($data);
-            $url = url('goods/detail', array('id' => $goodsId));
+            $url = url('index/goods/detail', array('id' => $goodsId));
             Db('goods')->where(array('id' => $goodsId))->update(array('url' => $url));
             $AttrArr = Session::get('goodsAttr');
             $Arr = [];
@@ -58,6 +58,8 @@ class Goods extends Controller
             $data = $this->request->except(['id']);
             $id = $this->request->param('id');
             DB('goods')->where(array('id' => $id))->update($data);
+            $url = url('index/goods/detail', array('id' => $id));
+            Db('goods')->where(array('id' => $id))->update(array('url' => $url));
             $this->setGoodsSku($id);
             return ajax_return_adv('修改成功!!!!');
         } else {
@@ -151,14 +153,17 @@ class Goods extends Controller
     {
         $AttrArr = Session::get('goodsAttr');
         $Arr = [];
-        Db('goods_sku')->where(array('goods_id' => $id))->delete();
-        foreach ($AttrArr as $k => $v) {
-            $Arr[$k]['goods_id'] = $id;
-            $Arr[$k]['attr_symbol_path'] = $v['attr_id'];
-            $Arr[$k]['price'] = $v['attr_price'];
-            $Arr[$k]['stock'] = $v['attr_gold'];
+        if(count($AttrArr)>0){
+            Db('goods_sku')->where(array('goods_id' => $id))->delete();
+            foreach ($AttrArr as $k => $v) {
+                $Arr[$k]['goods_id'] = $id;
+                $Arr[$k]['attr_symbol_path'] = $v['attr_id'];
+                $Arr[$k]['price'] = $v['attr_price'];
+                $Arr[$k]['stock'] = $v['attr_gold'];
+            }
+            db('goods_sku')->insertAll($Arr);
         }
-        db('goods_sku')->insertAll($Arr);
+
         Session::delete('goodsAttr');
     }
 }

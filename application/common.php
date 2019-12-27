@@ -60,7 +60,7 @@ function strLength(string $value):int
  * @param String $msg
  * @return \think\response\Json
  */
-function return_json(int $status,String $msg,String $url='',array $data=[]){
+function return_json(int $status=0,String $msg='',String $url='',array $data=[]){
     return json(array('status'=>$status,'msg'=>$msg,'url'=>$url,'data'=>$data));
 }
 
@@ -1109,9 +1109,9 @@ function getlist($Db,$id = 0){
    return $list;
 }
 
-function getint($array = []){
-    $str = join(',',$array);
-    dump($str);
+function getint($array = array()){
+    $str = implode(',',$array);
+    return $str;
 }
 
 
@@ -1119,4 +1119,18 @@ function gettableval($DB,$name,$id){
     $map['id'] = $id;
     $val = Db($DB)->where($map)->value($name);
     return $val;
+}
+
+function getAttrKeyName($skuId = 0,$Db='goods_sku',$val='attr_symbol_path'){
+    $map['id'] = $skuId;
+    $str = Db($Db)->where(array())->value($val);
+    $str = explode(',',$str);
+    $t = '';
+    foreach($str as $k=>$v){
+        $r = DB('attrVal')->where(array('id'=>$v))->find();
+        $attrkey = gettableval('attrKey','name',$r['attr_key_id']);
+        $t = $t.' '.$attrkey.':'.$r['name'];
+    }
+//    dump($t);
+    return $t;
 }
