@@ -54,6 +54,7 @@ class User extends Base
     public function addr(){
         $this ->view->assign('address',url('user/getaddress'));
         $this ->view->assign('editAddress',url('user/editAddress'));
+        $this ->view->assign('defUrl',url('user/defSite'));
         return $this->view->fetch();
     }
     public function addressadd(){
@@ -99,5 +100,13 @@ class User extends Base
             return return_json(0,'网络错误!请重试');
 
         }
+    }
+
+
+    public function defSite(){
+        $id = $this ->request->param('id');
+        Db('address')->update(array('type'=>0));
+        Db('address')->where(array('id'=>$id))->update(array('type'=>1));
+        return return_json(1,'设置成功');
     }
 }

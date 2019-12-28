@@ -63,7 +63,7 @@ $(function () {
                             '            <section class="shopcar clearfloat">\n' +
                             '                <div class="radio fl">\n' +
                             '                    <label>\n' +
-                            '                        <input type="radio" name="sex" value="">\n' +
+                            '                        <input type="radio" name="addr" value="" onclick="def('+list[i].id+')">\n' +
                             '                        <div class="option"></div>\n' +
                             '                        <span class="mradd smradd fl">设为默认</span>\n' +
                             '                    </label>\n' +
@@ -121,4 +121,12 @@ function  deladdr(even){
 function editaddr(id) {
     var url = $('#editAddress').attr('ajaxUrl');
     location.href = url+'?id='+id;
+}
+
+
+function def(id) {
+    console.log(id)
+    _ajax(url,data,function (e) {
+        console.log();
+    })
 }

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:74:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\login\index.html";i:1576481678;s:76:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\template\base.html";i:1576726346;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:74:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\login\index.html";i:1576481678;s:76:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\template\base.html";i:1577412155;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -127,7 +127,7 @@
         </li>
         <li <?php if($Controller == 'Shopcar'): ?>class="active" <?php endif; ?>>
 
-        <a href="<?php echo url('shopcar/index'); ?>">
+        <a href="<?php echo url('cart/index'); ?>">
                 <i class="iconfont icon-gouwuche"></i>
                 <p>购物车</p>
             </a>
