@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:73:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\user\index.html";i:1576804768;s:76:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\template\base.html";i:1576726346;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:73:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\user\index.html";i:1577431619;s:76:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\template\base.html";i:1577412155;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -217,6 +217,12 @@
                     <i class="iconfont icon-jiantou1 fr"></i>
                 </a>
             </li>
+            <li class="box-s">
+                <a href="<?php echo url('user/addr'); ?>">
+                    <p class="fl">地址管理</p>
+                    <i class="iconfont icon-jiantou1 fr"></i>
+                </a>
+            </li>
         </ul>
     </div>
     <a href="#" class="center-btn db ra3">退出登录</a>
@@ -241,7 +247,7 @@
         </li>
         <li <?php if($Controller == 'Shopcar'): ?>class="active" <?php endif; ?>>
 
-        <a href="<?php echo url('shopcar/index'); ?>">
+        <a href="<?php echo url('cart/index'); ?>">
                 <i class="iconfont icon-gouwuche"></i>
                 <p>购物车</p>
             </a>

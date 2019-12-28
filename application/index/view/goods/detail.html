@@ -101,7 +101,7 @@
                 </div>
                 <div class="you clearfloat fl">
                     <p class="tit">{$show['name']}</p>
-                    <span>{$show['int']}积分</span>
+                    <span class="goodsInt ">{$show['int']}积分</span>
                 </div>
             </div>
             {volist name='class' id='r'}
@@ -121,9 +121,9 @@
                 <p class="fl">购买数量</p>
                 <div class="you clearfloat fr">
                     <ul>
-                        <li><img src="__STATIC__/img/jian.jpg" _reduce/></li>
+                        <li><img src="__STATIC__/img/jian.jpg" onclick="jianNum(this)"/></li>
                         <li class="num">1</li>
-                        <li><img src="__STATIC__/img/jia.jpg" _add/></li>
+                        <li><img src="__STATIC__/img/jia.jpg" onclick="addNum(this)"/></li>
                     </ul>
                 </div>
             </div>

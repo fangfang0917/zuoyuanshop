@@ -21,25 +21,6 @@ $(function () {
         $('aside.slide-wrapper').removeClass('moved');
     });
 
-    /**
-     * 加数量
-     */
-    $('[_add]').on('click',function () {
-        var that = $(this).parent('li');
-        var num = that.prev().text();
-        that.prev().text(parseInt(num)+1);
-    })
-
-    /**
-     * 减数量
-     */
-    $('[_reduce]').on('click',function () {
-        var that = $(this).parent('li');
-        var num = that.next().text();
-        if(num >1){
-            that.next().text(parseInt(num)-1);
-        }
-    })
 });
 
 
@@ -193,3 +174,100 @@ $('[_btnuprealname]').click(function () {
     })
 })
 
+
+/**
+ * 加数量
+ */
+function addNum(even) {
+    var that = $(even).parent('li');
+    var num = that.prev().text();
+    var price = $(even).attr('GoodsPrice');
+    var totalprice =  $('#totalprice').text();
+    that.prev().text(parseInt(num)+1);
+    var priceStr =(parseInt(parseInt(num)+1)*price)+'.00';
+    $(even).parents('div.list').find('p.jifen').text(priceStr);
+    console.log($('[name=sex]').is(":checked").length);
+    if($(even).parents('div.list').find('[name=sex]').is(':checked')){
+        $('#totalprice').text(parseInt(totalprice)+parseInt(price));
+    }
+
+
+}
+
+/**
+ * 减数量
+ */
+function jianNum(even) {
+    var that = $(even).parent('li');
+    var num = that.next().text();
+    var totalprice =  $('#totalprice').text();
+    var price = $(even).attr('GoodsPrice');
+    if(num >1){
+        that.next().text(parseInt(num)-1);
+        var priceStr =(parseInt(parseInt(num)-1)*price)+'.00';
+        $(even).parents('div.list').find('p.jifen').text(priceStr);
+        if($(even).parents('div.list').find('[name=sex]').is(':checked')){
+            $('#totalprice').text(parseInt(totalprice)-parseInt(price));
+        }
+
+    }
+
+}
+
+function aa(even){
+    var  that = $(even);
+    var price = that.parents('div.list').find('p.jifen').text();
+    var totalprice =  $('#totalprice').text();
+    if(that.is(":checked")){
+        $('#totalprice').text(parseInt(totalprice)+parseInt(price));
+    }else{
+        $('#totalprice').text(parseInt(totalprice)-parseInt(price));
+    }
+}
+
+
+
+$('[_addressBaocun]').click(function () {
+    var realname = $('[name=realname]').val();
+    var phone = $('[name=phone]').val();
+    var address = $('[name=address]').val();
+    var addressshow = $('[name=addressshow]').val();
+    var url = $('#setAddress').attr('ajaxUrl');
+    var callUrl = $('#callUrl').attr('ajaxUrl');
+    if(!(/^1[3456789]\d{9}$/.test(phone))){
+        _msg({title:'手机号码格式不正确',time:1000})
+        return false;
+    }
+    if(realname == ''){
+        _msg({title:'请填写收件人',time:1000})
+        return false;
+    }
+    if(address == ''){
+        _msg({title:'请选择所在地区',time:1000})
+        return false;
+    }
+    if(addressshow == ''){
+        _msg({title:'请填写详细地址',time:1000})
+        return false;
+    }
+    if($('.toggle--off').length > 0){
+        type = 1;
+    }else{
+        type = 0;
+    }
+    var data = {realname:realname,phone:phone,address:address,
+        addressshow:addressshow,type:type}
+_ajax(url,data,function (e) {
+    console.log(e)
+    if(e.status == 1){
+        _msg({title:e.msg,time:1000},function () {
+            location.href =e.url
+        })
+    }else{
+        _msg({title:e.msg,time:1000},function () {
+
+        })
+    }
+})
+
+})

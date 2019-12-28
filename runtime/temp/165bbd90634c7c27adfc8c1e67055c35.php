@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:74:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\index\index.html";i:1576804995;s:76:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\template\base.html";i:1577412155;s:80:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\template\leftmenu.html";i:1576573369;s:78:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\template\banner.html";i:1576490149;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:72:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\user\addr.html";i:1577438419;s:76:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\template\base.html";i:1577412155;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -41,84 +41,21 @@
 <!--loading页结束-->
 
 
-<!--header star-->
-<header class="mui-bar mui-bar-nav" id="header">
-    <a class="btn slide-menu" href="#">
-        <i class="iconfont icon-iconfontcaidan"></i>
-    </a>
-    <div class="top-sch-box flex-col">
-        <div class="centerflex">
-            <i class="fdj iconfont icon-sousuo"></i>
-            <input type="text" name="" id="" value="" class="sch-txt" placeholder="输入您要搜索的商品" />
-        </div>
-    </div>
-    <a class="btn" href="#">
-        <i class="iconfont icon-erweima"></i>
-    </a>
+<header class="mui-bar mui-bar-nav report-header box-s" id="header">
+    <a href="javascript:history.go(-1)"><i class="iconfont icon-fanhui fl"></i></a>
+    <p>管理收货地址</p>
 </header>
-<!--header end-->
+<div id="main" class="mui-clearfix contaniner">
+<div class="listaddr"></div>
 
-
-<!-- 侧边导航 -->
-<!-- 侧边导航 -->
-<div class="slide-mask"></div>
-<aside class="slide-wrapper">
-    <div>
-        <ul>
-            <?php $_result=getlist('GoodsClassify');if(is_array($_result) || $_result instanceof \think\Collection || $_result instanceof \think\Paginator): $i = 0; $__LIST__ = $_result;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$r): $mod = ($i % 2 );++$i;?>
-               <li><a href="<?php echo url('category/list',array('id'=>$r['id'])); ?>"><?php echo $r['name']; ?></a></li>
-            <?php endforeach; endif; else: echo "" ;endif; ?>
-        </ul>
-    </div>
-</aside>
-<div id="main" class="clearfloat warp">
-    <div class="mui-content">
-        
-<!--banner开始-->
-<div class="banner swiper-container">
-    <div class="swiper-wrapper">
-        <?php $_result=banner(1);if(is_array($_result) || $_result instanceof \think\Collection || $_result instanceof \think\Paginator): $i = 0; $__LIST__ = $_result;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$r): $mod = ($i % 2 );++$i;?>
-        <div class="swiper-slide"><a href="<?php echo isset($r['url']) ? $r['url'] :  'javascript:;'; ?>"><img class="swiper-lazy" data-src="<?php echo $r['banner']; ?>" alt=""></a></div>
-        <?php endforeach; endif; else: echo "" ;endif; ?>
-    </div>
-</div>
-<!--banner结束-->
-
-        <!--第一栏分类开始-->
-
-        <!--第一栏分类结束-->
-        <!--滚动公告开始-->
-        <div class="notice clearfloat box-s">
-            <p class="tit clearfloat fl">利民公告：</p>
-            <div class="left fl clearfloat box-s">
-                <div class="slider autoplay">
-                    <div>这里是新闻资讯内容可以手滑滚动</div>
-                    <div>这里是新闻资讯内容可以手滑滚动</div>
-                    <div>这里是新闻资讯内容可以手滑滚动</div>
-                    <div>这里是新闻资讯内容可以手滑滚动</div>
-                    <div>这里是新闻资讯内容可以手滑滚动</div>
-                    <div>这里是新闻资讯内容可以手滑滚动</div>
-                </div>
-            </div>
-            <a href="#" class="nmore clearfloat fr">更多</a>
-        </div>
-        <!--滚动公告结束-->
-        <!--like star-->
-        <div class="like clearfloat box-s">
-            <div class="boutit clearfloat">
-                <span></span>
-                <samp>商品列表</samp>
-            </div>
-            <div class="content clearfloat">
-
-            </div>
-        </div>
-        <!--like end-->
-    </div>
+    <a href="<?php echo url('user/addressadd'); ?>" class="address-add fl">
+        添加新地址
+    </a>
 </div>
 
 
-<div id="ajax-url" data-ajax-url="<?php echo url('index/Getlist'); ?>" data-ajax-posid="1" data-ajax-action="goods"></div>
+<div id="getAddress" ajaxUrl="<?php echo $address; ?>"></div>
+<div id="editAddress" ajaxUrl="<?php echo $editAddress; ?>"></div>
 
 <!--footer star-->
 <?php if(!in_array($Controller,$NOTSHOWFOOTER)): ?>
@@ -170,7 +107,7 @@
 <script src="__STATIC__/js/dropload.js?v=<?php echo time(); ?>"></script>
 <!--插件end-->
 
-<script src="__STATIC__/js/index.js?v=<?php echo time(); ?>" type="text/javascript"></script>
+<script src="__STATIC__/js/addr.js?v=<?php echo time(); ?>"></script>
 
 
 </html>

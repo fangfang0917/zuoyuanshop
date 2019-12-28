@@ -595,7 +595,7 @@ input[type="checkbox"]:checked+div {background: url(../img/queren.png) no-repeat
 .toggle:hover:not(.toggle--moving):after {background-color: #ffffff;}
 .toggle:after {display: block;position: absolute;top: -2px;bottom: 0;left: -2px;width: calc(50% - 4px);width: .9rem;height: .9rem;text-align: center;text-transform: uppercase;font-size: 0;color: white;background-color: #ffffff;border: 2px solid;-webkit-transition: all 500ms;-moz-transition: all 500ms;-o-transition: all 500ms;transition: all 500ms;}
 .toggle--on:after {content: 'On';border-radius: 50%;color: #ffffff;border: 2px solid #dcdad3;}
-.toggle--off{background-color: #ccc;}
+.toggle--off{background-color: #68f376;}
 .toggle--off:after {content: 'Off';border-radius: 50%;color: #fff;border: 2px solid #dcdad3;background-color: #fff;-webkit-transform: translate(100%, 0);-moz-transform: translate(100%, 0);-o-transform: translate(100%, 0);transform: translate(100%, 0);}
 .toggle--moving {background-color: #fff;}
 .toggle--moving:after {color: transparent;border-color: #dcdad3;background-color: #fff;-webkit-transition: color 0s, transform 500ms, border-radius 500ms, background-color 500ms;-moz-transition: color 0s, transform 500ms, border-radius 500ms, background-color 500ms;-o-transition: color 0s, transform 500ms, border-radius 500ms, background-color 500ms;transition: color 0s, transform 500ms, border-radius 500ms, background-color 500ms;}

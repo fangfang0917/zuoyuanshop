@@ -24,7 +24,8 @@ return [
     ],
     'page_num'=>[
         'goods'=>10,
-        'cart'=>10
+        'cart'=>10,
+        'addr' =>10,
     ],
     'ajaxUrl'=>[
         'index'=>url('index/index'),

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:73:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\cart\index.html";i:1577413548;s:76:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\template\base.html";i:1577412155;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:73:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\cart\index.html";i:1577430509;s:76:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\template\base.html";i:1577412155;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -49,59 +49,31 @@
     <div class="top-sch-box top-sch-boxtwo flex-col">
         购物车
     </div>
-    <a class="btn" href="#">
-        <i class="iconfont icon-lajixiang"></i>
-    </a>
+    <!--<a class="btn" href="#">-->
+        <!--<i class="iconfont icon-lajixiang"></i>-->
+    <!--</a>-->
 </header>
 <!--header end-->
 
 <div class="warp warptwo clearfloat">
     <div class="shopcar clearfloat">
-        <!--<div class="list clearfloat fl">-->
-            <!--<div class="xuan clearfloat fl">-->
-                <!--<div class="radio" >-->
-                    <!--<label>-->
-                        <!--<input type="checkbox" name="sex" value="" />-->
-                        <!--<div class="option"></div>-->
-                    <!--</label>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<a href="#">-->
-                <!--<div class="tu clearfloat fl">-->
-                    <!--<span></span>-->
-                    <!--<img src="upload/19.jpg"/>-->
-                <!--</div>-->
-                <!--<div class="right clearfloat fl">-->
-                    <!--<p class="tit over">小米Max全网通4G大屏智能手机</p>-->
-                    <!--<p class="fu-tit over">颜色：金色  内存：1287G</p>-->
-                    <!--<p class="jifen over">2998购物币+700积分</p>-->
-                    <!--<div class="bottom clearfloat">-->
-                        <!--<div class="zuo clearfloat fl">-->
-                            <!--<ul>-->
-                                <!--<li><img src="img/jian.png"/></li>-->
-                                <!--<li>2</li>-->
-                                <!--<li><img src="img/jia.png"/></li>-->
-                            <!--</ul>-->
-                        <!--</div>-->
-                        <!--<i class="iconfont icon-lajixiang fr"></i>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</a>-->
-        <!--</div>-->
+       <div class="empty" hidden>购物车我还没商品</div>
     </div>
 </div>
 
 <!--settlement star-->
 <div class="settlement clearfloat">
     <div class="zuo clearfloat fl box-s">
-        合计：<span>￥1420</span>
+        合计：<span id="totalprice">0</span>
     </div>
-    <a href="#" class="fl db">
+    <a href="#" class="fl db" _buyGoods>
         立即结算
     </a>
 </div>
 <!--settlement end-->
 <div id="ajaxGetDateUrl" ajaxUrl="<?php echo $ajaxUrl; ?>"></div>
+<div id="ajaxBuyUrl" ajaxUrl="<?php echo $ajaxBuyUrl; ?>"></div>
+<div id="BuyUrl" ajaxUrl="<?php echo $BuyUrl; ?>"></div>
 
 <!--footer star-->
 <?php if(!in_array($Controller,$NOTSHOWFOOTER)): ?>

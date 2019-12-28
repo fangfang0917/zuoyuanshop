@@ -8,29 +8,31 @@
     <div class="top-sch-box top-sch-boxtwo flex-col">
         购物车
     </div>
-    <a class="btn" href="#">
-        <i class="iconfont icon-lajixiang"></i>
-    </a>
+    <!--<a class="btn" href="#">-->
+        <!--<i class="iconfont icon-lajixiang"></i>-->
+    <!--</a>-->
 </header>
 <!--header end-->
 
 <div class="warp warptwo clearfloat">
     <div class="shopcar clearfloat">
-       
+       <div class="empty" hidden>购物车我还没商品</div>
     </div>
 </div>
 
 <!--settlement star-->
 <div class="settlement clearfloat">
     <div class="zuo clearfloat fl box-s">
-        合计：<span>￥1420</span>
+        合计：<span id="totalprice">0</span>
     </div>
-    <a href="#" class="fl db">
+    <a href="#" class="fl db" _buyGoods>
         立即结算
     </a>
 </div>
 <!--settlement end-->
 <div id="ajaxGetDateUrl" ajaxUrl="{$ajaxUrl}"></div>
+<div id="ajaxBuyUrl" ajaxUrl="{$ajaxBuyUrl}"></div>
+<div id="BuyUrl" ajaxUrl="{$BuyUrl}"></div>
 {/block}
 {block name='S'}
 <script src="__STATIC__/js/shopcar.js?v={:time()}"></script>

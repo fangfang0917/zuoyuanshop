@@ -49,4 +49,55 @@ class User extends Base
             return $this->view->fetch();
         }
     }
+
+
+    public function addr(){
+        $this ->view->assign('address',url('user/getaddress'));
+        $this ->view->assign('editAddress',url('user/editAddress'));
+        return $this->view->fetch();
+    }
+    public function addressadd(){
+        if($this->request->isAjax()){
+            $data = $this ->request->param();
+            $data['userId'] = $this->userInfo['id'];
+            db('address')->insert($data);
+            return return_json(1,'添加成功!',url('user/addr'));
+        }else{
+            return $this->view->fetch();
+        }
+
+    }
+
+    public function editAddress(){
+        if($this ->request->isAjax()){
+            $data = $this ->request->except(['id']);
+            $id = $this ->request->param('id');
+            Db('address')->where(array('id'=>$id))->update($data);
+            return return_json(1,'修改成功',url('user/addr'));
+        }else{
+            $id = $this->request->param('id');
+            $vo = DB('address')->where(array('id'=>$id))->find();
+            $this->view->assign('vo',$vo);
+            return $this->view->fetch('addressadd');
+        }
+    }
+
+    public function getaddress(){
+        $page = $this->request->param('page');
+        $num = Config::get('page_num')['addr'];
+        $list = Db('address')->where(array('userId'=>$this->userInfo['id']))
+            ->limit($page*$num,$page)->select();
+        return return_json(1,'获取成功',url('user/deladdr'),$list);
+    }
+
+    public  function deladdr(){
+        $id = $this ->request->param('id');
+        $res = Db('address')->where(array('id'=>$id))->delete();
+        if($res){
+            return return_json(1,'删除成功');
+        }else{
+            return return_json(0,'网络错误!请重试');
+
+        }
+    }
 }

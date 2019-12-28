@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:74:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\index\index.html";i:1576804995;s:76:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\template\base.html";i:1577412155;s:80:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\template\leftmenu.html";i:1576573369;s:78:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\template\banner.html";i:1576490149;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:78:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\user\addressadd.html";i:1577439162;s:76:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\template\base.html";i:1577412155;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -18,7 +18,17 @@
     <link rel="stylesheet" type="text/css" href="__STATIC__/css/loading.css?v=<?php echo time(); ?>"/>
     <link rel="stylesheet" type="text/css" href="__STATIC__/slick/slick.css?v=<?php echo time(); ?>"/>
     
-    
+<style>
+    .wheel-scroll.wheel-scroll-hook {
+        margin: 0;
+        padding: 0;
+    }
+    .picker .picker-panel .picker-choose .confirm{
+        right: -4.5rem!important;
+    }
+</style>
+
+
 <script type="text/javascript">
 	$(window).load(function(){
 		$(".loading").addClass("loader-chanage")
@@ -41,84 +51,47 @@
 <!--loading页结束-->
 
 
-<!--header star-->
-<header class="mui-bar mui-bar-nav" id="header">
-    <a class="btn slide-menu" href="#">
-        <i class="iconfont icon-iconfontcaidan"></i>
-    </a>
-    <div class="top-sch-box flex-col">
-        <div class="centerflex">
-            <i class="fdj iconfont icon-sousuo"></i>
-            <input type="text" name="" id="" value="" class="sch-txt" placeholder="输入您要搜索的商品" />
-        </div>
-    </div>
-    <a class="btn" href="#">
-        <i class="iconfont icon-erweima"></i>
-    </a>
+<header class="mui-bar mui-bar-nav report-header box-s" id="header">
+    <a href="javascript:history.go(-1)"><i class="iconfont icon-fanhui fl"></i></a>
+    <p>添加新地址</p>
+    <span class="fr baocun" _addressBaocun>保存</span>
 </header>
-<!--header end-->
-
-
-<!-- 侧边导航 -->
-<!-- 侧边导航 -->
-<div class="slide-mask"></div>
-<aside class="slide-wrapper">
-    <div>
+<div id="main" class="mui-clearfix add-address">
+    <div class="plist clearfloat data">
+        <input type="hidden" name='id' value="<?php echo isset($vo['id']) ? $vo['id'] :  ''; ?>">
         <ul>
-            <?php $_result=getlist('GoodsClassify');if(is_array($_result) || $_result instanceof \think\Collection || $_result instanceof \think\Paginator): $i = 0; $__LIST__ = $_result;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$r): $mod = ($i % 2 );++$i;?>
-               <li><a href="<?php echo url('category/list',array('id'=>$r['id'])); ?>"><?php echo $r['name']; ?></a></li>
-            <?php endforeach; endif; else: echo "" ;endif; ?>
+            <li class="clearfloat">
+                <a href="#">
+                    <p class="fl">收货人</p>
+                    <input type="text" class="fl shuru" name="realname" value="<?php echo isset($vo['realname']) ? $vo['realname'] :  ''; ?>" placeholder="收件人" />
+                </a>
+            </li>
+            <li class="clearfloat">
+                <a href="#">
+                    <p class="fl">联系电话</p>
+                    <input type="text" class="fl shuru" name="phone" value="<?php echo isset($vo['phone']) ? $vo['phone'] :  ''; ?>" placeholder="联系电话" />
+
+                </a>
+            </li>
+            <li class="clearfloat">
+                <a href="#">
+                    <p class="fl">所在地区</p>
+                    <input type="text" class="fl shuru" id="picker" name="address" readonly value="<?php echo isset($vo['address']) ? $vo['address'] :  ''; ?>" placeholder="点击选择地区" />
+
+                </a>
+            </li>
         </ul>
     </div>
-</aside>
-<div id="main" class="clearfloat warp">
-    <div class="mui-content">
-        
-<!--banner开始-->
-<div class="banner swiper-container">
-    <div class="swiper-wrapper">
-        <?php $_result=banner(1);if(is_array($_result) || $_result instanceof \think\Collection || $_result instanceof \think\Paginator): $i = 0; $__LIST__ = $_result;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$r): $mod = ($i % 2 );++$i;?>
-        <div class="swiper-slide"><a href="<?php echo isset($r['url']) ? $r['url'] :  'javascript:;'; ?>"><img class="swiper-lazy" data-src="<?php echo $r['banner']; ?>" alt=""></a></div>
-        <?php endforeach; endif; else: echo "" ;endif; ?>
-    </div>
-</div>
-<!--banner结束-->
-
-        <!--第一栏分类开始-->
-
-        <!--第一栏分类结束-->
-        <!--滚动公告开始-->
-        <div class="notice clearfloat box-s">
-            <p class="tit clearfloat fl">利民公告：</p>
-            <div class="left fl clearfloat box-s">
-                <div class="slider autoplay">
-                    <div>这里是新闻资讯内容可以手滑滚动</div>
-                    <div>这里是新闻资讯内容可以手滑滚动</div>
-                    <div>这里是新闻资讯内容可以手滑滚动</div>
-                    <div>这里是新闻资讯内容可以手滑滚动</div>
-                    <div>这里是新闻资讯内容可以手滑滚动</div>
-                    <div>这里是新闻资讯内容可以手滑滚动</div>
-                </div>
-            </div>
-            <a href="#" class="nmore clearfloat fr">更多</a>
-        </div>
-        <!--滚动公告结束-->
-        <!--like star-->
-        <div class="like clearfloat box-s">
-            <div class="boutit clearfloat">
-                <span></span>
-                <samp>商品列表</samp>
-            </div>
-            <div class="content clearfloat">
-
-            </div>
-        </div>
-        <!--like end-->
+    <textarea name="addressshow" rows="4" cols="" placeholder="请填写详细地址，不少于5个字" class="textare box-s"><?php echo isset($vo['addressshow']) ? $vo['addressshow'] :  ''; ?></textarea>
+    <div class="address-btn clearfloat">
+        <span class="szwmr fl">设为默认</span>
+        <a href="#" class="toggle <?php if(isset($vo)): if($vo['type'] ==  1): ?>toggle--off<?php else: ?>toggle--on<?php endif; else: ?>toggle--on<?php endif; ?> fr"></a>
     </div>
 </div>
 
 
-<div id="ajax-url" data-ajax-url="<?php echo url('index/Getlist'); ?>" data-ajax-posid="1" data-ajax-action="goods"></div>
+<div id="setAddress" ajaxUrl="<?php echo url('user/addressadd'); ?>"></div>
+<div id="callUrl" ajaxUrl="<?php echo url('user/address'); ?>"></div>
 
 <!--footer star-->
 <?php if(!in_array($Controller,$NOTSHOWFOOTER)): ?>
@@ -170,7 +143,30 @@
 <script src="__STATIC__/js/dropload.js?v=<?php echo time(); ?>"></script>
 <!--插件end-->
 
-<script src="__STATIC__/js/index.js?v=<?php echo time(); ?>" type="text/javascript"></script>
+<script src="__STATIC__/js/sanji/picker.min.js?v=<?php echo time(); ?>"></script>
+<script src="__STATIC__/js/sanji/city.js?v=<?php echo time(); ?>"></script>
+<script src="__STATIC__/js/sanji/index.js?v=<?php echo time(); ?>"></script>
+
+
+
+<script>
+    $(function () {
+        $('.toggle').click(function(e){
+
+            var toggle = this;
+
+            e.preventDefault();
+
+            $(toggle).toggleClass('toggle--on').toggleClass('toggle--off').addClass('toggle--moving');
+
+            setTimeout(function(){
+                $(toggle).removeClass('toggle--moving');
+            }, 200)
+
+        });
+    })
+
+</script>
 
 
 </html>

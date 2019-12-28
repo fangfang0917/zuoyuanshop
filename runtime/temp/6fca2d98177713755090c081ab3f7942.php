@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:75:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\goods\detail.html";i:1577412260;s:76:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\template\base.html";i:1577412155;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:75:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\goods\detail.html";i:1577426349;s:76:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\template\base.html";i:1577412155;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -142,7 +142,7 @@
                 </div>
                 <div class="you clearfloat fl">
                     <p class="tit"><?php echo $show['name']; ?></p>
-                    <span><?php echo $show['int']; ?>积分</span>
+                    <span class="goodsInt "><?php echo $show['int']; ?>积分</span>
                 </div>
             </div>
             <?php if(is_array($class) || $class instanceof \think\Collection || $class instanceof \think\Paginator): $i = 0; $__LIST__ = $class;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$r): $mod = ($i % 2 );++$i;?>
@@ -162,9 +162,9 @@
                 <p class="fl">购买数量</p>
                 <div class="you clearfloat fr">
                     <ul>
-                        <li><img src="__STATIC__/img/jian.jpg" _reduce/></li>
+                        <li><img src="__STATIC__/img/jian.jpg" onclick="jianNum(this)"/></li>
                         <li class="num">1</li>
-                        <li><img src="__STATIC__/img/jia.jpg" _add/></li>
+                        <li><img src="__STATIC__/img/jia.jpg" onclick="addNum(this)"/></li>
                     </ul>
                 </div>
             </div>

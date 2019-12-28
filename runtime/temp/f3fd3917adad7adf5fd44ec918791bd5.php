@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:74:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\index\index.html";i:1576804995;s:76:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\template\base.html";i:1577412155;s:80:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\template\leftmenu.html";i:1576573369;s:78:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\template\banner.html";i:1576490149;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:74:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\order\index.html";i:1576726167;s:76:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\template\base.html";i:1577412155;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -41,84 +41,67 @@
 <!--loading页结束-->
 
 
-<!--header star-->
-<header class="mui-bar mui-bar-nav" id="header">
-    <a class="btn slide-menu" href="#">
-        <i class="iconfont icon-iconfontcaidan"></i>
-    </a>
-    <div class="top-sch-box flex-col">
-        <div class="centerflex">
-            <i class="fdj iconfont icon-sousuo"></i>
-            <input type="text" name="" id="" value="" class="sch-txt" placeholder="输入您要搜索的商品" />
-        </div>
-    </div>
-    <a class="btn" href="#">
-        <i class="iconfont icon-erweima"></i>
-    </a>
+<header class="mui-bar mui-bar-nav report-header box-s" id="header">
+    <a href="javascript:history.go(-1)"><i class="iconfont icon-fanhui fl"></i></a>
+    <p>全部订单</p>
 </header>
-<!--header end-->
-
-
-<!-- 侧边导航 -->
-<!-- 侧边导航 -->
-<div class="slide-mask"></div>
-<aside class="slide-wrapper">
-    <div>
+<div id="main" class="mui-clearfix">
+    <div class="order-top clearfloat">
         <ul>
-            <?php $_result=getlist('GoodsClassify');if(is_array($_result) || $_result instanceof \think\Collection || $_result instanceof \think\Paginator): $i = 0; $__LIST__ = $_result;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$r): $mod = ($i % 2 );++$i;?>
-               <li><a href="<?php echo url('category/list',array('id'=>$r['id'])); ?>"><?php echo $r['name']; ?></a></li>
-            <?php endforeach; endif; else: echo "" ;endif; ?>
+            <li class="clearfloat cur"><a href="order.html">全部</a></li>
+            <li class="clearfloat"><a href="#">待付款</a></li>
+            <li class="clearfloat"><a href="#">待发货</a></li>
+            <li class="clearfloat"><a href="re-order.html">待收货</a></li>
+            <li class="clearfloat"><a href="#">待评价</a></li>
         </ul>
     </div>
-</aside>
-<div id="main" class="clearfloat warp">
-    <div class="mui-content">
-        
-<!--banner开始-->
-<div class="banner swiper-container">
-    <div class="swiper-wrapper">
-        <?php $_result=banner(1);if(is_array($_result) || $_result instanceof \think\Collection || $_result instanceof \think\Paginator): $i = 0; $__LIST__ = $_result;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$r): $mod = ($i % 2 );++$i;?>
-        <div class="swiper-slide"><a href="<?php echo isset($r['url']) ? $r['url'] :  'javascript:;'; ?>"><img class="swiper-lazy" data-src="<?php echo $r['banner']; ?>" alt=""></a></div>
-        <?php endforeach; endif; else: echo "" ;endif; ?>
-    </div>
-</div>
-<!--banner结束-->
-
-        <!--第一栏分类开始-->
-
-        <!--第一栏分类结束-->
-        <!--滚动公告开始-->
-        <div class="notice clearfloat box-s">
-            <p class="tit clearfloat fl">利民公告：</p>
-            <div class="left fl clearfloat box-s">
-                <div class="slider autoplay">
-                    <div>这里是新闻资讯内容可以手滑滚动</div>
-                    <div>这里是新闻资讯内容可以手滑滚动</div>
-                    <div>这里是新闻资讯内容可以手滑滚动</div>
-                    <div>这里是新闻资讯内容可以手滑滚动</div>
-                    <div>这里是新闻资讯内容可以手滑滚动</div>
-                    <div>这里是新闻资讯内容可以手滑滚动</div>
+    <div class="order-list clearfloat">
+        <p class="ordernum box-s">
+            订单  123456789000
+            <span>待付款</span>
+        </p>
+        <div class="list clearfloat fl box-s">
+            <a href="detail.html">
+                <div class="tu fl clearfloat">
+                    <img src="upload/21.jpg"/>
                 </div>
-            </div>
-            <a href="#" class="nmore clearfloat fr">更多</a>
+                <div class="middle clearfloat fl">
+                    <p class="tit">野山茶油5L 纯野山茶籽油</p>
+                    <p class="fu-tit">月销2000 领券减10元 店长推荐 3月压榨</p>
+                    <p class="price clearfloat">
+                        <span class="xprice fl">¥299.00</span>
+                        <span class="yprice fl">¥308</span>
+                        <span class="shu">×1</span>
+                    </p>
+                </div>
+            </a>
         </div>
-        <!--滚动公告结束-->
-        <!--like star-->
-        <div class="like clearfloat box-s">
-            <div class="boutit clearfloat">
-                <span></span>
-                <samp>商品列表</samp>
-            </div>
-            <div class="content clearfloat">
-
-            </div>
+        <div class="list clearfloat fl box-s">
+            <a href="detail.html">
+                <div class="tu fl clearfloat">
+                    <img src="upload/21.jpg"/>
+                </div>
+                <div class="middle clearfloat fl">
+                    <p class="tit">野山茶油5L 纯野山茶籽油</p>
+                    <p class="fu-tit">月销2000 领券减10元 店长推荐 3月压榨</p>
+                    <p class="price clearfloat">
+                        <span class="xprice fl">¥299.00</span>
+                        <span class="yprice fl">¥308</span>
+                        <span class="shu">×1</span>
+                    </p>
+                </div>
+            </a>
         </div>
-        <!--like end-->
+        <a href="#" class="gopay-btn fr">
+            立即支付
+        </a>
     </div>
+    <style type="text/css">
+        .more-btn{width: 25%; padding: 3% 0; text-align: center; background-color: #00CC7D; color: #fff; font-size: .5rem; margin: 5% auto;}
+    </style>
+    <a href="#" class="more-btn db ra5">更多</a>
 </div>
-
-
-<div id="ajax-url" data-ajax-url="<?php echo url('index/Getlist'); ?>" data-ajax-posid="1" data-ajax-action="goods"></div>
+<div id="ajax-data" data-action="<?php echo $action; ?>"></div>
 
 <!--footer star-->
 <?php if(!in_array($Controller,$NOTSHOWFOOTER)): ?>
@@ -170,7 +153,6 @@
 <script src="__STATIC__/js/dropload.js?v=<?php echo time(); ?>"></script>
 <!--插件end-->
 
-<script src="__STATIC__/js/index.js?v=<?php echo time(); ?>" type="text/javascript"></script>
 
 
 </html>

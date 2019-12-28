@@ -41,6 +41,8 @@ $('[_buy]').click(function () {
 
     var data = {attr_symbol_path:strattr,num:num,goods_id};
     _ajax(url,data,function (e) {
-        console.log(e);
+        if(e.status == 1){
+            location.href = e.url;
+        }
     })
 })
