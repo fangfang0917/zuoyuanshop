@@ -47,6 +47,11 @@ $(function () {
                     var html = '';
                     var list = data.data;
                     for (var i = 0; i < list.length; i++) {
+                        if(list[i].type == 0 ){
+                            var type = '<input type="radio" name="addr"  value="" onclick="def('+list[i].id+')">';
+                        }else{
+                            var type = '<input type="radio" name="addr" checked  value="" onclick="def('+list[i].id+')">';
+                        }
                         html += ' <div class="addlist clearfloat">\n' +
                             '        <div class="top clearfloat box-s">\n' +
                             '            <ul>\n' +
@@ -62,8 +67,7 @@ $(function () {
                             '        <div class="bottom clearfloat box-s">\n' +
                             '            <section class="shopcar clearfloat">\n' +
                             '                <div class="radio fl">\n' +
-                            '                    <label>\n' +
-                            '                        <input type="radio" name="addr" value="" onclick="def('+list[i].id+')">\n' +
+                            '                    <label>\n' +type+
                             '                        <div class="option"></div>\n' +
                             '                        <span class="mradd smradd fl">设为默认</span>\n' +
                             '                    </label>\n' +
@@ -126,7 +130,12 @@ function editaddr(id) {
 
 function def(id) {
     console.log(id)
+    var url = $('#defUrl').attr('ajaxUrl');
+    var  data = {id:id};
     _ajax(url,data,function (e) {
-        console.log();
+        console.log(e);
+        _msg({title:e.msg,time:1000},function () {
+            location.reload();
+        })
     })
 }

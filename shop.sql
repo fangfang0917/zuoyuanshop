@@ -11,7 +11,7 @@
  Target Server Version : 80012
  File Encoding         : 65001
 
- Date: 28/12/2019 10:25:16
+ Date: 30/12/2019 16:20:23
 */
 
 SET NAMES utf8mb4;
@@ -30,7 +30,7 @@ CREATE TABLE `tp_address`  (
   `addressshow` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '详情',
   `type` tinyint(1) NOT NULL DEFAULT 0 COMMENT '是否默认',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 14 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tp_address
@@ -82,6 +82,7 @@ INSERT INTO `tp_admin_group` VALUES (2, '工具', '&#xe616;', 3, 1, '', 0, 14760
 INSERT INTO `tp_admin_group` VALUES (3, '用户管理', '&amp;#xe60d;', 4, 1, '', 0, 1576464113, 1576464113);
 INSERT INTO `tp_admin_group` VALUES (4, '网站配置', '&amp;#xe62e;', 5, 1, '', 0, 1576483241, 1576483241);
 INSERT INTO `tp_admin_group` VALUES (5, '商品管理', '&amp;#xe68c;', 5, 1, '', 0, 1576568185, 1576568185);
+INSERT INTO `tp_admin_group` VALUES (6, '订单管理', '&amp;#xe667;', 6, 1, '', 0, 1577692132, 1577692132);
 
 -- ----------------------------
 -- Table structure for tp_admin_node
@@ -178,6 +179,7 @@ INSERT INTO `tp_admin_node` VALUES (65, 1, 4, 'Banner', '轮播图', '', 2, 1, 2
 INSERT INTO `tp_admin_node` VALUES (66, 1, 5, 'Goods', '商品管理', '', 2, 1, 1, 1, 0);
 INSERT INTO `tp_admin_node` VALUES (67, 1, 5, 'GoodsClassify', '商品分类', '', 2, 1, 2, 1, 0);
 INSERT INTO `tp_admin_node` VALUES (68, 1, 5, 'AttrKey', '规格管理', '', 2, 1, 3, 1, 0);
+INSERT INTO `tp_admin_node` VALUES (69, 1, 6, 'Order', '订单列表', '', 2, 1, 1, 1, 0);
 
 -- ----------------------------
 -- Table structure for tp_admin_node_load
@@ -261,7 +263,7 @@ CREATE TABLE `tp_admin_user`  (
 -- ----------------------------
 -- Records of tp_admin_user
 -- ----------------------------
-INSERT INTO `tp_admin_user` VALUES (1, 'admin', '超级管理员', 'e10adc3949ba59abbe56e057f20f883e', 1577409463, '127.0.0.1', 394, 'tianpian0805@gmail.com', '13121126169', '我是超级管理员', 1, 0, 1222907803, 1451033528);
+INSERT INTO `tp_admin_user` VALUES (1, 'admin', '超级管理员', 'e10adc3949ba59abbe56e057f20f883e', 1577691929, '127.0.0.1', 395, 'tianpian0805@gmail.com', '13121126169', '我是超级管理员', 1, 0, 1222907803, 1451033528);
 INSERT INTO `tp_admin_user` VALUES (2, 'demo', '测试', 'e10adc3949ba59abbe56e057f20f883e', 1481206367, '127.0.0.1', 5, '', '', '', 1, 0, 1476777133, 1477399793);
 
 -- ----------------------------
@@ -325,7 +327,7 @@ CREATE TABLE `tp_banner`  (
   `isdelete` tinyint(1) UNSIGNED NOT NULL DEFAULT 0 COMMENT '删除状态，1-删除 | 0-正常',
   `posid` int(11) NOT NULL DEFAULT 0 COMMENT '推荐位',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tp_banner
@@ -352,9 +354,7 @@ CREATE TABLE `tp_cart`  (
 -- ----------------------------
 -- Records of tp_cart
 -- ----------------------------
-INSERT INTO `tp_cart` VALUES (10, 1, 1, 0, 1, 12.00, '1577418860', 12.00);
-INSERT INTO `tp_cart` VALUES (11, 1, 3, 56, 1, 1.00, '1577425760', 1.00);
-INSERT INTO `tp_cart` VALUES (12, 1, 3, 56, 1, 1.00, '1577426357', 1.00);
+INSERT INTO `tp_cart` VALUES (14, 1, 3, 56, 1, 1.00, '1577691640', 1.00);
 
 -- ----------------------------
 -- Table structure for tp_file
@@ -445,7 +445,7 @@ CREATE TABLE `tp_goods_classify`  (
   `posid` int(11) NOT NULL DEFAULT 0 COMMENT '推荐位',
   `thumb` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '缩略图',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tp_goods_classify
@@ -474,7 +474,7 @@ CREATE TABLE `tp_goods_sku`  (
   `stock` int(10) UNSIGNED NOT NULL DEFAULT 0,
   `original_price` double(15, 2) NULL DEFAULT NULL COMMENT '原始价格',
   PRIMARY KEY (`sku_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 59 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 58 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tp_goods_sku
@@ -500,7 +500,7 @@ CREATE TABLE `tp_login_log`  (
   `login_time` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0) ON UPDATE CURRENT_TIMESTAMP(0),
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `uid`(`uid`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tp_login_log
@@ -514,6 +514,7 @@ INSERT INTO `tp_login_log` VALUES (6, 1, '127.0.0.1', '本机地址 本机地址
 INSERT INTO `tp_login_log` VALUES (7, 1, '127.0.0.1', '本机地址 本机地址  ', 'Chrome(77.0.3865.90)', 'Windows 10', '2019-12-23 08:50:03');
 INSERT INTO `tp_login_log` VALUES (8, 1, '127.0.0.1', '本机地址 本机地址  ', 'Chrome(77.0.3865.90)', 'Windows 10', '2019-12-26 10:58:51');
 INSERT INTO `tp_login_log` VALUES (9, 1, '127.0.0.1', '本机地址 本机地址  ', 'Chrome(77.0.3865.90)', 'Windows 10', '2019-12-27 09:17:43');
+INSERT INTO `tp_login_log` VALUES (10, 1, '127.0.0.1', '本机地址 本机地址  ', 'Chrome(77.0.3865.90)', 'Windows 10', '2019-12-30 15:45:29');
 
 -- ----------------------------
 -- Table structure for tp_node_map
@@ -565,32 +566,63 @@ INSERT INTO `tp_one_two_three_four` VALUES (1, 'yuan1994', 'tpadmin', '2', '1', 
 -- ----------------------------
 DROP TABLE IF EXISTS `tp_order`;
 CREATE TABLE `tp_order`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '订单状态',
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '订单状态 0待发货  1已发货   3待评价 4已完成',
   `orderNo` int(11) NOT NULL COMMENT '订单号',
   `userId` int(11) NOT NULL COMMENT '用户ID',
   `totalNum` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '0' COMMENT '订单总数量',
   `totalMoney` decimal(11, 2) NOT NULL DEFAULT 0.00 COMMENT '订单总价格',
   `createTime` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '创建时间',
   `payType` tinyint(1) NOT NULL DEFAULT 0 COMMENT '支付状态 0未支付  1已支付',
-  `orderType` tinyint(1) NOT NULL DEFAULT 0 COMMENT '订单状态 0待发货  1已发货 2待收货  3待评价',
+  `orderType` tinyint(1) NOT NULL DEFAULT 0 COMMENT '订单状态 0待发货  1已发货   2待评价 3已完成',
   `kdNo` int(11) NULL DEFAULT NULL COMMENT '快递单号',
+  `remarks` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户备注',
+  `kdTime` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '发货时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of tp_order
+-- ----------------------------
+INSERT INTO `tp_order` VALUES (17, 1577688310, 1, '1', 1.00, '1577688310', 1, 0, NULL, '', NULL);
+INSERT INTO `tp_order` VALUES (16, 1577688299, 1, '1', 12.00, '1577688299', 1, 1, NULL, '', NULL);
+INSERT INTO `tp_order` VALUES (15, 1577688019, 1, '2', 13.00, '1577688019', 1, 1, NULL, '', NULL);
+INSERT INTO `tp_order` VALUES (14, 1577687950, 1, '1', 12.00, '1577687950', 1, 2, NULL, '', NULL);
+INSERT INTO `tp_order` VALUES (13, 1577687937, 1, '2', 13.00, '1577687937', 1, 2, NULL, '', NULL);
+INSERT INTO `tp_order` VALUES (12, 1577687921, 1, '1', 12.00, '1577687921', 0, 0, NULL, '', NULL);
+INSERT INTO `tp_order` VALUES (11, 1577687908, 1, '3', 14.00, '1577687908', 0, 0, NULL, '', NULL);
+INSERT INTO `tp_order` VALUES (18, 1577688319, 1, '1', 1.00, '1577688319', 0, 0, NULL, '', NULL);
+INSERT INTO `tp_order` VALUES (19, 1577691545, 1, '1', 1.00, '1577691545', 0, 0, NULL, '', NULL);
 
 -- ----------------------------
 -- Table structure for tp_order_info
 -- ----------------------------
 DROP TABLE IF EXISTS `tp_order_info`;
 CREATE TABLE `tp_order_info`  (
-  `id` int(11) NOT NULL COMMENT '订单详情id',
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '订单详情id',
   `orderId` int(11) NOT NULL COMMENT '订单Id',
   `goodsId` int(11) NOT NULL COMMENT '商品id',
   `price` decimal(10, 2) NOT NULL COMMENT '价格',
   `num` int(11) NOT NULL COMMENT '购买数量',
   `skuId` int(11) NOT NULL COMMENT '商品规格Id',
-  `comment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '商品评论',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Fixed;
+
+-- ----------------------------
+-- Records of tp_order_info
+-- ----------------------------
+INSERT INTO `tp_order_info` VALUES (10, 12, 1, 12.00, 1, 0);
+INSERT INTO `tp_order_info` VALUES (9, 11, 3, 1.00, 1, 56);
+INSERT INTO `tp_order_info` VALUES (8, 11, 3, 1.00, 1, 56);
+INSERT INTO `tp_order_info` VALUES (7, 11, 1, 12.00, 1, 0);
+INSERT INTO `tp_order_info` VALUES (11, 13, 1, 12.00, 1, 0);
+INSERT INTO `tp_order_info` VALUES (12, 13, 3, 1.00, 1, 56);
+INSERT INTO `tp_order_info` VALUES (13, 14, 1, 12.00, 1, 0);
+INSERT INTO `tp_order_info` VALUES (14, 15, 1, 12.00, 1, 0);
+INSERT INTO `tp_order_info` VALUES (15, 15, 3, 1.00, 1, 56);
+INSERT INTO `tp_order_info` VALUES (16, 16, 1, 12.00, 1, 0);
+INSERT INTO `tp_order_info` VALUES (17, 17, 3, 1.00, 1, 56);
+INSERT INTO `tp_order_info` VALUES (18, 18, 3, 1.00, 1, 56);
+INSERT INTO `tp_order_info` VALUES (19, 19, 3, 1.00, 1, 57);
 
 -- ----------------------------
 -- Table structure for tp_position
@@ -630,7 +662,7 @@ CREATE TABLE `tp_user`  (
 -- ----------------------------
 -- Records of tp_user
 -- ----------------------------
-INSERT INTO `tp_user` VALUES (1, '15295488523', 'c33367701511b4f6020ec61ded352059', NULL, 0.00, NULL, '1576481818', 1, '', '你大爷的你看啥');
+INSERT INTO `tp_user` VALUES (1, '15295488523', 'c33367701511b4f6020ec61ded352059', NULL, 9896.00, NULL, '1576481818', 1, '', '你大爷的你看啥');
 INSERT INTO `tp_user` VALUES (3, '15295488522', 'e10adc3949ba59abbe56e057f20f883e', NULL, 0.00, NULL, '1576804588', 1, NULL, NULL);
 
 -- ----------------------------
@@ -2063,6 +2095,92 @@ INSERT INTO `tp_web_log_001` VALUES (1400, 1, '127.0.0.1', '本机地址 本机�
 INSERT INTO `tp_web_log_001` VALUES (1401, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/goods/edit/id/1.html', 'admin', 'Goods', 'edit', 'GET', 'a:1:{s:2:\"id\";s:1:\"1\";}', 1577414004);
 INSERT INTO `tp_web_log_001` VALUES (1402, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/goods/edit/id/1.html', 'admin', 'Goods', 'edit', 'POST', 'a:10:{s:2:\"id\";s:1:\"1\";s:3:\"cid\";s:1:\"1\";s:5:\"posid\";s:1:\"1\";s:4:\"name\";s:12:\"家居家纺\";s:5:\"thumb\";s:65:\"/public/tmp/uploads/20191221\\be283fda011067174cf945e2873e8c4b.jpg\";s:11:\"description\";s:72:\"家居家纺家居家纺家居家纺家居家纺家居家纺家居家纺\";s:7:\"content\";s:84:\"家居家纺家居家纺家居家纺家居家纺家居家纺家居家纺家居家纺\";s:3:\"int\";s:2:\"12\";s:10:\"createtime\";s:10:\"1576916724\";s:5:\"stock\";s:2:\"11\";}', 1577414006);
 INSERT INTO `tp_web_log_001` VALUES (1403, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/goods/index.html', 'admin', 'Goods', 'index', 'GET', 'a:0:{}', 1577414006);
+INSERT INTO `tp_web_log_001` VALUES (1404, 0, '127.0.0.1', '本机地址 本机地址  ', 'Linux', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin', 'admin', 'Index', 'index', 'GET', 'a:0:{}', 1577691914);
+INSERT INTO `tp_web_log_001` VALUES (1405, 0, '127.0.0.1', '本机地址 本机地址  ', 'Linux', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/pub/login.html', 'admin', 'Pub', 'login', 'GET', 'a:0:{}', 1577691914);
+INSERT INTO `tp_web_log_001` VALUES (1406, 0, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/pub/checklogin.html', 'admin', 'Pub', 'checklogin', 'POST', 'a:3:{s:7:\"account\";s:5:\"admin\";s:8:\"password\";s:6:\"123456\";s:7:\"captcha\";s:4:\"whvt\";}', 1577691929);
+INSERT INTO `tp_web_log_001` VALUES (1407, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/index/index.html', 'admin', 'Index', 'index', 'GET', 'a:0:{}', 1577691929);
+INSERT INTO `tp_web_log_001` VALUES (1408, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/index/welcome.html', 'admin', 'Index', 'welcome', 'GET', 'a:0:{}', 1577691929);
+INSERT INTO `tp_web_log_001` VALUES (1409, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/generate/index.html', 'admin', 'Generate', 'index', 'GET', 'a:0:{}', 1577691955);
+INSERT INTO `tp_web_log_001` VALUES (1410, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/generate/index.html?table=tp_order', 'admin', 'Generate', 'index', 'GET', 'a:1:{s:5:\"table\";s:8:\"tp_order\";}', 1577691969);
+INSERT INTO `tp_web_log_001` VALUES (1411, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/generate/run.html', 'admin', 'Generate', 'run', 'POST', 'a:5:{s:4:\"file\";s:3:\"all\";s:6:\"module\";s:5:\"admin\";s:10:\"controller\";s:5:\"Order\";s:5:\"title\";s:0:\"\";s:4:\"form\";a:11:{i:1;a:8:{s:5:\"title\";s:2:\"Id\";s:4:\"name\";s:2:\"id\";s:4:\"type\";s:4:\"text\";s:6:\"option\";s:0:\"\";s:7:\"default\";s:0:\"\";s:6:\"search\";s:1:\"1\";s:11:\"search_type\";s:4:\"text\";s:8:\"validate\";a:3:{s:8:\"datatype\";s:0:\"\";s:7:\"nullmsg\";s:0:\"\";s:8:\"errormsg\";s:0:\"\";}}i:2;a:8:{s:5:\"title\";s:9:\"订单号\";s:4:\"name\";s:7:\"orderNo\";s:4:\"type\";s:4:\"text\";s:6:\"option\";s:0:\"\";s:7:\"default\";s:0:\"\";s:6:\"search\";s:1:\"1\";s:11:\"search_type\";s:4:\"text\";s:8:\"validate\";a:3:{s:8:\"datatype\";s:0:\"\";s:7:\"nullmsg\";s:0:\"\";s:8:\"errormsg\";s:0:\"\";}}i:3;a:8:{s:5:\"title\";s:6:\"用户\";s:4:\"name\";s:6:\"userId\";s:4:\"type\";s:4:\"text\";s:6:\"option\";s:0:\"\";s:7:\"default\";s:0:\"\";s:6:\"search\";s:1:\"1\";s:11:\"search_type\";s:4:\"text\";s:8:\"validate\";a:3:{s:8:\"datatype\";s:0:\"\";s:7:\"nullmsg\";s:0:\"\";s:8:\"errormsg\";s:0:\"\";}}i:4;a:7:{s:5:\"title\";s:15:\"购买总数量\";s:4:\"name\";s:8:\"totalNum\";s:4:\"type\";s:4:\"text\";s:6:\"option\";s:0:\"\";s:7:\"default\";s:0:\"\";s:11:\"search_type\";s:4:\"text\";s:8:\"validate\";a:3:{s:8:\"datatype\";s:0:\"\";s:7:\"nullmsg\";s:0:\"\";s:8:\"errormsg\";s:0:\"\";}}i:5;a:7:{s:5:\"title\";s:15:\"购买总金额\";s:4:\"name\";s:10:\"totalMoney\";s:4:\"type\";s:4:\"text\";s:6:\"option\";s:0:\"\";s:7:\"default\";s:0:\"\";s:11:\"search_type\";s:4:\"text\";s:8:\"validate\";a:3:{s:8:\"datatype\";s:0:\"\";s:7:\"nullmsg\";s:0:\"\";s:8:\"errormsg\";s:0:\"\";}}i:6;a:8:{s:5:\"title\";s:12:\"创建时间\";s:4:\"name\";s:10:\"createTime\";s:4:\"type\";s:4:\"text\";s:6:\"option\";s:0:\"\";s:7:\"default\";s:0:\"\";s:6:\"search\";s:1:\"1\";s:11:\"search_type\";s:4:\"text\";s:8:\"validate\";a:3:{s:8:\"datatype\";s:0:\"\";s:7:\"nullmsg\";s:0:\"\";s:8:\"errormsg\";s:0:\"\";}}i:7;a:8:{s:5:\"title\";s:12:\"支付状态\";s:4:\"name\";s:7:\"payType\";s:4:\"type\";s:4:\"text\";s:6:\"option\";s:0:\"\";s:7:\"default\";s:0:\"\";s:6:\"search\";s:1:\"1\";s:11:\"search_type\";s:4:\"text\";s:8:\"validate\";a:3:{s:8:\"datatype\";s:0:\"\";s:7:\"nullmsg\";s:0:\"\";s:8:\"errormsg\";s:0:\"\";}}i:8;a:8:{s:5:\"title\";s:12:\"订单状态\";s:4:\"name\";s:9:\"orderType\";s:4:\"type\";s:4:\"text\";s:6:\"option\";s:0:\"\";s:7:\"default\";s:0:\"\";s:6:\"search\";s:1:\"1\";s:11:\"search_type\";s:4:\"text\";s:8:\"validate\";a:3:{s:8:\"datatype\";s:0:\"\";s:7:\"nullmsg\";s:0:\"\";s:8:\"errormsg\";s:0:\"\";}}i:9;a:7:{s:5:\"title\";s:12:\"快递单号\";s:4:\"name\";s:4:\"kdNo\";s:4:\"type\";s:4:\"text\";s:6:\"option\";s:0:\"\";s:7:\"default\";s:0:\"\";s:11:\"search_type\";s:4:\"text\";s:8:\"validate\";a:3:{s:8:\"datatype\";s:0:\"\";s:7:\"nullmsg\";s:0:\"\";s:8:\"errormsg\";s:0:\"\";}}i:10;a:7:{s:5:\"title\";s:12:\"用户备注\";s:4:\"name\";s:7:\"remarks\";s:4:\"type\";s:4:\"text\";s:6:\"option\";s:0:\"\";s:7:\"default\";s:0:\"\";s:11:\"search_type\";s:4:\"text\";s:8:\"validate\";a:3:{s:8:\"datatype\";s:0:\"\";s:7:\"nullmsg\";s:0:\"\";s:8:\"errormsg\";s:0:\"\";}}i:11;a:7:{s:5:\"title\";s:12:\"发货时间\";s:4:\"name\";s:6:\"kdTime\";s:4:\"type\";s:4:\"text\";s:6:\"option\";s:0:\"\";s:7:\"default\";s:0:\"\";s:11:\"search_type\";s:4:\"text\";s:8:\"validate\";a:3:{s:8:\"datatype\";s:0:\"\";s:7:\"nullmsg\";s:0:\"\";s:8:\"errormsg\";s:0:\"\";}}}}', 1577692085);
+INSERT INTO `tp_web_log_001` VALUES (1412, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692086);
+INSERT INTO `tp_web_log_001` VALUES (1413, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/admin_node/index.html', 'admin', 'AdminNode', 'index', 'GET', 'a:0:{}', 1577692094);
+INSERT INTO `tp_web_log_001` VALUES (1414, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/admin_node/index', 'admin', 'AdminNode', 'index', 'POST', 'a:2:{s:4:\"type\";s:5:\"group\";s:9:\"module_id\";s:1:\"1\";}', 1577692094);
+INSERT INTO `tp_web_log_001` VALUES (1415, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/admin_node/index', 'admin', 'AdminNode', 'index', 'POST', 'a:3:{s:4:\"type\";s:4:\"node\";s:9:\"module_id\";s:1:\"1\";s:8:\"group_id\";s:1:\"1\";}', 1577692094);
+INSERT INTO `tp_web_log_001` VALUES (1416, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/admin_node/add?pid=1', 'admin', 'AdminNode', 'add', 'GET', 'a:1:{s:3:\"pid\";s:1:\"1\";}', 1577692096);
+INSERT INTO `tp_web_log_001` VALUES (1417, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/admin_group/index.html', 'admin', 'AdminGroup', 'index', 'GET', 'a:0:{}', 1577692101);
+INSERT INTO `tp_web_log_001` VALUES (1418, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/admin_group/add.html', 'admin', 'AdminGroup', 'add', 'GET', 'a:0:{}', 1577692103);
+INSERT INTO `tp_web_log_001` VALUES (1419, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/admin_group/add.html', 'admin', 'AdminGroup', 'add', 'POST', 'a:6:{s:2:\"id\";s:0:\"\";s:4:\"name\";s:12:\"订单管理\";s:4:\"icon\";s:12:\"&amp;#xe667;\";s:4:\"sort\";s:1:\"6\";s:6:\"status\";s:1:\"1\";s:6:\"remark\";s:0:\"\";}', 1577692132);
+INSERT INTO `tp_web_log_001` VALUES (1420, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/admin_group/index.html', 'admin', 'AdminGroup', 'index', 'GET', 'a:0:{}', 1577692132);
+INSERT INTO `tp_web_log_001` VALUES (1421, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/index/index.html', 'admin', 'Index', 'index', 'GET', 'a:0:{}', 1577692135);
+INSERT INTO `tp_web_log_001` VALUES (1422, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/index/welcome.html', 'admin', 'Index', 'welcome', 'GET', 'a:0:{}', 1577692135);
+INSERT INTO `tp_web_log_001` VALUES (1423, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/index/index.html', 'admin', 'Index', 'index', 'GET', 'a:0:{}', 1577692137);
+INSERT INTO `tp_web_log_001` VALUES (1424, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/index/welcome.html', 'admin', 'Index', 'welcome', 'GET', 'a:0:{}', 1577692137);
+INSERT INTO `tp_web_log_001` VALUES (1425, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/admin_node/index.html', 'admin', 'AdminNode', 'index', 'GET', 'a:0:{}', 1577692140);
+INSERT INTO `tp_web_log_001` VALUES (1426, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/admin_node/index', 'admin', 'AdminNode', 'index', 'POST', 'a:2:{s:4:\"type\";s:5:\"group\";s:9:\"module_id\";s:1:\"1\";}', 1577692140);
+INSERT INTO `tp_web_log_001` VALUES (1427, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/admin_node/index', 'admin', 'AdminNode', 'index', 'POST', 'a:3:{s:4:\"type\";s:4:\"node\";s:9:\"module_id\";s:1:\"1\";s:8:\"group_id\";s:1:\"1\";}', 1577692140);
+INSERT INTO `tp_web_log_001` VALUES (1428, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/admin_node/add?pid=1', 'admin', 'AdminNode', 'add', 'GET', 'a:1:{s:3:\"pid\";s:1:\"1\";}', 1577692141);
+INSERT INTO `tp_web_log_001` VALUES (1429, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/admin_node/add', 'admin', 'AdminNode', 'add', 'POST', 'a:9:{s:2:\"id\";s:0:\"\";s:3:\"pid\";s:1:\"1\";s:5:\"level\";s:1:\"2\";s:8:\"group_id\";s:1:\"6\";s:5:\"title\";s:12:\"订单列表\";s:4:\"name\";s:5:\"Order\";s:4:\"type\";s:1:\"1\";s:4:\"sort\";s:1:\"1\";s:6:\"status\";s:1:\"1\";}', 1577692168);
+INSERT INTO `tp_web_log_001` VALUES (1430, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/admin_node/index.html', 'admin', 'AdminNode', 'index', 'GET', 'a:0:{}', 1577692168);
+INSERT INTO `tp_web_log_001` VALUES (1431, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/admin_node/index', 'admin', 'AdminNode', 'index', 'POST', 'a:2:{s:4:\"type\";s:5:\"group\";s:9:\"module_id\";s:1:\"1\";}', 1577692168);
+INSERT INTO `tp_web_log_001` VALUES (1432, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/admin_node/index', 'admin', 'AdminNode', 'index', 'POST', 'a:3:{s:4:\"type\";s:4:\"node\";s:9:\"module_id\";s:1:\"1\";s:8:\"group_id\";s:1:\"1\";}', 1577692168);
+INSERT INTO `tp_web_log_001` VALUES (1433, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/index/index.html', 'admin', 'Index', 'index', 'GET', 'a:0:{}', 1577692170);
+INSERT INTO `tp_web_log_001` VALUES (1434, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/index/welcome.html', 'admin', 'Index', 'welcome', 'GET', 'a:0:{}', 1577692170);
+INSERT INTO `tp_web_log_001` VALUES (1435, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692172);
+INSERT INTO `tp_web_log_001` VALUES (1436, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692395);
+INSERT INTO `tp_web_log_001` VALUES (1437, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692640);
+INSERT INTO `tp_web_log_001` VALUES (1438, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692658);
+INSERT INTO `tp_web_log_001` VALUES (1439, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692825);
+INSERT INTO `tp_web_log_001` VALUES (1440, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692848);
+INSERT INTO `tp_web_log_001` VALUES (1441, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692856);
+INSERT INTO `tp_web_log_001` VALUES (1442, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692856);
+INSERT INTO `tp_web_log_001` VALUES (1443, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692901);
+INSERT INTO `tp_web_log_001` VALUES (1444, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692902);
+INSERT INTO `tp_web_log_001` VALUES (1445, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692911);
+INSERT INTO `tp_web_log_001` VALUES (1446, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692912);
+INSERT INTO `tp_web_log_001` VALUES (1447, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692912);
+INSERT INTO `tp_web_log_001` VALUES (1448, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692912);
+INSERT INTO `tp_web_log_001` VALUES (1449, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692913);
+INSERT INTO `tp_web_log_001` VALUES (1450, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692913);
+INSERT INTO `tp_web_log_001` VALUES (1451, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692913);
+INSERT INTO `tp_web_log_001` VALUES (1452, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/index/index.html', 'admin', 'Index', 'index', 'GET', 'a:0:{}', 1577692932);
+INSERT INTO `tp_web_log_001` VALUES (1453, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/index/welcome.html', 'admin', 'Index', 'welcome', 'GET', 'a:0:{}', 1577692932);
+INSERT INTO `tp_web_log_001` VALUES (1454, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/index/index.html', 'admin', 'Index', 'index', 'GET', 'a:0:{}', 1577692933);
+INSERT INTO `tp_web_log_001` VALUES (1455, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/index/welcome.html', 'admin', 'Index', 'welcome', 'GET', 'a:0:{}', 1577692933);
+INSERT INTO `tp_web_log_001` VALUES (1456, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692934);
+INSERT INTO `tp_web_log_001` VALUES (1457, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/edit/id/19.html', 'admin', 'Order', 'edit', 'GET', 'a:1:{s:2:\"id\";s:2:\"19\";}', 1577692937);
+INSERT INTO `tp_web_log_001` VALUES (1458, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692985);
+INSERT INTO `tp_web_log_001` VALUES (1459, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692985);
+INSERT INTO `tp_web_log_001` VALUES (1460, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692986);
+INSERT INTO `tp_web_log_001` VALUES (1461, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692986);
+INSERT INTO `tp_web_log_001` VALUES (1462, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692987);
+INSERT INTO `tp_web_log_001` VALUES (1463, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692988);
+INSERT INTO `tp_web_log_001` VALUES (1464, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/edit/id/19.html', 'admin', 'Order', 'edit', 'GET', 'a:1:{s:2:\"id\";s:2:\"19\";}', 1577692991);
+INSERT INTO `tp_web_log_001` VALUES (1465, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/edit/id/19.html', 'admin', 'Order', 'edit', 'GET', 'a:1:{s:2:\"id\";s:2:\"19\";}', 1577693079);
+INSERT INTO `tp_web_log_001` VALUES (1466, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/edit/id/19.html', 'admin', 'Order', 'edit', 'GET', 'a:1:{s:2:\"id\";s:2:\"19\";}', 1577693134);
+INSERT INTO `tp_web_log_001` VALUES (1467, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577693185);
+INSERT INTO `tp_web_log_001` VALUES (1468, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/edit/id/19.html', 'admin', 'Order', 'edit', 'GET', 'a:1:{s:2:\"id\";s:2:\"19\";}', 1577693189);
+INSERT INTO `tp_web_log_001` VALUES (1469, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577693322);
+INSERT INTO `tp_web_log_001` VALUES (1470, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577693344);
+INSERT INTO `tp_web_log_001` VALUES (1471, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577693392);
+INSERT INTO `tp_web_log_001` VALUES (1472, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577693405);
+INSERT INTO `tp_web_log_001` VALUES (1473, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/edit/id/19.html', 'admin', 'Order', 'edit', 'GET', 'a:1:{s:2:\"id\";s:2:\"19\";}', 1577693406);
+INSERT INTO `tp_web_log_001` VALUES (1474, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577693511);
+INSERT INTO `tp_web_log_001` VALUES (1475, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/edit/id/19.html', 'admin', 'Order', 'edit', 'GET', 'a:1:{s:2:\"id\";s:2:\"19\";}', 1577693513);
+INSERT INTO `tp_web_log_001` VALUES (1476, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577693618);
+INSERT INTO `tp_web_log_001` VALUES (1477, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577693647);
+INSERT INTO `tp_web_log_001` VALUES (1478, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/edit/id/17.html', 'admin', 'Order', 'edit', 'GET', 'a:1:{s:2:\"id\";s:2:\"17\";}', 1577693648);
+INSERT INTO `tp_web_log_001` VALUES (1479, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/edit/id/14.html', 'admin', 'Order', 'edit', 'GET', 'a:1:{s:2:\"id\";s:2:\"14\";}', 1577693654);
+INSERT INTO `tp_web_log_001` VALUES (1480, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/edit/id/15.html', 'admin', 'Order', 'edit', 'GET', 'a:1:{s:2:\"id\";s:2:\"15\";}', 1577693657);
+INSERT INTO `tp_web_log_001` VALUES (1481, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/edit/id/17.html', 'admin', 'Order', 'edit', 'GET', 'a:1:{s:2:\"id\";s:2:\"17\";}', 1577693663);
+INSERT INTO `tp_web_log_001` VALUES (1482, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/edit/id/17.html', 'admin', 'Order', 'edit', 'GET', 'a:1:{s:2:\"id\";s:2:\"17\";}', 1577693735);
+INSERT INTO `tp_web_log_001` VALUES (1483, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/edit/id/17.html', 'admin', 'Order', 'edit', 'GET', 'a:1:{s:2:\"id\";s:2:\"17\";}', 1577693735);
+INSERT INTO `tp_web_log_001` VALUES (1484, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/edit/id/17.html', 'admin', 'Order', 'edit', 'GET', 'a:1:{s:2:\"id\";s:2:\"17\";}', 1577693735);
+INSERT INTO `tp_web_log_001` VALUES (1485, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/edit/id/17.html', 'admin', 'Order', 'edit', 'GET', 'a:1:{s:2:\"id\";s:2:\"17\";}', 1577693736);
+INSERT INTO `tp_web_log_001` VALUES (1486, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/edit/id/17.html', 'admin', 'Order', 'edit', 'GET', 'a:1:{s:2:\"id\";s:2:\"17\";}', 1577693776);
+INSERT INTO `tp_web_log_001` VALUES (1487, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/edit/id/17.html', 'admin', 'Order', 'edit', 'GET', 'a:1:{s:2:\"id\";s:2:\"17\";}', 1577693777);
+INSERT INTO `tp_web_log_001` VALUES (1488, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/edit/id/17.html', 'admin', 'Order', 'edit', 'GET', 'a:1:{s:2:\"id\";s:2:\"17\";}', 1577693777);
+INSERT INTO `tp_web_log_001` VALUES (1489, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/edit/id/17.html', 'admin', 'Order', 'edit', 'GET', 'a:1:{s:2:\"id\";s:2:\"17\";}', 1577693795);
 
 -- ----------------------------
 -- Table structure for tp_web_log_all
@@ -3494,5 +3612,91 @@ INSERT INTO `tp_web_log_all` VALUES (1400, 1, '127.0.0.1', '本机地址 本机�
 INSERT INTO `tp_web_log_all` VALUES (1401, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/goods/edit/id/1.html', 'admin', 'Goods', 'edit', 'GET', 'a:1:{s:2:\"id\";s:1:\"1\";}', 1577414004);
 INSERT INTO `tp_web_log_all` VALUES (1402, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/goods/edit/id/1.html', 'admin', 'Goods', 'edit', 'POST', 'a:10:{s:2:\"id\";s:1:\"1\";s:3:\"cid\";s:1:\"1\";s:5:\"posid\";s:1:\"1\";s:4:\"name\";s:12:\"家居家纺\";s:5:\"thumb\";s:65:\"/public/tmp/uploads/20191221\\be283fda011067174cf945e2873e8c4b.jpg\";s:11:\"description\";s:72:\"家居家纺家居家纺家居家纺家居家纺家居家纺家居家纺\";s:7:\"content\";s:84:\"家居家纺家居家纺家居家纺家居家纺家居家纺家居家纺家居家纺\";s:3:\"int\";s:2:\"12\";s:10:\"createtime\";s:10:\"1576916724\";s:5:\"stock\";s:2:\"11\";}', 1577414006);
 INSERT INTO `tp_web_log_all` VALUES (1403, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/goods/index.html', 'admin', 'Goods', 'index', 'GET', 'a:0:{}', 1577414006);
+INSERT INTO `tp_web_log_all` VALUES (1404, 0, '127.0.0.1', '本机地址 本机地址  ', 'Linux', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin', 'admin', 'Index', 'index', 'GET', 'a:0:{}', 1577691914);
+INSERT INTO `tp_web_log_all` VALUES (1405, 0, '127.0.0.1', '本机地址 本机地址  ', 'Linux', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/pub/login.html', 'admin', 'Pub', 'login', 'GET', 'a:0:{}', 1577691914);
+INSERT INTO `tp_web_log_all` VALUES (1406, 0, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/pub/checklogin.html', 'admin', 'Pub', 'checklogin', 'POST', 'a:3:{s:7:\"account\";s:5:\"admin\";s:8:\"password\";s:6:\"123456\";s:7:\"captcha\";s:4:\"whvt\";}', 1577691929);
+INSERT INTO `tp_web_log_all` VALUES (1407, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/index/index.html', 'admin', 'Index', 'index', 'GET', 'a:0:{}', 1577691929);
+INSERT INTO `tp_web_log_all` VALUES (1408, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/index/welcome.html', 'admin', 'Index', 'welcome', 'GET', 'a:0:{}', 1577691929);
+INSERT INTO `tp_web_log_all` VALUES (1409, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/generate/index.html', 'admin', 'Generate', 'index', 'GET', 'a:0:{}', 1577691955);
+INSERT INTO `tp_web_log_all` VALUES (1410, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/generate/index.html?table=tp_order', 'admin', 'Generate', 'index', 'GET', 'a:1:{s:5:\"table\";s:8:\"tp_order\";}', 1577691969);
+INSERT INTO `tp_web_log_all` VALUES (1411, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/generate/run.html', 'admin', 'Generate', 'run', 'POST', 'a:5:{s:4:\"file\";s:3:\"all\";s:6:\"module\";s:5:\"admin\";s:10:\"controller\";s:5:\"Order\";s:5:\"title\";s:0:\"\";s:4:\"form\";a:11:{i:1;a:8:{s:5:\"title\";s:2:\"Id\";s:4:\"name\";s:2:\"id\";s:4:\"type\";s:4:\"text\";s:6:\"option\";s:0:\"\";s:7:\"default\";s:0:\"\";s:6:\"search\";s:1:\"1\";s:11:\"search_type\";s:4:\"text\";s:8:\"validate\";a:3:{s:8:\"datatype\";s:0:\"\";s:7:\"nullmsg\";s:0:\"\";s:8:\"errormsg\";s:0:\"\";}}i:2;a:8:{s:5:\"title\";s:9:\"订单号\";s:4:\"name\";s:7:\"orderNo\";s:4:\"type\";s:4:\"text\";s:6:\"option\";s:0:\"\";s:7:\"default\";s:0:\"\";s:6:\"search\";s:1:\"1\";s:11:\"search_type\";s:4:\"text\";s:8:\"validate\";a:3:{s:8:\"datatype\";s:0:\"\";s:7:\"nullmsg\";s:0:\"\";s:8:\"errormsg\";s:0:\"\";}}i:3;a:8:{s:5:\"title\";s:6:\"用户\";s:4:\"name\";s:6:\"userId\";s:4:\"type\";s:4:\"text\";s:6:\"option\";s:0:\"\";s:7:\"default\";s:0:\"\";s:6:\"search\";s:1:\"1\";s:11:\"search_type\";s:4:\"text\";s:8:\"validate\";a:3:{s:8:\"datatype\";s:0:\"\";s:7:\"nullmsg\";s:0:\"\";s:8:\"errormsg\";s:0:\"\";}}i:4;a:7:{s:5:\"title\";s:15:\"购买总数量\";s:4:\"name\";s:8:\"totalNum\";s:4:\"type\";s:4:\"text\";s:6:\"option\";s:0:\"\";s:7:\"default\";s:0:\"\";s:11:\"search_type\";s:4:\"text\";s:8:\"validate\";a:3:{s:8:\"datatype\";s:0:\"\";s:7:\"nullmsg\";s:0:\"\";s:8:\"errormsg\";s:0:\"\";}}i:5;a:7:{s:5:\"title\";s:15:\"购买总金额\";s:4:\"name\";s:10:\"totalMoney\";s:4:\"type\";s:4:\"text\";s:6:\"option\";s:0:\"\";s:7:\"default\";s:0:\"\";s:11:\"search_type\";s:4:\"text\";s:8:\"validate\";a:3:{s:8:\"datatype\";s:0:\"\";s:7:\"nullmsg\";s:0:\"\";s:8:\"errormsg\";s:0:\"\";}}i:6;a:8:{s:5:\"title\";s:12:\"创建时间\";s:4:\"name\";s:10:\"createTime\";s:4:\"type\";s:4:\"text\";s:6:\"option\";s:0:\"\";s:7:\"default\";s:0:\"\";s:6:\"search\";s:1:\"1\";s:11:\"search_type\";s:4:\"text\";s:8:\"validate\";a:3:{s:8:\"datatype\";s:0:\"\";s:7:\"nullmsg\";s:0:\"\";s:8:\"errormsg\";s:0:\"\";}}i:7;a:8:{s:5:\"title\";s:12:\"支付状态\";s:4:\"name\";s:7:\"payType\";s:4:\"type\";s:4:\"text\";s:6:\"option\";s:0:\"\";s:7:\"default\";s:0:\"\";s:6:\"search\";s:1:\"1\";s:11:\"search_type\";s:4:\"text\";s:8:\"validate\";a:3:{s:8:\"datatype\";s:0:\"\";s:7:\"nullmsg\";s:0:\"\";s:8:\"errormsg\";s:0:\"\";}}i:8;a:8:{s:5:\"title\";s:12:\"订单状态\";s:4:\"name\";s:9:\"orderType\";s:4:\"type\";s:4:\"text\";s:6:\"option\";s:0:\"\";s:7:\"default\";s:0:\"\";s:6:\"search\";s:1:\"1\";s:11:\"search_type\";s:4:\"text\";s:8:\"validate\";a:3:{s:8:\"datatype\";s:0:\"\";s:7:\"nullmsg\";s:0:\"\";s:8:\"errormsg\";s:0:\"\";}}i:9;a:7:{s:5:\"title\";s:12:\"快递单号\";s:4:\"name\";s:4:\"kdNo\";s:4:\"type\";s:4:\"text\";s:6:\"option\";s:0:\"\";s:7:\"default\";s:0:\"\";s:11:\"search_type\";s:4:\"text\";s:8:\"validate\";a:3:{s:8:\"datatype\";s:0:\"\";s:7:\"nullmsg\";s:0:\"\";s:8:\"errormsg\";s:0:\"\";}}i:10;a:7:{s:5:\"title\";s:12:\"用户备注\";s:4:\"name\";s:7:\"remarks\";s:4:\"type\";s:4:\"text\";s:6:\"option\";s:0:\"\";s:7:\"default\";s:0:\"\";s:11:\"search_type\";s:4:\"text\";s:8:\"validate\";a:3:{s:8:\"datatype\";s:0:\"\";s:7:\"nullmsg\";s:0:\"\";s:8:\"errormsg\";s:0:\"\";}}i:11;a:7:{s:5:\"title\";s:12:\"发货时间\";s:4:\"name\";s:6:\"kdTime\";s:4:\"type\";s:4:\"text\";s:6:\"option\";s:0:\"\";s:7:\"default\";s:0:\"\";s:11:\"search_type\";s:4:\"text\";s:8:\"validate\";a:3:{s:8:\"datatype\";s:0:\"\";s:7:\"nullmsg\";s:0:\"\";s:8:\"errormsg\";s:0:\"\";}}}}', 1577692085);
+INSERT INTO `tp_web_log_all` VALUES (1412, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692086);
+INSERT INTO `tp_web_log_all` VALUES (1413, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/admin_node/index.html', 'admin', 'AdminNode', 'index', 'GET', 'a:0:{}', 1577692094);
+INSERT INTO `tp_web_log_all` VALUES (1414, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/admin_node/index', 'admin', 'AdminNode', 'index', 'POST', 'a:2:{s:4:\"type\";s:5:\"group\";s:9:\"module_id\";s:1:\"1\";}', 1577692094);
+INSERT INTO `tp_web_log_all` VALUES (1415, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/admin_node/index', 'admin', 'AdminNode', 'index', 'POST', 'a:3:{s:4:\"type\";s:4:\"node\";s:9:\"module_id\";s:1:\"1\";s:8:\"group_id\";s:1:\"1\";}', 1577692094);
+INSERT INTO `tp_web_log_all` VALUES (1416, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/admin_node/add?pid=1', 'admin', 'AdminNode', 'add', 'GET', 'a:1:{s:3:\"pid\";s:1:\"1\";}', 1577692096);
+INSERT INTO `tp_web_log_all` VALUES (1417, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/admin_group/index.html', 'admin', 'AdminGroup', 'index', 'GET', 'a:0:{}', 1577692101);
+INSERT INTO `tp_web_log_all` VALUES (1418, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/admin_group/add.html', 'admin', 'AdminGroup', 'add', 'GET', 'a:0:{}', 1577692103);
+INSERT INTO `tp_web_log_all` VALUES (1419, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/admin_group/add.html', 'admin', 'AdminGroup', 'add', 'POST', 'a:6:{s:2:\"id\";s:0:\"\";s:4:\"name\";s:12:\"订单管理\";s:4:\"icon\";s:12:\"&amp;#xe667;\";s:4:\"sort\";s:1:\"6\";s:6:\"status\";s:1:\"1\";s:6:\"remark\";s:0:\"\";}', 1577692132);
+INSERT INTO `tp_web_log_all` VALUES (1420, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/admin_group/index.html', 'admin', 'AdminGroup', 'index', 'GET', 'a:0:{}', 1577692132);
+INSERT INTO `tp_web_log_all` VALUES (1421, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/index/index.html', 'admin', 'Index', 'index', 'GET', 'a:0:{}', 1577692135);
+INSERT INTO `tp_web_log_all` VALUES (1422, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/index/welcome.html', 'admin', 'Index', 'welcome', 'GET', 'a:0:{}', 1577692135);
+INSERT INTO `tp_web_log_all` VALUES (1423, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/index/index.html', 'admin', 'Index', 'index', 'GET', 'a:0:{}', 1577692137);
+INSERT INTO `tp_web_log_all` VALUES (1424, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/index/welcome.html', 'admin', 'Index', 'welcome', 'GET', 'a:0:{}', 1577692137);
+INSERT INTO `tp_web_log_all` VALUES (1425, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/admin_node/index.html', 'admin', 'AdminNode', 'index', 'GET', 'a:0:{}', 1577692140);
+INSERT INTO `tp_web_log_all` VALUES (1426, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/admin_node/index', 'admin', 'AdminNode', 'index', 'POST', 'a:2:{s:4:\"type\";s:5:\"group\";s:9:\"module_id\";s:1:\"1\";}', 1577692140);
+INSERT INTO `tp_web_log_all` VALUES (1427, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/admin_node/index', 'admin', 'AdminNode', 'index', 'POST', 'a:3:{s:4:\"type\";s:4:\"node\";s:9:\"module_id\";s:1:\"1\";s:8:\"group_id\";s:1:\"1\";}', 1577692140);
+INSERT INTO `tp_web_log_all` VALUES (1428, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/admin_node/add?pid=1', 'admin', 'AdminNode', 'add', 'GET', 'a:1:{s:3:\"pid\";s:1:\"1\";}', 1577692141);
+INSERT INTO `tp_web_log_all` VALUES (1429, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/admin_node/add', 'admin', 'AdminNode', 'add', 'POST', 'a:9:{s:2:\"id\";s:0:\"\";s:3:\"pid\";s:1:\"1\";s:5:\"level\";s:1:\"2\";s:8:\"group_id\";s:1:\"6\";s:5:\"title\";s:12:\"订单列表\";s:4:\"name\";s:5:\"Order\";s:4:\"type\";s:1:\"1\";s:4:\"sort\";s:1:\"1\";s:6:\"status\";s:1:\"1\";}', 1577692168);
+INSERT INTO `tp_web_log_all` VALUES (1430, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/admin_node/index.html', 'admin', 'AdminNode', 'index', 'GET', 'a:0:{}', 1577692168);
+INSERT INTO `tp_web_log_all` VALUES (1431, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/admin_node/index', 'admin', 'AdminNode', 'index', 'POST', 'a:2:{s:4:\"type\";s:5:\"group\";s:9:\"module_id\";s:1:\"1\";}', 1577692168);
+INSERT INTO `tp_web_log_all` VALUES (1432, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/admin_node/index', 'admin', 'AdminNode', 'index', 'POST', 'a:3:{s:4:\"type\";s:4:\"node\";s:9:\"module_id\";s:1:\"1\";s:8:\"group_id\";s:1:\"1\";}', 1577692168);
+INSERT INTO `tp_web_log_all` VALUES (1433, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/index/index.html', 'admin', 'Index', 'index', 'GET', 'a:0:{}', 1577692170);
+INSERT INTO `tp_web_log_all` VALUES (1434, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/index/welcome.html', 'admin', 'Index', 'welcome', 'GET', 'a:0:{}', 1577692170);
+INSERT INTO `tp_web_log_all` VALUES (1435, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692172);
+INSERT INTO `tp_web_log_all` VALUES (1436, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692395);
+INSERT INTO `tp_web_log_all` VALUES (1437, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692640);
+INSERT INTO `tp_web_log_all` VALUES (1438, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692658);
+INSERT INTO `tp_web_log_all` VALUES (1439, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692825);
+INSERT INTO `tp_web_log_all` VALUES (1440, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692848);
+INSERT INTO `tp_web_log_all` VALUES (1441, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692856);
+INSERT INTO `tp_web_log_all` VALUES (1442, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692856);
+INSERT INTO `tp_web_log_all` VALUES (1443, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692901);
+INSERT INTO `tp_web_log_all` VALUES (1444, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692902);
+INSERT INTO `tp_web_log_all` VALUES (1445, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692911);
+INSERT INTO `tp_web_log_all` VALUES (1446, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692912);
+INSERT INTO `tp_web_log_all` VALUES (1447, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692912);
+INSERT INTO `tp_web_log_all` VALUES (1448, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692912);
+INSERT INTO `tp_web_log_all` VALUES (1449, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692913);
+INSERT INTO `tp_web_log_all` VALUES (1450, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692913);
+INSERT INTO `tp_web_log_all` VALUES (1451, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692913);
+INSERT INTO `tp_web_log_all` VALUES (1452, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/index/index.html', 'admin', 'Index', 'index', 'GET', 'a:0:{}', 1577692932);
+INSERT INTO `tp_web_log_all` VALUES (1453, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/index/welcome.html', 'admin', 'Index', 'welcome', 'GET', 'a:0:{}', 1577692932);
+INSERT INTO `tp_web_log_all` VALUES (1454, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/index/index.html', 'admin', 'Index', 'index', 'GET', 'a:0:{}', 1577692933);
+INSERT INTO `tp_web_log_all` VALUES (1455, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/index/welcome.html', 'admin', 'Index', 'welcome', 'GET', 'a:0:{}', 1577692933);
+INSERT INTO `tp_web_log_all` VALUES (1456, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692934);
+INSERT INTO `tp_web_log_all` VALUES (1457, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/edit/id/19.html', 'admin', 'Order', 'edit', 'GET', 'a:1:{s:2:\"id\";s:2:\"19\";}', 1577692937);
+INSERT INTO `tp_web_log_all` VALUES (1458, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692985);
+INSERT INTO `tp_web_log_all` VALUES (1459, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692985);
+INSERT INTO `tp_web_log_all` VALUES (1460, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692986);
+INSERT INTO `tp_web_log_all` VALUES (1461, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692986);
+INSERT INTO `tp_web_log_all` VALUES (1462, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692987);
+INSERT INTO `tp_web_log_all` VALUES (1463, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577692988);
+INSERT INTO `tp_web_log_all` VALUES (1464, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/edit/id/19.html', 'admin', 'Order', 'edit', 'GET', 'a:1:{s:2:\"id\";s:2:\"19\";}', 1577692991);
+INSERT INTO `tp_web_log_all` VALUES (1465, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/edit/id/19.html', 'admin', 'Order', 'edit', 'GET', 'a:1:{s:2:\"id\";s:2:\"19\";}', 1577693079);
+INSERT INTO `tp_web_log_all` VALUES (1466, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/edit/id/19.html', 'admin', 'Order', 'edit', 'GET', 'a:1:{s:2:\"id\";s:2:\"19\";}', 1577693134);
+INSERT INTO `tp_web_log_all` VALUES (1467, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577693185);
+INSERT INTO `tp_web_log_all` VALUES (1468, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/edit/id/19.html', 'admin', 'Order', 'edit', 'GET', 'a:1:{s:2:\"id\";s:2:\"19\";}', 1577693189);
+INSERT INTO `tp_web_log_all` VALUES (1469, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577693322);
+INSERT INTO `tp_web_log_all` VALUES (1470, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577693344);
+INSERT INTO `tp_web_log_all` VALUES (1471, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577693392);
+INSERT INTO `tp_web_log_all` VALUES (1472, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577693405);
+INSERT INTO `tp_web_log_all` VALUES (1473, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/edit/id/19.html', 'admin', 'Order', 'edit', 'GET', 'a:1:{s:2:\"id\";s:2:\"19\";}', 1577693406);
+INSERT INTO `tp_web_log_all` VALUES (1474, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577693511);
+INSERT INTO `tp_web_log_all` VALUES (1475, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/edit/id/19.html', 'admin', 'Order', 'edit', 'GET', 'a:1:{s:2:\"id\";s:2:\"19\";}', 1577693513);
+INSERT INTO `tp_web_log_all` VALUES (1476, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577693618);
+INSERT INTO `tp_web_log_all` VALUES (1477, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/index.html', 'admin', 'Order', 'index', 'GET', 'a:0:{}', 1577693647);
+INSERT INTO `tp_web_log_all` VALUES (1478, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/edit/id/17.html', 'admin', 'Order', 'edit', 'GET', 'a:1:{s:2:\"id\";s:2:\"17\";}', 1577693648);
+INSERT INTO `tp_web_log_all` VALUES (1479, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/edit/id/14.html', 'admin', 'Order', 'edit', 'GET', 'a:1:{s:2:\"id\";s:2:\"14\";}', 1577693654);
+INSERT INTO `tp_web_log_all` VALUES (1480, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/edit/id/15.html', 'admin', 'Order', 'edit', 'GET', 'a:1:{s:2:\"id\";s:2:\"15\";}', 1577693657);
+INSERT INTO `tp_web_log_all` VALUES (1481, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/edit/id/17.html', 'admin', 'Order', 'edit', 'GET', 'a:1:{s:2:\"id\";s:2:\"17\";}', 1577693663);
+INSERT INTO `tp_web_log_all` VALUES (1482, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/edit/id/17.html', 'admin', 'Order', 'edit', 'GET', 'a:1:{s:2:\"id\";s:2:\"17\";}', 1577693735);
+INSERT INTO `tp_web_log_all` VALUES (1483, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/edit/id/17.html', 'admin', 'Order', 'edit', 'GET', 'a:1:{s:2:\"id\";s:2:\"17\";}', 1577693735);
+INSERT INTO `tp_web_log_all` VALUES (1484, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/edit/id/17.html', 'admin', 'Order', 'edit', 'GET', 'a:1:{s:2:\"id\";s:2:\"17\";}', 1577693735);
+INSERT INTO `tp_web_log_all` VALUES (1485, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/edit/id/17.html', 'admin', 'Order', 'edit', 'GET', 'a:1:{s:2:\"id\";s:2:\"17\";}', 1577693736);
+INSERT INTO `tp_web_log_all` VALUES (1486, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/edit/id/17.html', 'admin', 'Order', 'edit', 'GET', 'a:1:{s:2:\"id\";s:2:\"17\";}', 1577693776);
+INSERT INTO `tp_web_log_all` VALUES (1487, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/edit/id/17.html', 'admin', 'Order', 'edit', 'GET', 'a:1:{s:2:\"id\";s:2:\"17\";}', 1577693777);
+INSERT INTO `tp_web_log_all` VALUES (1488, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/edit/id/17.html', 'admin', 'Order', 'edit', 'GET', 'a:1:{s:2:\"id\";s:2:\"17\";}', 1577693777);
+INSERT INTO `tp_web_log_all` VALUES (1489, 1, '127.0.0.1', '本机地址 本机地址  ', 'Windows 10', 'Chrome(77.0.3865.90)', 'http://shop.vip/public/index.php/admin/order/edit/id/17.html', 'admin', 'Order', 'edit', 'GET', 'a:1:{s:2:\"id\";s:2:\"17\";}', 1577693795);
 
 SET FOREIGN_KEY_CHECKS = 1;

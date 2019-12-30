@@ -24,14 +24,13 @@ function tab($step = 1, $string = ' ', $size = 4)
 }
 
 
-
 /**
  * 判断是否为空值
  *
  * @param string $value
  * @return bool
  */
-function isEmpty(string $value=''):bool
+function isEmpty(string $value = ''): bool
 {
     if (!isset($value)) {
         return true;
@@ -44,24 +43,27 @@ function isEmpty(string $value=''):bool
     }
     return false;
 }
+
 /**
  * 获取字符串的长度
  *
  * @param  string $value
  * @return int
  */
-function strLength(string $value):int
+function strLength(string $value): int
 {
     return mb_strlen($value);
 }
+
 /**
  * 返回json数组
  * @param int $status
  * @param String $msg
  * @return \think\response\Json
  */
-function return_json(int $status=0,String $msg='',String $url='',array $data=[]){
-    return json(array('status'=>$status,'msg'=>$msg,'url'=>$url,'data'=>$data));
+function return_json(int $status = 0, String $msg = '', String $url = '', array $data = [])
+{
+    return json(array('status' => $status, 'msg' => $msg, 'url' => $url, 'data' => $data));
 }
 
 
@@ -72,10 +74,10 @@ function return_json(int $status=0,String $msg='',String $url='',array $data=[])
  * @throws \think\db\exception\ModelNotFoundException
  * @throws \think\exception\DbException
  */
-function AuthUser(String $username):bool
+function AuthUser(String $username): bool
 {
-    $user = Db('user')->where(array('username'=>$username))->find();
-    if($user){
+    $user = Db('user')->where(array('username' => $username))->find();
+    if ($user) {
         return false;
     }
 
@@ -90,9 +92,9 @@ function AuthUser(String $username):bool
  * @param string $secret
  * @return string
  */
-function _pass(string $str ,string $type = 'sha1' ,string $secret = 'HELLO_DIS'):string
+function _pass(string $str, string $type = 'sha1', string $secret = 'HELLO_DIS'): string
 {
-    return strtoupper(hash($type ,sha1($str . $secret)));
+    return strtoupper(hash($type, sha1($str . $secret)));
 }
 
 function test()
@@ -108,7 +110,7 @@ function test()
  * @param string $key
  * @return bool
  */
-function checkIsSet2Empty(array $arr = [] ,string $key):bool
+function checkIsSet2Empty(array $arr = [], string $key): bool
 {
     if (isset($arr[$key])) {
         if (is_array($arr[$key])) {
@@ -131,9 +133,9 @@ function checkIsSet2Empty(array $arr = [] ,string $key):bool
  * @param string $modelName
  * @return object
  */
-function getModel(string $modelName):object
+function getModel(string $modelName): object
 {
-    if (false !== strpos($modelName ,'\\')) {
+    if (false !== strpos($modelName, '\\')) {
         // 指定模型类
         $db = new $modelName;
     } else {
@@ -151,9 +153,9 @@ function getModel(string $modelName):object
  * @param string $prefix
  * @return string
  */
-function getRandom(string $prefix = ''):string
+function getRandom(string $prefix = ''): string
 {
-    return $prefix . base_convert(time() * 1000 ,10 ,36) . "_" . base_convert(microtime() ,10 ,36) . uniqid();
+    return $prefix . base_convert(time() * 1000, 10, 36) . "_" . base_convert(microtime(), 10, 36) . uniqid();
 }
 
 /**
@@ -162,12 +164,12 @@ function getRandom(string $prefix = ''):string
  * @param int $length
  * @return string
  */
-function getUuid(int $length = 16):string
+function getUuid(int $length = 16): string
 {
     mt_srand((double)microtime() * 10000);
-    $uuid = sprintf('%04X%04X-%04X-%04X-%04X-%04X%04X%04X' ,mt_rand(0 ,65535) ,mt_rand(0 ,65535) ,mt_rand(0 ,65535) ,mt_rand(16384 ,20479) ,mt_rand(32768 ,49151) ,mt_rand(0 ,65535) ,mt_rand(0 ,65535) ,mt_rand(0 ,65535));
+    $uuid = sprintf('%04X%04X-%04X-%04X-%04X-%04X%04X%04X', mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(16384, 20479), mt_rand(32768, 49151), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535));
     $str = base64_encode($uuid);
-    return substr($str ,mt_rand(0 ,strlen($str) - $length) ,$length);
+    return substr($str, mt_rand(0, strlen($str) - $length), $length);
 }
 
 /**
@@ -177,13 +179,13 @@ function getUuid(int $length = 16):string
  * @param  string $delimiter 数字和单位分隔符
  * @return string            格式化后的带单位的大小
  */
-function getFormatBytes(float $size ,string $delimiter = ''):string
+function getFormatBytes(float $size, string $delimiter = ''): string
 {
-    $units = ['B' ,'KB' ,'MB' ,'GB' ,'TB' ,'PB'];
-    for ($i = 0 ; $size >= 1024 && $i < 5 ; $i++) {
+    $units = ['B', 'KB', 'MB', 'GB', 'TB', 'PB'];
+    for ($i = 0; $size >= 1024 && $i < 5; $i++) {
         $size /= 1024;
     }
-    return round($size ,2) . $delimiter . $units[$i];
+    return round($size, 2) . $delimiter . $units[$i];
 }
 
 /**
@@ -193,11 +195,11 @@ function getFormatBytes(float $size ,string $delimiter = ''):string
  * @param int $month
  * @return int
  */
-function getDayNum(int $year = 0 ,int $month = 0):int
+function getDayNum(int $year = 0, int $month = 0): int
 {
     $year = ($year == 0) ? (int)date('Y') : (int)$year;
     $month = ($month == 0) ? (int)date('m') : (int)$month;
-    return (in_array($month ,[1 ,3 ,5 ,7 ,8 ,10 ,12])) ? 31 : ((2 == $month) ? ((0 === $year % 4) ? 29 : 28) : 30);
+    return (in_array($month, [1, 3, 5, 7, 8, 10, 12])) ? 31 : ((2 == $month) ? ((0 === $year % 4) ? 29 : 28) : 30);
 }
 
 /**
@@ -206,26 +208,26 @@ function getDayNum(int $year = 0 ,int $month = 0):int
  * @param $str
  * @return array|string
  */
-function getInputType(string $str):array
+function getInputType(string $str): array
 {
-    $output = ['type' => 8 ,'status' => 'undefined'];
-    $zhCN = preg_match('/[' . chr(0xa1) . '-' . chr(0xff) . ']/' ,$str);
-    $int = preg_match('/[0-9]/' ,$str);
-    $english = preg_match('/[a-zA-Z]/' ,$str);
+    $output = ['type' => 8, 'status' => 'undefined'];
+    $zhCN = preg_match('/[' . chr(0xa1) . '-' . chr(0xff) . ']/', $str);
+    $int = preg_match('/[0-9]/', $str);
+    $english = preg_match('/[a-zA-Z]/', $str);
     if ($zhCN && $int && $english) {
-        $output = ['type' => 1 ,'status' => '中文+数字+英文'];
+        $output = ['type' => 1, 'status' => '中文+数字+英文'];
     } elseif ($zhCN && $int && !$english) {
-        $output = ['type' => 2 ,'status' => '中文+数字'];
+        $output = ['type' => 2, 'status' => '中文+数字'];
     } elseif ($zhCN && !$int && $english) {
-        $output = ['type' => 3 ,'status' => '中文+英文'];
+        $output = ['type' => 3, 'status' => '中文+英文'];
     } elseif (!$zhCN && $int && $english) {
-        $output = ['type' => 4 ,'status' => '英文+数字'];
+        $output = ['type' => 4, 'status' => '英文+数字'];
     } elseif ($zhCN && !$int && !$english) {
-        $output = ['type' => 5 ,'status' => '中文'];
+        $output = ['type' => 5, 'status' => '中文'];
     } elseif (!$zhCN && $int && !$english) {
-        $output = ['type' => 6 ,'status' => '数字'];
+        $output = ['type' => 6, 'status' => '数字'];
     } elseif (!$zhCN && !$int && $english) {
-        $output = ['type' => 7 ,'status' => '英文'];
+        $output = ['type' => 7, 'status' => '英文'];
     }
     return $output;
 }
@@ -237,7 +239,7 @@ function getInputType(string $str):array
  * @param bool $adv 是否进行高级模式获取（有可能被伪装）
  * @return string
  */
-function getClientIp(int $type = 0 ,bool $adv = false):string
+function getClientIp(int $type = 0, bool $adv = false): string
 {
     $type = $type ? 1 : 0;
     static $ip = null;
@@ -246,8 +248,8 @@ function getClientIp(int $type = 0 ,bool $adv = false):string
     }
     if ($adv) {
         if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-            $arr = explode(',' ,$_SERVER['HTTP_X_FORWARDED_FOR']);
-            $pos = array_search('unknown' ,$arr);
+            $arr = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
+            $pos = array_search('unknown', $arr);
             if (false !== $pos) {
                 unset($arr[$pos]);
             }
@@ -262,8 +264,8 @@ function getClientIp(int $type = 0 ,bool $adv = false):string
         $ip = $_SERVER['REMOTE_ADDR'];
     }
     // IP地址合法验证
-    $long = sprintf("%u" ,ip2long($ip));
-    $ip = $long ? array($ip ,$long) : array('0.0.0.0' ,0);
+    $long = sprintf("%u", ip2long($ip));
+    $ip = $long ? array($ip, $long) : array('0.0.0.0', 0);
     return $ip[$type];
 }
 
@@ -273,7 +275,7 @@ function getClientIp(int $type = 0 ,bool $adv = false):string
  * @param $image_file
  * @return string
  */
-function getImageBes64(string $image_file):string
+function getImageBes64(string $image_file): string
 {
     //读取图片文件，转换成base64编码格式
     $image_info = file_get_contents($image_file);
@@ -286,10 +288,10 @@ function getImageBes64(string $image_file):string
  *
  * @return string
  */
-function getPageURL():string
+function getPageURL(): string
 {
     $pageURL = 'http';
-    if (checkIsSet2Empty($_SERVER ,'HTTPS') && $_SERVER["HTTPS"] == "on") {
+    if (checkIsSet2Empty($_SERVER, 'HTTPS') && $_SERVER["HTTPS"] == "on") {
         $pageURL .= "s";
     }
     $pageURL .= "://";
@@ -306,10 +308,10 @@ function getPageURL():string
  *
  * @return string
  */
-function getDomain():string
+function getDomain(): string
 {
     $pageURL = 'http';
-    if (checkIsSet2Empty($_SERVER ,'HTTPS') && $_SERVER["HTTPS"] == "on") {
+    if (checkIsSet2Empty($_SERVER, 'HTTPS') && $_SERVER["HTTPS"] == "on") {
         $pageURL .= "s";
     }
     $pageURL .= "://";
@@ -326,7 +328,7 @@ function getDomain():string
  * @param string $ext
  * @return int
  */
-function setOrderNumber(string $ext = ''):string
+function setOrderNumber(string $ext = ''): string
 {
     return $ext . date('YmdHis') . random(5);
 }
@@ -338,10 +340,10 @@ function setOrderNumber(string $ext = ''):string
  * @param string $needles
  * @return bool
  */
-function strContains(string $haystack ,string $needles):bool
+function strContains(string $haystack, string $needles): bool
 {
     foreach ((array)$needles as $needle) {
-        if ('' != $needle && mb_strpos($haystack ,$needle) !== false) {
+        if ('' != $needle && mb_strpos($haystack, $needle) !== false) {
             return true;
         }
     }
@@ -356,9 +358,9 @@ function strContains(string $haystack ,string $needles):bool
  * @param string $test
  * @return bool
  */
-function strHaving(string $text = '' ,string $test = ''):bool
+function strHaving(string $text = '', string $test = ''): bool
 {
-    $check = explode($test ,$text);
+    $check = explode($test, $text);
     if (is_array($check)) {
         return true;
     } else {
@@ -373,10 +375,10 @@ function strHaving(string $text = '' ,string $test = ''):bool
  * @param string $needles
  * @return bool
  */
-function strEndsWith(string $haystack ,string $needles):bool
+function strEndsWith(string $haystack, string $needles): bool
 {
     foreach ((array)$needles as $needle) {
-        if ((string)$needle === strSubstr($haystack ,-strLength($needle))) {
+        if ((string)$needle === strSubstr($haystack, -strLength($needle))) {
             return true;
         }
     }
@@ -390,10 +392,10 @@ function strEndsWith(string $haystack ,string $needles):bool
  * @param string $needles
  * @return bool
  */
-function strStartsWith(string $haystack ,string $needles):bool
+function strStartsWith(string $haystack, string $needles): bool
 {
     foreach ((array)$needles as $needle) {
-        if ('' != $needle && mb_strpos($haystack ,$needle) === 0) {
+        if ('' != $needle && mb_strpos($haystack, $needle) === 0) {
             return true;
         }
     }
@@ -408,7 +410,7 @@ function strStartsWith(string $haystack ,string $needles):bool
  * @param string $addChars
  * @return string
  */
-function strRandom(int $length = 6 ,int $type = -1 ,string $addChars = ''):string
+function strRandom(int $length = 6, int $type = -1, string $addChars = ''): string
 {
     $str = '';
     switch ($type) {
@@ -416,7 +418,7 @@ function strRandom(int $length = 6 ,int $type = -1 ,string $addChars = ''):strin
             $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz' . $addChars;
             break;
         case 1:
-            $chars = str_repeat('0123456789' ,3);
+            $chars = str_repeat('0123456789', 3);
             break;
         case 2:
             $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' . $addChars;
@@ -432,14 +434,14 @@ function strRandom(int $length = 6 ,int $type = -1 ,string $addChars = ''):strin
             break;
     }
     if ($length > 10) {
-        $chars = $type == 1 ? str_repeat($chars ,$length) : str_repeat($chars ,5);
+        $chars = $type == 1 ? str_repeat($chars, $length) : str_repeat($chars, 5);
     }
     if ($type != 4) {
         $chars = str_shuffle($chars);
-        $str = substr($chars ,0 ,$length);
+        $str = substr($chars, 0, $length);
     } else {
-        for ($i = 0 ; $i < $length ; $i++) {
-            $str .= mb_substr($chars ,floor(mt_rand(0 ,mb_strlen($chars ,'utf-8') - 1)) ,1);
+        for ($i = 0; $i < $length; $i++) {
+            $str .= mb_substr($chars, floor(mt_rand(0, mb_strlen($chars, 'utf-8') - 1)), 1);
         }
     }
     return $str;
@@ -451,9 +453,9 @@ function strRandom(int $length = 6 ,int $type = -1 ,string $addChars = ''):strin
  * @param string $value
  * @return string
  */
-function strLower(string $value):string
+function strLower(string $value): string
 {
-    return mb_strtolower($value ,'UTF-8');
+    return mb_strtolower($value, 'UTF-8');
 }
 
 
@@ -463,11 +465,10 @@ function strLower(string $value):string
  * @param  string $value
  * @return string
  */
-function strUpper(string $value):string
+function strUpper(string $value): string
 {
-    return mb_strtoupper($value ,'UTF-8');
+    return mb_strtoupper($value, 'UTF-8');
 }
-
 
 
 /**
@@ -478,9 +479,9 @@ function strUpper(string $value):string
  * @param  int|null $length
  * @return string
  */
-function strSubstr(string $string ,int $start ,int $length = null):string
+function strSubstr(string $string, int $start, int $length = null): string
 {
-    return mb_substr($string ,$start ,$length ,'UTF-8');
+    return mb_substr($string, $start, $length, 'UTF-8');
 }
 
 /**
@@ -491,7 +492,7 @@ function strSubstr(string $string ,int $start ,int $length = null):string
  * @param string $suffix
  * @return string
  */
-function strMsubstr(string $sourcestr ,int $cutlength ,string $suffix = '...'):string
+function strMsubstr(string $sourcestr, int $cutlength, string $suffix = '...'): string
 {
     $str_length = strlen($sourcestr);
     if ($str_length <= $cutlength) {
@@ -535,8 +536,8 @@ function strMsubstr(string $sourcestr ,int $cutlength ,string $suffix = '...'):s
     if ($noc > $cutlength) {
         $n -= $i;
     }
-    $returnstr = substr($sourcestr ,0 ,$n);
-    if (substr($sourcestr ,$n ,6)) {
+    $returnstr = substr($sourcestr, 0, $n);
+    if (substr($sourcestr, $n, 6)) {
         $returnstr = $returnstr . $suffix; //超过长度时在尾处加上省略号
     }
     return $returnstr;
@@ -549,11 +550,11 @@ function strMsubstr(string $sourcestr ,int $cutlength ,string $suffix = '...'):s
  * @param  string $delimiter
  * @return string
  */
-function strSnake(string $value ,string $delimiter = '_'):string
+function strSnake(string $value, string $delimiter = '_'): string
 {
     if (!ctype_lower($value)) {
-        $value = preg_replace('/\s+/u' ,'' ,$value);
-        $value = strLower(preg_replace('/(.)(?=[A-Z])/u' ,'$1' . $delimiter ,$value));
+        $value = preg_replace('/\s+/u', '', $value);
+        $value = strLower(preg_replace('/(.)(?=[A-Z])/u', '$1' . $delimiter, $value));
     }
     return $value;
 }
@@ -564,7 +565,7 @@ function strSnake(string $value ,string $delimiter = '_'):string
  * @param  string $value
  * @return string
  */
-function strCamel(string $value):string
+function strCamel(string $value): string
 {
     return lcfirst(studly($value));
 }
@@ -575,10 +576,10 @@ function strCamel(string $value):string
  * @param  string $value
  * @return string
  */
-function strStudly(string $value):string
+function strStudly(string $value): string
 {
-    $value = ucwords(str_replace(['-' ,'_'] ,' ' ,$value));
-    return str_replace(' ' ,'' ,$value);
+    $value = ucwords(str_replace(['-', '_'], ' ', $value));
+    return str_replace(' ', '', $value);
 }
 
 /**
@@ -587,9 +588,9 @@ function strStudly(string $value):string
  * @param  string $value
  * @return string
  */
-function strTitle(string $value):string
+function strTitle(string $value): string
 {
-    return mb_convert_case($value ,MB_CASE_TITLE ,'UTF-8');
+    return mb_convert_case($value, MB_CASE_TITLE, 'UTF-8');
 }
 
 /**
@@ -601,9 +602,9 @@ function strTitle(string $value):string
  * @param int $length
  * @return string
  */
-function strReplace(string $string ,string $str = '****' ,int $start = 3 ,int $length = 4):string
+function strReplace(string $string, string $str = '****', int $start = 3, int $length = 4): string
 {
-    return substr_replace($string ,$str ,$start ,$length);
+    return substr_replace($string, $str, $start, $length);
 }
 
 /**
@@ -614,9 +615,9 @@ function strReplace(string $string ,string $str = '****' ,int $start = 3 ,int $l
  * @param string $str
  * @return string
  */
-function strPreg(string $pattern ,string $replacement ,string $str):string
+function strPreg(string $pattern, string $replacement, string $str): string
 {
-    return preg_replace($pattern ,$replacement ,$str);
+    return preg_replace($pattern, $replacement, $str);
 }
 
 /**
@@ -626,9 +627,9 @@ function strPreg(string $pattern ,string $replacement ,string $str):string
  * @param int $len
  * @return string
  */
-function strAddExt(string $str ,int $len):string
+function strAddExt(string $str, int $len): string
 {
-    return sprintf("%0" . $len . "d" ,$str);
+    return sprintf("%0" . $len . "d", $str);
 }
 
 /**
@@ -638,9 +639,9 @@ function strAddExt(string $str ,int $len):string
  * @param int $len
  * @return string
  */
-function initPirce(string $val ,int $len = 2):string
+function initPirce(string $val, int $len = 2): string
 {
-    return sprintf("%." . $len . "f" ,$val);
+    return sprintf("%." . $len . "f", $val);
 }
 
 /**
@@ -652,30 +653,30 @@ function initPirce(string $val ,int $len = 2):string
  * @param int $len
  * @return string
  */
-function calc(string $left = '101' ,string $right = '50' ,string $type = '%' ,int $len = 2):string
+function calc(string $left = '101', string $right = '50', string $type = '%', int $len = 2): string
 {
     bcscale($len);
     switch ($type) {
         case '+':
-            return bcadd($left ,$right); #bcadd — 将两个高精度数字相加
+            return bcadd($left, $right); #bcadd — 将两个高精度数字相加
             break;
         case '-':
-            return bcsub($left ,$right); #bcsub — 将两个高精度数字相减
+            return bcsub($left, $right); #bcsub — 将两个高精度数字相减
             break;
         case '*':
-            return bcmul($left ,$right); #bcmul — 将两个高精度数字相乘
+            return bcmul($left, $right); #bcmul — 将两个高精度数字相乘
             break;
         case '/':
-            return bcdiv($left ,$right); #bcdiv — 将两个高精度数字相除
+            return bcdiv($left, $right); #bcdiv — 将两个高精度数字相除
             break;
         case '%':
-            return bcmod($left ,$right); #bcmod — 求高精度数字余数
+            return bcmod($left, $right); #bcmod — 求高精度数字余数
             break;
         case '^':
-            return bcpow($left ,$right); #bcpow — 求高精度数字乘方
+            return bcpow($left, $right); #bcpow — 求高精度数字乘方
             break;
         case 'size':
-            return bccomp($left ,$right);
+            return bccomp($left, $right);
             break;
         default:
             return $type;
@@ -690,7 +691,7 @@ function calc(string $left = '101' ,string $right = '50' ,string $type = '%' ,in
  * @param string $key
  * @return array
  */
-function arrResetByKey(array $arr ,string $key):array
+function arrResetByKey(array $arr, string $key): array
 {
     $re = [];
     foreach ($arr as $v) {
@@ -708,7 +709,7 @@ function arrResetByKey(array $arr ,string $key):array
  *                       asc正向排序 desc逆向排序 nat自然排序
  * @return array
  */
-function arrSort(array $list ,string $field ,string $sortBy = 'asc'):array
+function arrSort(array $list, string $field, string $sortBy = 'asc'): array
 {
     if (is_array($list)) {
         $refer = $resultSet = [];
@@ -740,7 +741,7 @@ function arrSort(array $list ,string $field ,string $sortBy = 'asc'):array
  * @param array $arr
  * @return array
  */
-function arrDelEmpty(array $arr = []):array
+function arrDelEmpty(array $arr = []): array
 {
     foreach ($arr as $k => $v) {
         if (!is_array($v) && isEmpty($v)) {
@@ -757,7 +758,7 @@ function arrDelEmpty(array $arr = []):array
  * @param string $Ext
  * @return mixed
  */
-function fileRequire(string $filePath = '' ,string $Ext = '.php'):object
+function fileRequire(string $filePath = '', string $Ext = '.php'): object
 {
     if (isEmpty($filePath)) {
         return false;
@@ -772,7 +773,7 @@ function fileRequire(string $filePath = '' ,string $Ext = '.php'):object
  * @param string $Ext
  * @return mixed
  */
-function fileInclude(string $filePath = '' ,string $Ext = '.php'):object
+function fileInclude(string $filePath = '', string $Ext = '.php'): object
 {
     if (isEmpty($filePath)) {
         return false;
@@ -787,9 +788,9 @@ function fileInclude(string $filePath = '' ,string $Ext = '.php'):object
  * @param string $glue
  * @return string
  */
-function arr2str(array $arr = [] ,string $glue = ','):string
+function arr2str(array $arr = [], string $glue = ','): string
 {
-    return implode($glue ,$arr);
+    return implode($glue, $arr);
 }
 
 /**
@@ -798,9 +799,9 @@ function arr2str(array $arr = [] ,string $glue = ','):string
  * @param array $arr
  * @return string
  */
-function arr2json(array $arr = []):string
+function arr2json(array $arr = []): string
 {
-    return json_encode($arr ,true);
+    return json_encode($arr, true);
 }
 
 /**
@@ -809,7 +810,7 @@ function arr2json(array $arr = []):string
  * @param array $array
  * @return \stdClass
  */
-function arr2obj(array $array):\stdClass
+function arr2obj(array $array): \stdClass
 {
     if (is_array($array)) {
         $obj = new \StdClass();
@@ -829,17 +830,17 @@ function arr2obj(array $array):\stdClass
  * @param string $glue
  * @return array
  */
-function str2arr(string $str = '' ,string $glue = ','):array
+function str2arr(string $str = '', string $glue = ','): array
 {
     if (isEmpty($glue)) {
-        $length = mb_strlen($str ,'utf-8');
+        $length = mb_strlen($str, 'utf-8');
         $array = [];
-        for ($i = 0 ; $i < $length ; ++$i) {
-            $array[] = mb_substr($str ,$i ,1 ,'utf-8');
+        for ($i = 0; $i < $length; ++$i) {
+            $array[] = mb_substr($str, $i, 1, 'utf-8');
         }
         return $array;
     } else {
-        return explode($glue ,$str);
+        return explode($glue, $str);
     }
 }
 
@@ -850,9 +851,9 @@ function str2arr(string $str = '' ,string $glue = ','):array
  * @param string $glue
  * @return string
  */
-function str2json(string $str = '' ,string $glue = ','):string
+function str2json(string $str = '', string $glue = ','): string
 {
-    return arr2json(str2arr($str ,$glue));
+    return arr2json(str2arr($str, $glue));
 }
 
 /**
@@ -862,9 +863,9 @@ function str2json(string $str = '' ,string $glue = ','):string
  * @param string $glue
  * @return string
  */
-function str2xml(string $str = '' ,string $glue = ','):string
+function str2xml(string $str = '', string $glue = ','): string
 {
-    return arr2xml(str2arr($str ,$glue));
+    return arr2xml(str2arr($str, $glue));
 }
 
 /**
@@ -874,9 +875,9 @@ function str2xml(string $str = '' ,string $glue = ','):string
  * @param string $glue
  * @return string
  */
-function str2obj(string $str = '' ,string $glue = ','):\stdClass
+function str2obj(string $str = '', string $glue = ','): \stdClass
 {
-    return arr2obj(str2arr($str ,$glue));
+    return arr2obj(str2arr($str, $glue));
 }
 
 /**
@@ -886,9 +887,9 @@ function str2obj(string $str = '' ,string $glue = ','):\stdClass
  * @param string $glue
  * @return string
  */
-function json2str(string $json = '' ,string $glue = ','):string
+function json2str(string $json = '', string $glue = ','): string
 {
-    return arr2str(json2arr($json) ,$glue);
+    return arr2str(json2arr($json), $glue);
 }
 
 /**
@@ -897,9 +898,9 @@ function json2str(string $json = '' ,string $glue = ','):string
  * @param string $json
  * @return array
  */
-function json2arr(string $json = ''):array
+function json2arr(string $json = ''): array
 {
-    return json_decode($json ,true);
+    return json_decode($json, true);
 }
 
 /**
@@ -908,7 +909,7 @@ function json2arr(string $json = ''):array
  * @param string $json
  * @return string
  */
-function json2xml(string $json = ''):string
+function json2xml(string $json = ''): string
 {
     return arr2xml(json2arr($json));
 }
@@ -919,7 +920,7 @@ function json2xml(string $json = ''):string
  * @param string $json
  * @return \stdClass
  */
-function json2obj(string $json):\stdClass
+function json2obj(string $json): \stdClass
 {
     return arr2obj(json2arr($json));
 }
@@ -930,9 +931,9 @@ function json2obj(string $json):\stdClass
  * @param string $xml
  * @return array
  */
-function xml2arr(string $xml):array
+function xml2arr(string $xml): array
 {
-    return json_decode(json_encode(simplexml_load_string($xml ,'SimpleXMLElement' ,LIBXML_NOCDATA)) ,true);
+    return json_decode(json_encode(simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA)), true);
 }
 
 /**
@@ -941,9 +942,9 @@ function xml2arr(string $xml):array
  * @param string $xml
  * @return string
  */
-function xml2json(string $xml):string
+function xml2json(string $xml): string
 {
-    return json_encode(simplexml_load_string($xml ,'SimpleXMLElement' ,LIBXML_NOCDATA));
+    return json_encode(simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA));
 }
 
 /**
@@ -953,9 +954,9 @@ function xml2json(string $xml):string
  * @param string $glue
  * @return string
  */
-function xml2str(string $xml ,string $glue = ','):string
+function xml2str(string $xml, string $glue = ','): string
 {
-    return arr2str(xml2arr($xml) ,$glue);
+    return arr2str(xml2arr($xml), $glue);
 }
 
 /**
@@ -964,7 +965,7 @@ function xml2str(string $xml ,string $glue = ','):string
  * @param string $xml
  * @return \stdClass
  */
-function xml2obj(string $xml):\stdClass
+function xml2obj(string $xml): \stdClass
 {
     return arr2obj(xml2arr($xml));
 }
@@ -975,7 +976,7 @@ function xml2obj(string $xml):\stdClass
  * @param \stdClass $object
  * @return array
  */
-function obj2arr(\stdClass $object):array
+function obj2arr(\stdClass $object): array
 {
     if (is_object($object)) {
         foreach ($object as $key => $value) {
@@ -993,7 +994,7 @@ function obj2arr(\stdClass $object):array
  * @param \stdClass $object
  * @return string
  */
-function obj2json(\stdClass $object):string
+function obj2json(\stdClass $object): string
 {
     return arr2json(obj2arr($object));
 }
@@ -1004,7 +1005,7 @@ function obj2json(\stdClass $object):string
  * @param \stdClass $object
  * @return string
  */
-function obj2xml(\stdClass $object):string
+function obj2xml(\stdClass $object): string
 {
     return arr2xml(obj2arr($object));
 }
@@ -1016,9 +1017,9 @@ function obj2xml(\stdClass $object):string
  * @param string $glue
  * @return string
  */
-function obj2str(\stdClass $object ,string $glue = ','):string
+function obj2str(\stdClass $object, string $glue = ','): string
 {
-    return arr2str(obj2arr($object) ,$glue);
+    return arr2str(obj2arr($object), $glue);
 }
 
 /**
@@ -1028,11 +1029,11 @@ function obj2str(\stdClass $object ,string $glue = ','):string
  * @param string $format
  * @return string
  */
-function toDate(int $time = 0 ,string $format = 'Y-m-d H:i:s'):string
+function toDate(int $time = 0, string $format = 'Y-m-d H:i:s'): string
 {
     $time = ($time == 0) ? time() : $time;
-    $format = str_replace('#' ,':' ,$format);
-    return date($format ,$time);
+    $format = str_replace('#', ':', $format);
+    return date($format, $time);
 }
 
 /**
@@ -1041,7 +1042,7 @@ function toDate(int $time = 0 ,string $format = 'Y-m-d H:i:s'):string
  * @param string $time
  * @return int
  */
-function unDate(string $time = '0'):int
+function unDate(string $time = '0'): int
 {
     return ($time == 0) ? time() : strtotime($time);
 }
@@ -1052,9 +1053,9 @@ function unDate(string $time = '0'):int
  * @param $str
  * @return null|string|string[]
  */
-function __trim(string $str):string
+function __trim(string $str): string
 {
-    return preg_replace('# #' ,'' ,$str);
+    return preg_replace('# #', '', $str);
 }
 
 /**
@@ -1062,18 +1063,18 @@ function __trim(string $str):string
  *
  * @return string
  */
-function getOnlayUUID():string
+function getOnlayUUID(): string
 {
     return sprintf(
-        '%04x%04x-%04x-%04x-%04x-%04x%04x%04x' ,
-        mt_rand(0 ,0xffff) ,
-        mt_rand(0 ,0xffff) ,
-        mt_rand(0 ,0xffff) ,
-        mt_rand(0 ,0x0fff) | 0x4000 ,
-        mt_rand(0 ,0x3fff) | 0x8000 ,
-        mt_rand(0 ,0xffff) ,
-        mt_rand(0 ,0xffff) ,
-        mt_rand(0 ,0xffff)
+        '%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
+        mt_rand(0, 0xffff),
+        mt_rand(0, 0xffff),
+        mt_rand(0, 0xffff),
+        mt_rand(0, 0x0fff) | 0x4000,
+        mt_rand(0, 0x3fff) | 0x8000,
+        mt_rand(0, 0xffff),
+        mt_rand(0, 0xffff),
+        mt_rand(0, 0xffff)
     );
 }
 
@@ -1082,13 +1083,14 @@ function getOnlayUUID():string
  * @param array $data
  * @return \think\response\Json
  */
-function AuthUserParam(array $data=[]){
-    if(isEmpty($data['username'])){
-        return return_json(0,'用户名未填写!');
+function AuthUserParam(array $data = [])
+{
+    if (isEmpty($data['username'])) {
+        return return_json(0, '用户名未填写!');
     }
 
-    if(isEmpty($data['pass'])){
-        return  return_json(0,'密码未填写!');
+    if (isEmpty($data['pass'])) {
+        return return_json(0, '密码未填写!');
     }
 }
 
@@ -1100,37 +1102,98 @@ function AuthUserParam(array $data=[]){
  * @throws \think\db\exception\ModelNotFoundException
  * @throws \think\exception\DbException
  */
-function banner($posid){
-   return $list = Db('banner')->where(array('posid'=>$posid))->select();
+function banner($posid)
+{
+    return $list = Db('banner')->where(array('posid' => $posid))->select();
 }
 
-function getlist($Db,$id = 0){
-   $list = Db($Db)->select();
-   return $list;
+/**获取列表
+ * @param $Db
+ * @param int $id
+ * @return false|PDOStatement|string|\think\Collection
+ * @throws \think\db\exception\DataNotFoundException
+ * @throws \think\db\exception\DbException
+ * @throws \think\db\exception\ModelNotFoundException
+ * @throws \think\exception\DbException
+ */
+function getlist($Db, $id = 0)
+{
+    $list = Db($Db)->select();
+    return $list;
 }
 
-function getint($array = array()){
-    $str = implode(',',$array);
+function getint($array = array())
+{
+    $str = implode(',', $array);
     return $str;
 }
 
-
-function gettableval($DB,$name,$id){
+/**获取数组
+ * @param $DB
+ * @param $name
+ * @param $id
+ * @return mixed
+ */
+function gettableval($DB, $name, $id)
+{
     $map['id'] = $id;
     $val = Db($DB)->where($map)->value($name);
     return $val;
 }
 
-function getAttrKeyName($skuId = 0,$Db='goods_sku',$val='attr_symbol_path'){
+/**设置规格
+ * @param int $skuId
+ * @param string $Db
+ * @param string $val
+ * @return string
+ * @throws \think\db\exception\DataNotFoundException
+ * @throws \think\db\exception\DbException
+ * @throws \think\db\exception\ModelNotFoundException
+ * @throws \think\exception\DbException
+ */
+function getAttrKeyName($skuId = 0, $Db = 'goods_sku', $val = 'attr_symbol_path')
+{
     $map['id'] = $skuId;
     $str = Db($Db)->where(array())->value($val);
-    $str = explode(',',$str);
+    $str = explode(',', $str);
     $t = '';
-    foreach($str as $k=>$v){
-        $r = DB('attrVal')->where(array('id'=>$v))->find();
-        $attrkey = gettableval('attrKey','name',$r['attr_key_id']);
-        $t = $t.' '.$attrkey.':'.$r['name'];
+    foreach ($str as $k => $v) {
+        $r = DB('attrVal')->where(array('id' => $v))->find();
+        $attrkey = gettableval('attrKey', 'name', $r['attr_key_id']);
+        $t = $t . ' ' . $attrkey . ':' . $r['name'];
     }
-//    dump($t);
     return $t;
+}
+
+/**支付状态
+ * @param int $type
+ * @return string
+ */
+function authPay($type = 0)
+{
+    if ($type == 0) {
+        $r = '<span style="color:red">未支付</span>';
+    } else {
+        $r = '<span style="color:green">已支付</span>';
+
+    }
+    return $r;
+}
+
+function authOrder($payType, $orderType)
+{
+    if ($payType == 1) {
+        if ($orderType == 0) {
+            $r = '待发货';
+        } elseif ($orderType == 1) {
+            $r = '已发货';
+        } elseif ($orderType == 2) {
+            $r = '待评价';
+        } elseif ($orderType == 3) {
+            $r = '已完成';
+        }
+    } else {
+        $r = '--';
+    }
+    return $r;
 }

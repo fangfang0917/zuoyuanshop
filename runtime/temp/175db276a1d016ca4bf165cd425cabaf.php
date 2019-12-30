@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:72:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\user\addr.html";i:1577667750;s:76:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\template\base.html";i:1577412155;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:70:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\buy\pay.html";i:1577677308;s:76:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\template\base.html";i:1577412155;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -43,20 +43,86 @@
 
 <header class="mui-bar mui-bar-nav report-header box-s" id="header">
     <a href="javascript:history.go(-1)"><i class="iconfont icon-fanhui fl"></i></a>
-    <p>管理收货地址</p>
+    <p>提交订单</p>
 </header>
-<div id="main" class="mui-clearfix contaniner">
-<div class="listaddr"></div>
-
-    <a href="<?php echo url('user/addressadd'); ?>" class="address-add fl">
-        添加新地址
+<div id="main" class="mui-clearfix contaniner sorder">
+    <div class="warning clearfloat box-s">
+        提示：请在24小时内完成在线支付，逾期将视为订单无效
+    </div>
+    <div class="odernum clearfloat">
+        <ul>
+            <li>您的订单号：<?php echo $vo['orderNo']; ?></li>
+            <li>应付金额：<span id="price" dataPrice="<?php echo $vo['totalMoney']; ?>"><?php echo $vo['totalMoney']; ?></span></li>
+        </ul>
+    </div>
+    <div class="pay-method clearfloat">
+        <ul>
+            <li >可用积分:<span id="useInt" dataUseInt="<?php echo $user['amount']; ?>"><?php echo $user['amount']; ?></span> </li>
+        </ul>
+    </div>
+    <!--<div class="pay-method clearfloat">-->
+        <!--<ul>-->
+            <!--<li>请选择支付方式</li>-->
+        <!--</ul>-->
+    <!--</div>-->
+    <!--<div class="addlist clearfloat">-->
+        <!--<div class="bottom clearfloat box-s">-->
+            <!--<section class="shopcar clearfloat">-->
+                <!--<div class="radio radiosss fr">-->
+                    <!--<label>-->
+                        <!--<input type="radio" name="sex" value="">-->
+                        <!--<div class="option"></div>-->
+                    <!--</label>-->
+                <!--</div>-->
+                <!--<div class="sorder-list clearfloat fl">-->
+                    <!--<i class="iconfont icon-weixinzhifu fl"></i>-->
+                    <!--<div class="zuo fl">-->
+                        <!--<p class="tit">微信支付</p>-->
+                        <!--<p class="fu-tit">亿万用户的选择，更快更安全</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</section>-->
+        <!--</div>-->
+        <!--<div class="bottom clearfloat box-s">-->
+            <!--<section class="shopcar clearfloat">-->
+                <!--<div class="radio radiosss fr">-->
+                    <!--<label>-->
+                        <!--<input type="radio" name="sex" value="">-->
+                        <!--<div class="option"></div>-->
+                    <!--</label>-->
+                <!--</div>-->
+                <!--<div class="sorder-list clearfloat fl">-->
+                    <!--<i class="iconfont icon-zhifubao fl"></i>-->
+                    <!--<div class="zuo fl">-->
+                        <!--<p class="tit">支付宝</p>-->
+                        <!--<p class="fu-tit">客户端支持最便捷！可银行卡支付！</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</section>-->
+        <!--</div>-->
+        <!--<div class="bottom clearfloat box-s">-->
+            <!--<section class="shopcar clearfloat">-->
+                <!--<div class="radio fr">-->
+                    <!--<label>-->
+                        <!--<input type="radio" name="sex" value="">-->
+                        <!--<div class="option"></div>-->
+                    <!--</label>-->
+                <!--</div>-->
+                <!--<div class="sorder-list clearfloat fl">-->
+                    <!--<i class="iconfont icon-yinxingqia fl"></i>-->
+                    <!--<div class="zuo fl">-->
+                        <!--<p class="tit">银行卡</p>-->
+                        <!--<p class="fu-tit">需要先开通网银</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</section>-->
+        <!--</div>-->
+    <!--</div>-->
+    <a href="#" class="address-add fl" _paySucc>
+        确认支付
     </a>
 </div>
-
-
-<div id="getAddress" ajaxUrl="<?php echo $address; ?>"></div>
-<div id="editAddress" ajaxUrl="<?php echo $editAddress; ?>"></div>
-<div id="defUrl" ajaxUrl="<?php echo $defUrl; ?>"></div>
+<div id="paySuccUrl" ajaxUrl="<?php echo $paySuccUrl; ?>"></div>
 
 <!--footer star-->
 <?php if(!in_array($Controller,$NOTSHOWFOOTER)): ?>
@@ -108,7 +174,7 @@
 <script src="__STATIC__/js/dropload.js?v=<?php echo time(); ?>"></script>
 <!--插件end-->
 
-<script src="__STATIC__/js/addr.js?v=<?php echo time(); ?>"></script>
+<script src="__STATIC__/js/buy.js?v=<?php echo time(); ?>"></script>
 
 
 </html>

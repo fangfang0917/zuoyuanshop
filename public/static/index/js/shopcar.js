@@ -126,23 +126,19 @@ function deleteCart(even) {
 $('[_buyGoods]').click(function () {
     var totalprice =  $('#totalprice').text();
     var lencheck = $('[name=sex]:checked').length
-    var dataArr = new Array();
+    var dataArr = []        ;
     var url = $('#ajaxBuyUrl').attr('ajaxUrl');
     var Buyurl = $('#BuyUrl').attr('ajaxUrl');
     for(var i=0;i<lencheck;i++){
-        var arr = new Array();
-            arr.price = $('.list').eq(i).find('.jifen').text();
-            arr.num = $('.list').eq(i).find('.num').text();
-            arr.id = $('.list').eq(i).find('.goodsid').attr('data-goodsId');
-            arr.cartid = $('.list').eq(i).find('.cartid').attr('dataCartId');
-            dataArr.push(arr);
+        dataArr.push({price:$('.list').eq(i).find('.jifen').text(),num: $('.list').eq(i).find('.num').text(),
+            id:$('.list').eq(i).find('.goodsid').attr('data-goodsId'),cartid:$('.list').eq(i).find('.cartid').attr('dataCartId')})
     }
     var data = {totalprice:totalprice,data:dataArr}
     _ajax(url,data,function (e) {
-        console.log(e)
-        if(e.status == 1 ){
-            location.href = Buyurl;
-        }
-    })
+           console.log(e)
+           if(e.status == 1 ){
+               location.href = Buyurl;
+           }
+       })
 })
 

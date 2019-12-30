@@ -46,3 +46,43 @@ $('[_buy]').click(function () {
         }
     })
 })
+
+
+$('[_cartbuy]').click(function () {
+    var totalprice = $('#totalpice').attr('dataTotalPrice');
+    var totalnum = $('#totalnum').attr('dataTotalNum');
+    var url = $('#addOrderUrl').attr('ajaxUrl');
+    var remarks = $('[name=remarks]').val();
+    var data = {totalMoney:totalprice,totalNum:totalnum,remarks:remarks}
+    _ajax(url,data,function (e) {
+        console.log(e);
+        if(e.status == 1 ){
+            _msg({title:e.msg,time:1000},function () {
+                location.href = e.url;
+            })
+        }else{
+            _msg({title:e.msg,time:1000})
+        }
+    })
+
+})
+
+$('[_paySucc]').click(function () {
+    var useInt = parseInt($('#useInt').attr('dataUseInt'));
+    var price = parseInt($('#price').attr('dataPrice'));
+    var url= $('#paySuccUrl').attr('ajaxUrl');
+    if(price>useInt){
+        _msg({title:'余额不足!'})
+        return false;
+    }
+    _ajax(url,{price:price,useInt:useInt},function (e) {
+        console.log(e);
+        if(e.status ==1){
+             location.href = e.url;
+        }else{
+            _msg({title:e.msg,time:1000},function () {
+                location.reload();
+            })
+        }
+    })
+})

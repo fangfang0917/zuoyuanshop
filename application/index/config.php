@@ -26,12 +26,13 @@ return [
         'goods'=>10,
         'cart'=>10,
         'addr' =>10,
+        'order' =>10
     ],
     'ajaxUrl'=>[
         'index'=>url('index/index'),
         'user'=>url('user/index'),
         'login'=>url('login/index'),
-        'order'=>url('order/index'),
+        'order'=>url('order/getList'),
         'checklogin'=>url('login/checklogin'),
         'checkregister'=>url('register/checkregister'),
         'uppass' => url('user/uppass'),

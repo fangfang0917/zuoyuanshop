@@ -105,8 +105,10 @@ class User extends Base
 
     public function defSite(){
         $id = $this ->request->param('id');
-        Db('address')->update(array('type'=>0));
-        Db('address')->where(array('id'=>$id))->update(array('type'=>1));
+        $map['id'] = ['in',$id];
+        $mapp['id'] = ['not in',$id];
+        Db('address')->where($mapp)->update(array('type'=>0));
+        Db('address')->where($map)->update(array('type'=>1));
         return return_json(1,'设置成功');
     }
 }
