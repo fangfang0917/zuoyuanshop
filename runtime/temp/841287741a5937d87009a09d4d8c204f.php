@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:73:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\order\edit.html";i:1577693794;s:76:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\template\base.html";i:1576807343;s:87:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\template\javascript_vars.html";i:1488899632;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:73:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\order\edit.html";i:1577694546;s:76:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\template\base.html";i:1576807343;s:87:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\template\javascript_vars.html";i:1488899632;}*/ ?>
 ﻿<!DOCTYPE HTML>
 <html>
 <head>
@@ -113,7 +113,7 @@
         <div class="row cl">
             <label class="form-label col-xs-3 col-sm-3">发货时间：</label>
             <div class="formControls col-xs-6 col-sm-6">
-                <input type="text" class="input-text" placeholder="发货时间" readonly  name="kdTime" value="<?php echo isset($vo['kdTime']) ? $vo['kdTime'] :  '未发货'; ?>" >
+                <input type="text" class="input-text" placeholder="发货时间" readonly  name="kdTime" value="<?php echo isset($vo['kdTime']) ? $vo['kdTime'] :  ''; ?>" >
             </div>
             <div class="col-xs-3 col-sm-3"></div>
         </div>

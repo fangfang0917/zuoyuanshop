@@ -27,20 +27,20 @@ class Order extends Base
         if ($this->request->param('ordertype')) {
             $orderType = $this->request->param('ordertype');
             if ($orderType == 11) {
-                  $map['orderType'] =0;
-                  $map['payType'] =0;
+                $map['orderType'] = 0;
+                $map['payType'] = 0;
             } else if ($orderType == 12) {
-                  $map['payType'] =1;
-                  $map['orderType'] =0;
+                $map['payType'] = 1;
+                $map['orderType'] = 0;
             } else if ($orderType == 13) {
-                  $map['payType'] =1;
-                  $map['orderType'] =1;
+                $map['payType'] = 1;
+                $map['orderType'] = 1;
             } else if ($orderType == 14) {
-                  $map['payType'] =1;
-                  $map['orderType'] =2;
+                $map['payType'] = 1;
+                $map['orderType'] = 2;
             }
 
-      }
+        }
         $map['userId'] = Session::get("USERID");
         $num = Config::get('page_num')['order'];
         $list = Db('order')->where($map)->limit($page * $num, $page)->select();
@@ -67,6 +67,34 @@ class Order extends Base
             return return_json(1, '收货成功');
         } else {
             return return_json(0, '网络错误!请重试');
+        }
+    }
+
+    public function str()
+    {
+        $id = $this->request->param('id');
+        $list = Db('orderInfo')->alias('oi')->join('goods g', 'oi.goodsId = g.id')->where(array('orderId' => $id))
+            ->field(array('g.name', 'g.thumb', 'g.id'))->select();
+        $this->view->assign('list', $list);
+        return $this->view->fetch();
+    }
+
+    public function setgoodsComment()
+    {
+        $arr = $this->request->param();
+        dump($arr);
+        foreach ($arr as $k => $v) {
+            $data[$k]['userId'] = Session::get('USERID');
+            $data[$k]['createtime'] = time();
+            $data[$k]['goodsId'] =$v['goodsId'];
+            $data[$k]['content'] =$v['content'];
+        }
+
+        $r = Db('goodsComment')->insertAll($data);
+        if ($r) {
+            return return_json(1, '评论成功', url('order/index'));
+        } else {
+            return return_json(0, '网络错误!请重试', url('order/index'));
         }
     }
 }

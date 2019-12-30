@@ -38,7 +38,12 @@ class Order extends Controller
 
     public  function edit(){
         if($this ->request->isAjax()){
-
+            $data = $this->request->except(['id']);
+            $id = $this ->request->param('id');
+            $data['orderType'] = 1;
+            $data['kdTime'] = time();
+            db('order')->where(array('id'=>$id))->data($data)->update();
+            return ajax_return_adv('发货成功');
         }else{
             $id = $this ->request->param('id');
             $vo = Db('order')->where(array('id'=>$id))->find();

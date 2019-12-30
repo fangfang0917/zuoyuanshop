@@ -66,10 +66,10 @@ $(function () {
                                 var ButHtml = '';
                             }else if(list[i].orderType == 1) {
                                 var payhtml = '<span>已发货</span>';
-                                var ButHtml = '<a href="javascript:;" class="gopay-btn fr">查看物流</a><a href="javascript:;" class="gopay-btn fr" onclick="take(\'+list[i].id+\')">确认收货</a></div>';
+                                var ButHtml = '<a href="javascript:;" class="gopay-btn fr">查看物流</a><a href="javascript:;" class="gopay-btn fr" onclick="take('+list[i].id+')">确认收货</a></div>';
                             }else if(list[i].orderType == 2) {
                                 var payhtml = '<span>待评价</span>';
-                                var ButHtml = '<a href="javascript:;" class="gopay-btn fr">去评价</a></div>';
+                                var ButHtml = '<a href="javascript:;" onclick="str('+list[i].id+')" class="gopay-btn fr" >去评价</a></div>';
                             }
                         } else {
                             var payhtml = '<span>待付款</span>';
@@ -158,3 +158,9 @@ function qpay(id) {
     var url= $('#buyUrl').attr('ajaxUrl');
     location.href = url+'?id='+id;
 }
+
+function str(id) {
+    var url = $('#strUrl').attr('ajaxUrl');
+    location.href = url+'?id='+id;
+}
+

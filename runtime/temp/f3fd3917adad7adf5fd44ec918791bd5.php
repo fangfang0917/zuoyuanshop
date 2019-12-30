@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:74:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\order\index.html";i:1577691867;s:76:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\template\base.html";i:1577412155;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:74:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\order\index.html";i:1577697048;s:76:"D:\phpstudy_pro\WWW\shop\public/../application/index\view\template\base.html";i:1577412155;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -69,6 +69,7 @@
 </div>
 <div id="ajaxGetList" ajaxUrl="<?php echo $action; ?>"></div>
 <div id="buyUrl" ajaxUrl="<?php echo url('buy/pay'); ?>"></div>
+<div id="strUrl" ajaxUrl="<?php echo url('order/str'); ?>"></div>
 
 <!--footer star-->
 <?php if(!in_array($Controller,$NOTSHOWFOOTER)): ?>
