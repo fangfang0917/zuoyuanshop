@@ -2,21 +2,16 @@
 {block name='C'}
 <!--header star-->
 <header class="mui-bar mui-bar-nav" id="header">
-    <a class="btn" href="javascript:history.go(-1)">
+    <a class="btn slide-menu" href="{:url('index/index')}">
         <i class="iconfont icon-fanhui"></i>
     </a>
     <div class="top-sch-box flex-col">
         <div class="centerflex">
             <i class="fdj iconfont icon-sousuo"></i>
-            <input type="text" name="" id="" value="" reUrl="{:url('form/index')}" readonly class="sch-txt" placeholder="输入您要搜索的商品" _form/>
+            <input type="text" name="formForm" id="" value="" reUrl="{:url('form/index')}" class="sch-txt" placeholder="输入您要搜索的商品"/>
         </div>
     </div>
-    <a class="btn" href="#">
-        <i class="iconfont icon-gouwuche"></i>
-        <span>0</span>
-    </a>
 </header>
-<!--header end-->
 <div class="warp clearfloat">
     <div class="lists clearfloat">
         <!--<div class="top clearfloat">-->
@@ -29,12 +24,15 @@
         <div class="bottom clearfloat">
 
         </div>
+        <div class="empty"  style="text-align: center;padding: 3rem">
+            <img src="__STATIC__/img/kecheng.png" alt="" style="width: 100%">
+            <p>未匹配的课程</p>
+        </div>
     </div>
 </div>
-
-
-<div id="ajax-url" data-ajax-url="{:url('category/Getlist')}" data-ajax-id="{$id}" data-ajax-action="goods"></div>
+<!--header end-->
+<div id="form" ajaxUrl="{:url('form/getlist')}"></div>
 {/block}
 {block name='S'}
-<script src="__STATIC__/js/category.js?v={:time()}" type="text/javascript"></script>
+
 {/block}

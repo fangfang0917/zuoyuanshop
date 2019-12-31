@@ -63,13 +63,16 @@ $(function () {
                         if (list[i].payType == 1) {
                             if (list[i].orderType == 0) {
                                 var payhtml = '<span>待发货</span>';
-                                var ButHtml = '';
+                                var ButHtml = '</div>';
                             }else if(list[i].orderType == 1) {
                                 var payhtml = '<span>已发货</span>';
                                 var ButHtml = '<a href="javascript:;" class="gopay-btn fr">查看物流</a><a href="javascript:;" class="gopay-btn fr" onclick="take('+list[i].id+')">确认收货</a></div>';
                             }else if(list[i].orderType == 2) {
                                 var payhtml = '<span>待评价</span>';
                                 var ButHtml = '<a href="javascript:;" onclick="str('+list[i].id+')" class="gopay-btn fr" >去评价</a></div>';
+                            }else{
+                                var payhtml = '<span>已完成</span>';
+                                var ButHtml = '<a href="javascript:;" class="gopay-btn fr" >已完成</a></div>';
                             }
                         } else {
                             var payhtml = '<span>待付款</span>';

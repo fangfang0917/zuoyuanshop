@@ -2,5 +2,5 @@
 <td>{$vo.id|high_light=$Request.param.id}</td>
 <td>{$vo.username|high_light=$Request.param.username}</td>
 <td>{$vo.amount|high_light=$Request.param.amount}</td>
-<td>{$vo.lastlogintime}</td>
-<td>{$vo.createTime}</td>
+<td>{:date('Y-m-d H:i:s',$vo.lastlogintime)}</td>
+<td>{:date('Y-m-d H:i:s',$vo.createTime)}</td>

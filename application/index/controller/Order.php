@@ -76,14 +76,14 @@ class Order extends Base
         $list = Db('orderInfo')->alias('oi')->join('goods g', 'oi.goodsId = g.id')->where(array('orderId' => $id))
             ->field(array('g.name', 'g.thumb', 'g.id'))->select();
         $this->view->assign('list', $list);
+        $this->view->assign('orderId', $id);
         return $this->view->fetch();
     }
 
     public function setgoodsComment()
     {
         $arr = $this->request->param();
-        dump($arr);
-        foreach ($arr as $k => $v) {
+        foreach ($arr['data'] as $k => $v) {
             $data[$k]['userId'] = Session::get('USERID');
             $data[$k]['createtime'] = time();
             $data[$k]['goodsId'] =$v['goodsId'];
@@ -91,6 +91,7 @@ class Order extends Base
         }
 
         $r = Db('goodsComment')->insertAll($data);
+        db('order')->where(array('id'=>$arr['orderId']))->data(array('orderType'=>3))->update();
         if ($r) {
             return return_json(1, '评论成功', url('order/index'));
         } else {

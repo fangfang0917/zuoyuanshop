@@ -129,6 +129,10 @@ $('[_buyGoods]').click(function () {
     var dataArr = []        ;
     var url = $('#ajaxBuyUrl').attr('ajaxUrl');
     var Buyurl = $('#BuyUrl').attr('ajaxUrl');
+    if (lencheck < 1) {
+        _msg({title:'请选择商品',time:1000})
+        return false;
+    }
     for(var i=0;i<lencheck;i++){
         dataArr.push({price:$('.list').eq(i).find('.jifen').text(),num: $('.list').eq(i).find('.num').text(),
             id:$('.list').eq(i).find('.goodsid').attr('data-goodsId'),cartid:$('.list').eq(i).find('.cartid').attr('dataCartId')})

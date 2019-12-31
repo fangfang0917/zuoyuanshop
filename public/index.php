@@ -10,7 +10,8 @@
 // +----------------------------------------------------------------------
 
 // [ 应用入口文件 ]
-$getUrlPage = function () use ($_SERVER) {
+function getUrlPage()
+{
     $pageURL = 'http';
     // if ($_SERVER["HTTPS"] == "on") {
     //     $pageURL .= "s";
@@ -22,10 +23,10 @@ $getUrlPage = function () use ($_SERVER) {
         $pageURL .= $_SERVER["SERVER_NAME"];
     }
     return $pageURL;
-};
+}
 
-define('APP_HOSTS', $getUrlPage());
+define('APP_HOSTS' ,getUrlPage());
 // 定义应用目录
-define('APP_PATH', __DIR__ . '/../application/');
+define('APP_PATH' ,__DIR__ . '/../application/');
 // 加载框架引导文件
 require __DIR__ . '/../thinkphp/start.php';

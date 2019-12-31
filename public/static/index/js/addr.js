@@ -135,7 +135,7 @@ function def(id) {
     _ajax(url,data,function (e) {
         console.log(e);
         _msg({title:e.msg,time:1000},function () {
-            location.reload();
+            // location.reload();
         })
     })
 }

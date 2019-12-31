@@ -32,6 +32,7 @@ class Login extends Controller
            return return_json(0,'用户名或密码错误!');
        }
        session('USERID',$userInfo['id']);
+       Db('user')->where(array('id'=>$userInfo['id']))->data(array('lastlogintime'=>time()))->update();
        return  return_json(1,'登录成功!',Config::get('ajaxUrl')['index']);
     }
 }
