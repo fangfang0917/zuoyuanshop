@@ -1,8 +1,0 @@
-<td><input type="checkbox" name="id[]" value="{$vo.id}"></td>
-<td>{$vo.id}</td>
-<td>{:Img($vo.thumb,$vo.name)}</td>
-<td>{$vo.name|high_light=$Request.param.name}</td>
-<td>{:getName($vo.posid,'position') ?? '--'}</td>
-<td style="padding: 0">
-    <input type="number" name="sort[{$vo.id}]" value="{$vo.sort}" style="width: 60px;"
-        class="input-text text-c order-input" data-id="{$vo.id}"></td>
