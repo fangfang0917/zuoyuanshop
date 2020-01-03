@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>登录</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <script src="__STATIC__/js/rem.js?v={:time()}"></script>
+    <script src="__STATIC__/js/jquery.min.js?v={:time()}" type="text/javascript"></script>
+    <script src="__STATIC__/js/layer/2.4/layer.js?v={:time()}" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/css/base.css?v={:time()}"/>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/css/page.css?v={:time()}"/>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/css/all.css?v={:time()}"/>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/css/mui.min.css?v={:time()}"/>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/css/loaders.min.css?v={:time()}"/>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/css/loading.css?v={:time()}"/>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/slick/slick.css?v={:time()}"/>
+    {block name='ST'}
+    {/block}
+<script type="text/javascript">
+	$(window).load(function(){
+		$(".loading").addClass("loader-chanage")
+		$(".loading").fadeOut(300)
+	})
+</script>
+</head>
+<!--loading页开始-->
+<div class="loading">
+	<div class="loader">
+        <div class="loader-inner pacman">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+	</div>
+</div>
+<!--loading页结束-->
+
+{block name='C'}
+{/block}
+<!--footer star-->
+{if !in_array($Controller,$NOTSHOWFOOTER)}
+<footer class="page-footer fixed-footer" id="footer">
+    <ul>
+        <li {if $Controller == 'Index'}class="active" {/if}>
+            <a href="{:url('index/index')}">
+                <i class="iconfont icon-shouye"></i>
+                <p>首页</p>
+            </a>
+        </li>
+        <li {if $Controller == 'Category'}class="active" {/if}>
+
+        <a href="{:url('category/index')}">
+                <i class="iconfont icon-icon04"></i>
+                <p>分类</p>
+            </a>
+        </li>
+        <li {if $Controller == 'Shopcar'}class="active" {/if}>
+
+        <a href="{:url('cart/index')}">
+                <i class="iconfont icon-gouwuche"></i>
+                <p>购物车</p>
+            </a>
+        </li>
+        <li {if $Controller == 'User'}class="active" {/if}>
+
+        <a href="{:url('user/index')}">
+                <i class="iconfont icon-yonghuming"></i>
+                <p>我的</p>
+            </a>
+        </li>
+    </ul>
+</footer>
+{/if}
+<!--footer end-->
+</body>
+<script type="text/javascript" src="__STATIC__/js/jquery-1.8.3.min.js?v={:time()}" ></script>
+<!--<script src="__STATIC__/js/others.js?v={:time()}"></script>-->
+<script type="text/javascript" src="__STATIC__/js/hmt.js?v={:time()}" ></script>
+<script src="__STATIC__/slick/slick.js?v={:time()}" type="text/javascript" ></script>
+<script src="__STATIC__/js/comm.js?v={:time()}" type="text/javascript"></script>
+<!--插件start-->
+<!--swiper-->
+<link rel="stylesheet" href="__STATIC__/css/swiper.min.css?v={:time()}">
+<script src="__STATIC__/js/swiper.jquery.min.js?v={:time()}"></script>
+<!--下拉-->
+<link href="__STATIC__/css/dropload.css?v={:time()}" rel="stylesheet" type="text/css"/>
+<script src="__STATIC__/js/dropload.js?v={:time()}"></script>
+<!--插件end-->
+{block name='S'}
+{/block}
+
+</html>

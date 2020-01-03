@@ -1,0 +1,11 @@
+<!-- 侧边导航 -->
+<div class="slide-mask"></div>
+<aside class="slide-wrapper">
+    <div>
+        <ul>
+            {volist name=":getlist('GoodsClassify')" id='r'}
+               <li><a href="{:url('category/goodslist',array('id'=>$r['id']))}">{$r.name}</a></li>
+            {/volist}
+        </ul>
+    </div>
+</aside>

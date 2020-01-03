@@ -1,0 +1,123 @@
+{extend name="template/base" /}
+{block name='C'}
+<header class="mui-bar mui-bar-nav report-header box-s" id="header">
+    <a href="{:url('order/index')}"><i class="iconfont icon-fanhui fl"></i></a>
+    <p>收货评价</p>
+</header>
+<div id="main" class="mui-clearfix">
+    <div id="orderId" dataOrderId="{$orderId}"></div>
+    {volist name='list' id='r'}
+    <div class="assess clearfloat">
+        <div class="goodsId" dataGoodsId="{$r.id}"></div>
+        <div class="top clearfloat box-s">
+            <div class="tu fl clearfloat">
+                <img src="{$r['thumb']}"/>
+            </div>
+            <div class="pinfen fl clearfloat">
+                <p class="tit">{$r.name}</p>
+                <div class="assess-right">
+                    <img onclick="level(1)" src="__STATIC__/img/detail-iocn001.png"/>
+                    <img onclick="level(2)" src="__STATIC__/img/detail-iocn001.png"/>
+                    <img onclick="level(3)" src="__STATIC__/img/detail-iocn001.png"/>
+                    <img onclick="level(4)" src="__STATIC__/img/detail-iocn001.png"/>
+                    <img onclick="level(5)" src="__STATIC__/img/detail-iocn001.png"/>
+                </div>
+            </div>
+        </div>
+        <textarea rows="4" name="content" placeholder="请写下对宝贝的感受吧，对他人帮助很大哦" ></textarea>
+        <div class="bottom clearfloat box-s fl">
+            <p class="ztpinfen">整体评分</p>
+            <ul>
+                <li>
+                    物流速度评价
+                </li>
+                <li class="assess-right">
+                    <img onclick="level(1)" src="__STATIC__/img/detail-iocn001.png"/>
+                    <img onclick="level(2)" src="__STATIC__/img/detail-iocn001.png"/>
+                    <img onclick="level(3)" src="__STATIC__/img/detail-iocn001.png"/>
+                    <img onclick="level(4)" src="__STATIC__/img/detail-iocn001.png"/>
+                    <img onclick="level(5)" src="__STATIC__/img/detail-iocn001.png"/>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    服务质量评价
+                </li>
+                <li class="assess-right">
+                    <img onclick="level(1)" src="__STATIC__/img/detail-iocn001.png"/>
+                    <img onclick="level(2)" src="__STATIC__/img/detail-iocn001.png"/>
+                    <img onclick="level(3)" src="__STATIC__/img/detail-iocn001.png"/>
+                    <img onclick="level(4)" src="__STATIC__/img/detail-iocn001.png"/>
+                    <img onclick="level(5)" src="__STATIC__/img/detail-iocn001.png"/>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    配送员满意度
+                </li>
+                <li class="assess-right">
+                    <img onclick="level(1)" src=" __STATIC__/img/detail-iocn001.png"/>
+                    <img onclick="level(2)" src=" __STATIC__/img/detail-iocn001.png"/>
+                    <img onclick="level(3)" src=" __STATIC__/img/detail-iocn001.png"/>
+                    <img onclick="level(4)" src=" __STATIC__/img/detail-iocn001.png"/>
+                    <img onclick="level(5)" src=" __STATIC__/img/detail-iocn001.png"/>
+                </li>
+            </ul>
+        </div>
+    </div>
+    {/volist}
+    <a href='javascript:;' class="address-add fl ra3"   _setGoodsCommont>
+        提交
+    </a>
+</div>
+<div id="setgoodscomment" ajaxUrl="{:url('order/setgoodsComment')}"></div>
+{/block}
+{block name='S'}
+<script>
+    function level(s)
+    {
+        var str = '';
+        var k = 6-s;
+        for(i=1;i<s+1;i++)			{
+            str += "<img onclick='level("+i+")' src='__STATIC__/img/detail-iocn01.png'/>";
+        }
+        for(j=1;j<k;j++)
+        {
+            var d=j+s
+            str += "<img onclick='level("+d+")' src='__STATIC__/img/detail-iocn001.png'/>";
+        }
+        console.log(str);
+        $('.assess-right').html(str);
+    }
+
+
+    $('[_setGoodsCommont]').click(function () {
+        var len = $('.assess').length;
+        var orderId = $('#orderId').attr('dataOrderId');
+        var arr = [];
+        var url = $('#setgoodscomment').attr('ajaxUrl');
+        for(var i=0;i<len;i++){
+            if($('[name=content]').eq(i).val() == ''){
+                _msg({title:'请填写评论',time:1000})
+                return false;
+            }
+            arr.push({goodsId:$('.goodsId').eq(i).attr('dataGoodsId'),content:$('[name=content]').eq(i).val()})
+        }
+        console.log(len);
+        console.log(arr);
+        _ajax(url,{data:arr,orderId:orderId},function (e) {
+            console.log(e)
+            if(e.status == 1){
+                _msg({title:e.msg,time:1000},function () {
+                    location.href= e.url;
+                })
+            }else{
+                _msg({title:e.msg,time:1000})
+            }
+        })
+    })
+
+
+
+</script>
+{/block}

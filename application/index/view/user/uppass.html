@@ -1,0 +1,43 @@
+{extend name="template/base" /}
+{block name='C'}
+<!--header star-->
+<header class="mui-bar mui-bar1 mui-bar-nav mui-bar-nav1" id="header">
+    <a class="btn" href="javascript:history.go(-1)">
+        <i class="iconfont icon-fanhui"></i>
+    </a>
+    <div class="top-sch-box top-sch-boxtwo top-sch-boxthree flex-col">
+        返回
+    </div>
+</header>
+<!--header end-->
+
+<div class="warp warpthree clearfloat">
+    <div class="h-top h-toptwo clearfloat box-s">
+        <p class="tu">{if isEmpty($userInfo['header'])}
+            <img src="__STATIC__/img/touxiang.png"/>
+            {else}
+            <img src="{$userInfo['header']}"/>
+            {/if}</p>
+        <p class="nr">{$userInfo['realname'] ? $userInfo['realname'] : "未设置"} <span></span></p>
+    </div>
+    <div class="apply recharge clearfloat">
+        <div class="appxiugai clearfloat">
+            <ul>
+                <li class="ra3 fl">
+                    <i class="iconfont icon-mima fl"></i>
+                    <input type="text" name="newPass" id="" value="" placeholder="请输入新密码" />
+                </li>
+                <li class="ra3 fl">
+                    <i class="iconfont icon-mima fl"></i>
+                    <input type="text" name="oldPass" id="" value="" placeholder="确认输入原始密码" />
+                </li>
+            </ul>
+        </div>
+        <div class="xia clearfloat">
+            <a href="javascript:;" class="db fl btn ra3" _btnuppass>确定</a>
+            <a href="{:url('user/index')}" class="db fr btn ra3">取消</a>
+        </div>
+    </div>
+</div>
+<div id="ajax-data" data-action="{$action}"></div>
+{/block}
