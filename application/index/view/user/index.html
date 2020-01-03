@@ -1,0 +1,189 @@
+{extend name="template/base" /}
+{block name='C'}
+
+<!--header star-->
+<header class="mui-bar mui-bar1 mui-bar-nav mui-bar-nav1" id="header">
+    <a class="btn" href="javascript:history.go(-1)">
+        <i class="iconfont icon-fanhui"></i>
+    </a>
+    <div class="top-sch-box top-sch-boxtwo top-sch-boxthree flex-col">
+        返回
+    </div>
+</header>
+<!--header end-->
+
+<div class="warp clearfloat">
+    <div class="h-top clearfloat box-s">
+        <div class="tu clearfloat fl">
+
+            <img src="{$userInfo['header'] ? $userInfo['header'] : '__STATIC__/img/touxiang.png'}"/>
+
+        </div>
+        <div class="content clearfloat fl">
+            <p class="hname">{$userInfo['realname'] ? $userInfo['realname'] : "未设置"}</p>
+            <p class="htel">{$userInfo['username']}</p>
+            <!--<p class="hpthy">普通会员</p>-->
+        </div>
+        <!--<a href="#" class="btn db clearfloat fr ra3">签到</a>-->
+    </div>
+    <div class="cash clearfloat">
+        <div class="shang clearfloat">
+            <ul>
+                <!--<li>-->
+                    <!--<a href="#">-->
+                        <!--<p>74.00</p>-->
+                        <!--<span>现金余额</span>-->
+                    <!--</a>-->
+                <!--</li>-->
+                <li>
+                    <a href="#">
+                        <p>{$userInfo['amount']}</p>
+                        <span>可用积分</span>
+                    </a>
+                </li>
+                <!--<li>-->
+                    <!--<a href="#">-->
+                        <!--<p>104598</p>-->
+                        <!--<span>待用积分</span>-->
+                    <!--</a>-->
+                <!--</li>-->
+            </ul>
+        </div>
+        <!--<div class="shang xia clearfloat">-->
+            <!--<ul>-->
+                <!--<li>-->
+                    <!--<a href="#">-->
+                        <!--<p>31000</p>-->
+                        <!--<span>商品兑换券</span>-->
+                    <!--</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<a href="#">-->
+                        <!--<p>56179</p>-->
+                        <!--<span>可倍增积分额值</span>-->
+                    <!--</a>-->
+                <!--</li>-->
+            <!--</ul>-->
+        <!--</div>-->
+    </div>
+    <!--<div class="cashlist clearfloat">-->
+        <!--<ul>-->
+            <!--<li class="box-s">-->
+                <!--<a href="account.html">-->
+                    <!--<p class="fl">现金账户管理</p>-->
+                    <!--<i class="iconfont icon-jiantou1 fr"></i>-->
+                <!--</a>-->
+            <!--</li>-->
+            <!--<li class="box-s">-->
+                <!--<a href="recharge.html">-->
+                    <!--<p class="fl">现金充值</p>-->
+                    <!--<i class="iconfont icon-jiantou1 fr"></i>-->
+                <!--</a>-->
+            <!--</li>-->
+            <!--<li class="box-s">-->
+                <!--<a href="zhuanzhang.html">-->
+                    <!--<p class="fl">现金转账</p>-->
+                    <!--<i class="iconfont icon-jiantou1 fr"></i>-->
+                <!--</a>-->
+            <!--</li>-->
+        <!--</ul>-->
+    <!--</div>-->
+    <!--<div class="cashlist clearfloat">-->
+        <!--<ul>-->
+            <!--<li class="box-s">-->
+                <!--<a href="jfguanli.html">-->
+                    <!--<p class="fl">可用积分管理</p>-->
+                    <!--<i class="iconfont icon-jiantou1 fr"></i>-->
+                <!--</a>-->
+            <!--</li>-->
+            <!--<li class="box-s">-->
+                <!--<a href="jfguanli.html">-->
+                    <!--<p class="fl">待用积分管理</p>-->
+                    <!--<i class="iconfont icon-jiantou1 fr"></i>-->
+                <!--</a>-->
+            <!--</li>-->
+            <!--<li class="box-s">-->
+                <!--<a href="jfguanli.html">-->
+                    <!--<p class="fl">业务奖励积分</p>-->
+                    <!--<i class="iconfont icon-jiantou1 fr"></i>-->
+                <!--</a>-->
+            <!--</li>-->
+            <!--<li class="box-s">-->
+                <!--<a href="jfzhuanyong.html">-->
+                    <!--<p class="fl">可用转待用</p>-->
+                    <!--<i class="iconfont icon-jiantou1 fr"></i>-->
+                <!--</a>-->
+            <!--</li>-->
+            <!--<li class="box-s">-->
+                <!--<a href="jfzhuanzhang.html">-->
+                    <!--<p class="fl">可用积分转账</p>-->
+                    <!--<i class="iconfont icon-jiantou1 fr"></i>-->
+                <!--</a>-->
+            <!--</li>-->
+        <!--</ul>-->
+    <!--</div>-->
+    <!--<div class="cashlist clearfloat">-->
+        <!--<ul>-->
+            <!--<li class="box-s">-->
+                <!--<a href="spduihuan.html">-->
+                    <!--<p class="fl">商品兑换券</p>-->
+                    <!--<i class="iconfont icon-jiantou1 fr"></i>-->
+                <!--</a>-->
+            <!--</li>-->
+            <!--<li class="box-s">-->
+                <!--<a href="baodan.html">-->
+                    <!--<p class="fl">报单商品券</p>-->
+                    <!--<i class="iconfont icon-jiantou1 fr"></i>-->
+                <!--</a>-->
+            <!--</li>-->
+        <!--</ul>-->
+    <!--</div>-->
+    <div class="cashlist clearfloat">
+        <ul>
+            <!--<li class="box-s">-->
+                <!--<a href="sqlianmeng.html">-->
+                    <!--<p class="fl">申请联盟商家</p>-->
+                    <!--<i class="iconfont icon-jiantou1 fr"></i>-->
+                <!--</a>-->
+            <!--</li>-->
+            <!--<li class="box-s">-->
+                <!--<a href="sqyunying.html">-->
+                    <!--<p class="fl">申请运营中心</p>-->
+                    <!--<i class="iconfont icon-jiantou1 fr"></i>-->
+                <!--</a>-->
+            <!--</li>-->
+            <li class="box-s">
+                <a href="{:url('order/index')}">
+                    <p class="fl">消费订单管理</p>
+                    <i class="iconfont icon-jiantou1 fr"></i>
+                </a>
+            </li>
+            <!--<li class="box-s">-->
+                <!--<a href="friend.html">-->
+                    <!--<p class="fl">我的好友</p>-->
+                    <!--<i class="iconfont icon-jiantou1 fr"></i>-->
+                <!--</a>-->
+            <!--</li>-->
+            <li class="box-s">
+                <a href="{:url('user/uppass')}">
+                    <p class="fl">修改密码</p>
+                    <i class="iconfont icon-jiantou1 fr"></i>
+                </a>
+            </li>
+            <li class="box-s">
+                <a href="{:url('user/uprealname')}">
+                    <p class="fl">修改姓名</p>
+                    <i class="iconfont icon-jiantou1 fr"></i>
+                </a>
+            </li>
+            <li class="box-s">
+                <a href="{:url('user/addr')}">
+                    <p class="fl">地址管理</p>
+                    <i class="iconfont icon-jiantou1 fr"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <a href="javascript:;" class="center-btn db ra3" _outLogin ajaxUrl="{:url('user/outLogin')}">退出登录</a>
+</div>
+{/block}

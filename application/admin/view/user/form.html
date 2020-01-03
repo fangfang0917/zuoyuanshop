@@ -1,0 +1,8 @@
+<form class="mb-20" method="get" action="{:\\think\\Url::build($Request.action)}">
+    <input type="text" class="input-text" style="width:250px" placeholder="ID" name="id" value="{$Request.param.id}" >
+    <input type="text" class="input-text" style="width:250px" placeholder="用户名" name="username" value="{$Request.param.username}" >
+    <input type="text" class="input-text" style="width:250px" placeholder="积分" name="amount" value="{$Request.param.amount}" >
+    <input type="text" class="input-text Wdate" style="width:250px" placeholder="最后登陆时间" name="lastlogintime" value="{$Request.param.lastlogintime}" {literal} onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" {/literal} >
+    <input type="text" class="input-text Wdate" style="width:250px" placeholder="注册时间" name="createTime" value="{$Request.param.createTime}" {literal} onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" {/literal} >
+    <button type="submit" class="btn btn-success"><i class="Hui-iconfont">&#xe665;</i> 搜索</button>
+</form>
