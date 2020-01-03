@@ -53,7 +53,7 @@
             <td>{$vo.kdTime ?? '--'}</td>
             <td class="f-14">
                 <!--{tp:menu menu='sedit' /}-->
-                <a title="编辑" href="javascript:;" onclick="layer_open('发货','{:url(\'order/edit\',array(\'id\'=>$vo.id))}')" style="text-decoration:none" class="ml-5">查看</a>
+                <a title="编辑" href="javascript:;" onclick="layer_open('发货','{:url(\'shop.order/edit\',array(\'id\'=>$vo.id))}')" style="text-decoration:none" class="ml-5">查看</a>
                 {tp:menu menu='sdeleteforever' /}
             </td>
         </tr>
