@@ -6,11 +6,13 @@
             <label class="form-label col-xs-3 col-sm-3">升级条件：</label>
             <div class="formControls col-xs-6 col-sm-6">
                 {foreach name="$Think.config.level" item='v' key='k'}
-                {if $k != 0}
+                {if $k != 0 && $k<5}
                 <div style="margin:15px 0">
                     <div style="float: left;width: 20%;text-align: right"><span>{$v}:</span></div>
-                    <div  style="width: 70%;float: left">
-                        <input type="text" class="input-text"  style="width: 50%;margin: 0 15px 0 15px" placeholder="{$v}升级所需的订单量" name="uplevelorder{$k}" value="{$vo['uplevelorder'.$k] ?? ''}">单
+                    <div style="width: 70%;float: left">
+                        <input type="text" class="input-text" style="width: 50%;margin: 0 15px 0 15px"
+                               placeholder="{$v}升级所需的订单量" name="uplevelorder{$k}"
+                               value="{$vo['uplevelorder'.$k] ?? ''}">单
                     </div>
                     <div style="clear: both"></div>
                 </div>
@@ -23,11 +25,12 @@
             <label class="form-label col-xs-3 col-sm-3">量房收益：</label>
             <div class="formControls col-xs-6 col-sm-6">
                 {foreach name="$Think.config.level" item='v' key='k'}
-                {if $k != 0}
+                {if $k != 0 && $k<5}
                 <div style="margin:15px 0">
                     <div style="float: left;width: 20%;text-align: right"><span>{$v}:</span></div>
-                    <div  style="width: 70%;float: left">
-                        <input type="text" class="input-text" style="width: 50%;margin: 0 15px 0 15px" placeholder="{$v}量房收益" name="lfsy{$k}" value="{$vo['lfsy'.$k] ?? ''}">币
+                    <div style="width: 70%;float: left">
+                        <input type="text" class="input-text" style="width: 50%;margin: 0 15px 0 15px"
+                               placeholder="{$v}量房收益" name="lfsy{$k}" value="{$vo['lfsy'.$k] ?? ''}">币
                     </div>
                     <div style="clear: both"></div>
                 </div>
@@ -41,13 +44,25 @@
             <div class="formControls col-xs-6 col-sm-6">
                 {foreach name="$Think.config.level" item='v' key='k'}
                 {if $k != 0}
+                {if $k < 4}
                 <div style="margin:15px 0">
                     <div style="float: left;width: 20%;text-align: right"><span>{$v}:</span></div>
-                    <div  style="width: 70%;float: left">
-                        <input type="text" class="input-text"  style="width: 50%;margin: 0 15px 0 15px" placeholder="{$v}成交收益" name="cjsy{$k}" value="{$vo['cjsy'.$k] ?? ''}">元
+                    <div style="width: 70%;float: left">
+                        <input type="text" class="input-text" style="width: 50%;margin: 0 15px 0 15px"
+                               placeholder="{$v}成交收益" name="cjsy{$k}" value="{$vo['cjsy'.$k] ?? ''}">元
                     </div>
                     <div style="clear: both"></div>
                 </div>
+                {else}
+                <div style="margin:15px 0">
+                    <div style="float: left;width: 20%;text-align: right"><span>{$v}:</span></div>
+                    <div style="width: 70%;float: left">
+                        <input type="text" class="input-text" style="width: 50%;margin: 0 15px 0 15px"
+                               placeholder="{$v}成交收益" name="cjsy{$k}" value="{$vo['cjsy'.$k] ?? ''}">%
+                    </div>
+                    <div style="clear: both"></div>
+                </div>
+                {/if}
                 {/if}
                 {/foreach}
             </div>

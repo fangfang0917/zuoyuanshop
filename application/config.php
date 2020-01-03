@@ -250,5 +250,13 @@ return [
         1=>'待入账',
         2=>'已入账',
         3=>'已兑换',
+    ],
+    'WXCONFIG' =>[
+        'appId'=>'wx8dc447f515b9710c',//公众号开发者ID
+        'secret'=>'dfcc1f3cbd9033d284b01c22081fb16b',//公众号开发者密码
+        'mchId'=>'',//商户号
+        'key'=>'',//商户支付密钥
+        'encodingAesKey'=>'',//消息加解密密钥
+        'serviceToken'=>'',//服务器配置令牌-9*-0
     ]
 ];
