@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--简介-->
+    <meta name="description" content="description" />
+    <!--关键词-->
+    <meta name="keywords" content="keywords" />
+    <title>首页</title>
+    <!--顶部页面小图标-->
+    <link rel="shortcut icon" href="./favicon.ico">
+    <link rel="stylesheet" href="./static/css/public/init_phone.css">
+    <link rel="stylesheet" href="./static/lib/zui-1.9.1/css/zui.min.css">
+    <link rel="stylesheet" href="./static/css/main.css">
+    <link rel="stylesheet" href="./static/css/liMarquee.css">
+</head>
+
+<body>
+<!-- 头部内容 -->
+<header>
+    <div class="head">五级分销系统</div>
+</header>
+<!-- 头部内容 -->
+<!-- 中间区域 -->
+<main>
+    <!-- index_con -->
+    <div class="index_con">
+
+        <!-- banner -->
+        <div class="banner">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <a href="">
+                            <img src="./static/img/index_banner.png" alt="">
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="">
+                            <img src="./static/img/index_banner.png" alt="">
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="">
+                            <img src="./static/img/index_banner.png" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- 如果需要导航分页 -->
+            <!-- <div class="swiper-pagination pagination1"></div> -->
+        </div>
+        <!-- banner -->
+
+        <div class="row1">
+
+            <ul class="row1c clearfix">
+                <li>
+                    <a>
+                        <p>9999</p>
+                        <span><img src="./static/img/row1icon1.png" alt="">可用积分(个)</span>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <p>88</p>
+                        <span><img src="./static/img/row1icon2.png" alt="">订单总数(笔)</span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+
+        <div class="row2">
+
+            <div class="row2t">
+                <a href="shareTheMaterial.html">我要赚钱</a>
+            </div>
+
+            <div class="row2b">
+                <p>首次分享物料给朋友，不管是否成交，都可获得20积分</p>
+                <a href=""><img src="./static/img/row2.png" alt=""></a>
+            </div>
+
+        </div>
+
+        <div class="row3">
+
+            <div class="dowebok">
+                <ul>
+                    <li>
+                        <a href="">
+                            <div class="dkc">
+                                <img class="trumpet" src="./static/img/row3trumpet.png" alt="">
+                                <img class="head" src="./static/img/row3head.png" alt="">
+                                <span>宇宙超级美少女</span>
+                                <span>7分钟前</span>
+                                <span>获得<i>5000</i>积分！</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <div class="dkc">
+                                <img class="trumpet" src="./static/img/row3trumpet.png" alt="">
+                                <img class="head" src="./static/img/row3head.png" alt="">
+                                <span>宇宙超级美少女</span>
+                                <span>6分钟前</span>
+                                <span>获得<i>5000</i>积分！</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <div class="dkc">
+                                <img class="trumpet" src="./static/img/row3trumpet.png" alt="">
+                                <img class="head" src="./static/img/row3head.png" alt="">
+                                <span>宇宙超级美少女</span>
+                                <span>5分钟前</span>
+                                <span>获得<i>5000</i>积分！</span>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="row4">
+
+            <ul class="row4c">
+                <li class="clearfix">
+                    <span></span>
+                    <p>凡是通过您分享宣传物料进入的新用户留下有效信息的您获取<i>20金币</i></p>
+                </li>
+                <li class="clearfix">
+                    <span></span>
+                    <p>完成量房的，您获取<i>1000金币</i></p>
+                </li>
+                <li class="clearfix">
+                    <span></span>
+                    <p>完成最终成交的，您获取对应级别的金币</p>
+                    <table class="table table-bordered">
+                        <tbody>
+                        <tr>
+                            <td>会员等级</td>
+                            <td>粉丝</td>
+                            <td>代言</td>
+                            <td>创客</td>
+                        </tr>
+                        <tr>
+                            <td>成交收益</td>
+                            <td class="c_golden">10000</td>
+                            <td class="c_golden">18000</td>
+                            <td class="c_golden">28800</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </li>
+                <li class="clearfix">
+                    <span></span>
+                    <p>您好友邀请他的好友完成成交您也可以获得<i>1000金币</i></p>
+                </li>
+                <li>
+                    <div><a href="memberIntro.html">点此了解更多权益</a></div>
+                </li>
+            </ul>
+
+        </div>
+
+        <div class="row5">
+
+            <form lay-action="/index.php?m=Ajax&a=addGus" lay-method="POST" class="row5c layui-form">
+                <input type="text" name="c_user" lay-verify="required|name" lay-title="姓名" placeholder="您的姓名">
+                <input type="text" name="c_phone" lay-verify="required|phone" lay-title="手机号" placeholder="您的电话">
+                <input type="text" name="c_house" lay-verify="required|house" lay-title="房屋面积" placeholder="您的住房面积">
+                <button type="button" lay-submit lay-filter="*">立即报名</button>
+            </form>
+
+        </div>
+
+    </div>
+    <!-- index_con -->
+</main>
+<!-- 中间区域 -->
+<!-- 底部内容 -->
+<footer>
+    <ul class="fot_c clearfix">
+        <li class="fl active">
+            <a>
+                <p>首页</p>
+            </a>
+        </li>
+        <li class="fl">
+            <a href="gold.html">
+                <p>金币</p>
+            </a>
+        </li>
+        <li class="fr">
+            <a href="">
+                <p>商城</p>
+            </a>
+        </li>
+        <li class="fr">
+            <a href="me.html">
+                <p>我的</p>
+            </a>
+        </li>
+    </ul>
+    <div class="fot_m">
+        <a href="shareTheMaterial.html">分享物料</a>
+    </div>
+</footer>
+<!-- 底部内容 -->
+<!-- 客服 -->
+<div class="kf">
+    <a href="">
+        <img src="./static/img/kf.png" alt="">
+    </a>
+</div>
+<!-- 客服 -->
+</body>
+<script src="./static/lib/jquery-all/jquery-1.9.1/jquery-1.9.1.min.js"></script>
+<script src="./static/js/rem.js"></script>
+<script src="./static/lib/layui-2.5.5/layui.js"></script>
+<script src="./static/lib/zui-1.9.1/js/zui.min.js"></script>
+<script src="./static/lib/swiper-3.4.2/js/swiper.min.js"></script>
+<script src="./static/js/main.js"></script>
+<script src="./static/js/jquery.liMarquee.js"></script>
+<script>
+    layui.use('index');
+</script>
+
+</html>

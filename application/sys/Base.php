@@ -16,7 +16,6 @@ class Base extends Controller{
         //获取当前的控制器
         include_once ROOT_PATH . 'public' . DS . 'wx' . DS . 'WeiXinFun.class.php';
         $this->WxConifg = Config::get('WXCONFIG');
-        dump($this ->WxConifg);
         $this->WX = new \WeiXinFun($this->WxConifg); //配置微信
         //请求令牌
         $this->accToken = $this->WX->getAccessToken();
