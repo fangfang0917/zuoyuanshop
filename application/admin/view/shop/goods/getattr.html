@@ -134,7 +134,7 @@
         console.log(arr);
         if(arr.length>0){
             if(arr.length == len) {
-                $.post("{:url('goods/setsession')}", {arr: alreadySetSkuVals}, function (data) {
+                $.post("{:url('shop.goods/setsession')}", {arr: alreadySetSkuVals}, function (data) {
                     if (data.state == 1) {
                         layer.msg(data.msg, {icon: 6, time: 1000});
                         setInterval(function () {
@@ -155,7 +155,7 @@
     }
 
     function clearAllAttr() {
-        postJSON("{:url('AddGoodsAttr/deletesession')}",{},function (data) {
+        postJSON("{:url('shop.AddGoodsAttr/deletesession')}",{},function (data) {
             layer.msg(data.msg,{icon:6,time:1000});
             setInterval(function () {
                 // window.parent.setattr();

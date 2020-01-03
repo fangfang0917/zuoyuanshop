@@ -1,5 +1,5 @@
 <?php
-namespace app\admin\controller;
+namespace app\admin\controller\shop;
 
 \think\Loader::import('controller/Controller', \think\Config::get('traits_path') , EXT);
 
