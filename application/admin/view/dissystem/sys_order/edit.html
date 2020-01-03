@@ -6,35 +6,28 @@
         <div class="row cl">
             <label class="form-label col-xs-3 col-sm-3">用户：</label>
             <div class="formControls col-xs-6 col-sm-6">
-                <input type="text" class="input-text" placeholder="用户" name="userId" value="{$vo.userId ?? ''}" >
-            </div>
-            <div class="col-xs-3 col-sm-3"></div>
-        </div>
-        <div class="row cl">
-            <label class="form-label col-xs-3 col-sm-3">状态：</label>
-            <div class="formControls col-xs-6 col-sm-6">
-                <input type="text" class="input-text" placeholder="状态" name="type" value="{$vo.type ?? ''}" >
+                <input type="text" class="input-text" placeholder="用户" readonly name="userId" value="{:gettableval('user','realname',$vo.userId)}" >
             </div>
             <div class="col-xs-3 col-sm-3"></div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-3 col-sm-3">提交人：</label>
             <div class="formControls col-xs-6 col-sm-6">
-                <input type="text" class="input-text" placeholder="提交人" name="name" value="{$vo.name ?? ''}" >
+                <input type="text" class="input-text" placeholder="提交人" readonly name="name" value="{$vo.name ?? ''}" >
             </div>
             <div class="col-xs-3 col-sm-3"></div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-3 col-sm-3">提交人联系方式：</label>
             <div class="formControls col-xs-6 col-sm-6">
-                <input type="text" class="input-text" placeholder="提交人联系方式" name="phone" value="{$vo.phone ?? ''}" >
+                <input type="text" class="input-text" placeholder="提交人联系方式" readonly name="phone" value="{$vo.phone ?? ''}" >
             </div>
             <div class="col-xs-3 col-sm-3"></div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-3 col-sm-3">房屋面积：</label>
             <div class="formControls col-xs-6 col-sm-6">
-                <input type="text" class="input-text" placeholder="房屋面积" name="mm" value="{$vo.mm ?? ''}" >
+                <input type="text" class="input-text" placeholder="房屋面积" readonly name="mm" value="{$vo.mm ?? ''}" >
             </div>
             <div class="col-xs-3 col-sm-3"></div>
         </div>
@@ -45,7 +38,18 @@
             </div>
             <div class="col-xs-3 col-sm-3"></div>
         </div>
-
+        <div class="row cl">
+            <label class="form-label col-xs-3 col-sm-3">状态：</label>
+            <div class="formControls col-xs-6 col-sm-6 skin-minimal">
+                {foreach name="$Think.config.conf.systype" item='v' key='k'}
+                <div class="radio-box">
+                    <input type="radio" name="type" id="radio-{$k}" {if isset($vo)}{if $vo.type == $k} checked {/if}{/if} value="{$k}">
+                    <label for="radio-{$k}">{$v}</label>
+                </div>
+                {/foreach}
+            </div>
+            <div class="col-xs-3 col-sm-3"></div>
+        </div>
         <div class="row cl">
             <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
                 <button type="submit" class="btn btn-primary radius">&nbsp;&nbsp;提交&nbsp;&nbsp;</button>
