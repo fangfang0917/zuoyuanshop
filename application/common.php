@@ -1169,9 +1169,9 @@ function getAttrKeyName($skuId = 0, $Db = 'goods_sku', $val = 'attr_symbol_path'
  * @param int $type
  * @return string
  */
-function authPay($type = 0)
+function authPay($type = '0')
 {
-    if ($type == 0) {
+    if ($type == '0') {
         $r = '<span style="color:red">未支付</span>';
     } else {
         $r = '<span style="color:green">已支付</span>';

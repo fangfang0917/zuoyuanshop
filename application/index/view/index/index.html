@@ -7,9 +7,9 @@
     </a>
     <div class="top-sch-box flex-col">
         <div class="centerflex">
-            <i class="fdj iconfont icon-sousuo"></i>
-            <input type="text" name="" id="" value="" class="sch-txt" placeholder="输入您要搜索的商品" />
-        </div>
+                <i class="fdj iconfont icon-sousuo"></i>
+                <input type="text" name="" id="" value="" reUrl="{:url('form/index')}" readonly class="sch-txt" placeholder="输入您要搜索的商品" _form/>
+       </div>
     </div>
     <a class="btn" href="#">
         <i class="iconfont icon-erweima"></i>
@@ -28,15 +28,12 @@
         <!--第一栏分类结束-->
         <!--滚动公告开始-->
         <div class="notice clearfloat box-s">
-            <p class="tit clearfloat fl">利民公告：</p>
+            <p class="tit clearfloat fl">公告：</p>
             <div class="left fl clearfloat box-s">
                 <div class="slider autoplay">
-                    <div>这里是新闻资讯内容可以手滑滚动</div>
-                    <div>这里是新闻资讯内容可以手滑滚动</div>
-                    <div>这里是新闻资讯内容可以手滑滚动</div>
-                    <div>这里是新闻资讯内容可以手滑滚动</div>
-                    <div>这里是新闻资讯内容可以手滑滚动</div>
-                    <div>这里是新闻资讯内容可以手滑滚动</div>
+                    {volist name=":getlist('notice')" id='r'}
+                     <div><a href="{:url('notice/detail',array('id'=>$r.id))}">{$r.title}</a></div>
+                    {/volist}
                 </div>
             </div>
             <a href="#" class="nmore clearfloat fr">更多</a>

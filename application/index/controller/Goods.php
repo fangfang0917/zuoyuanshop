@@ -18,9 +18,13 @@ class Goods extends Base
         $map = [];
         $map['id'] = $id;
         $show = Db('goods')->where($map)->find();
+        $show['content'] = htmlspecialchars_decode($show['content']);
+
+        $comment = $this ->getComment($show['id']);
         $class = $this->getAttr($show);
         $this->view->assign('show', $show);
         $this->view->assign('class', $class);
+        $this->view->assign('commentList', $comment);
         $this->view->assign('addCartUrl', url('Cart/Add'));
         return $this->view->fetch();
     }
@@ -45,9 +49,13 @@ class Goods extends Base
                 $class[$k]['attrVal'] = DB('attr_val')->where(array('id' => ['in', $ids],'attr_key_id'=>$v['id']))->select();
             }
         }
-//        dump($show);
-//        dump($ids);
-//        dump($class);
         return $class;
+    }
+
+    public function getComment($goodsid){
+        $map['gc.goodsId'] = $goodsid;
+        $list = DB('goodsComment')->alias('gc')->join('user u','gc.userId = u.id')->where($map)
+            ->field(array('u.realname','u.header','gc.content','gc.createtime'))->select();
+        return $list;
     }
 }

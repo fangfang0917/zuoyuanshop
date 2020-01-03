@@ -131,12 +131,12 @@ class Tp extends Taglib
                 case 'sedit':
                     $title = isset($titleArr[$k]) && $titleArr[$k] ? $titleArr[$k] : '编辑';
                     list($url, $param) = $this->parseUrl($url, 'id=$vo["id"]');
-                    $parseStr .= ' <a title="' . $title . '" href="javascript:;" onclick="layer_open(\'' . $title . '\',\'<?php echo \think\Url::build(\'' . $url . '\', [' . $param . ']); ?>\')" style="text-decoration:none" class="ml-5"><i class="Hui-iconfont">&#xe6df;</i></a>';
+                    $parseStr .= ' <a title="' . $title . '" href="javascript:;" class="label label-success radius  ml-5" onclick="layer_open(\'' . $title . '\',\'<?php echo \think\Url::build(\'' . $url . '\', [' . $param . ']); ?>\')" style="text-decoration:none">编辑</a>';
                     break;
                 case 'sdelete':
                     $title = isset($titleArr[$k]) && $titleArr[$k] ? $titleArr[$k] : '删除';
                     list($url, $param) = $this->parseUrl($url);
-                    $parseStr .= ' <a title="' . $title . '" href="javascript:;" onclick="del(this,\'{$vo.id}\',\'<?php echo \think\Url::build(\'' . $url . '\', [' . $param . ']); ?>\')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>';
+                    $parseStr .= ' <a title="' . $title . '" href="javascript:;"  class="label label-warning radius  ml-5" onclick="del(this,\'{$vo.id}\',\'<?php echo \think\Url::build(\'' . $url . '\', [' . $param . ']); ?>\')"  style="text-decoration:none">删除</a>';
                     break;
                 case 'srecycle':
                     $title = isset($titleArr[$k]) && $titleArr[$k] ? $titleArr[$k] : '还原';

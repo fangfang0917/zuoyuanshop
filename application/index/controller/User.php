@@ -73,6 +73,9 @@ class User extends Base
         if($this ->request->isAjax()){
             $data = $this ->request->except(['id']);
             $id = $this ->request->param('id');
+            $map['id'] = ['not in',$id];
+            Db('address')->where($map)->update(array('type'=>0));
+
             Db('address')->where(array('id'=>$id))->update($data);
             return return_json(1,'修改成功',url('user/addr'));
         }else{
@@ -110,5 +113,11 @@ class User extends Base
         Db('address')->where($mapp)->update(array('type'=>0));
         Db('address')->where($map)->update(array('type'=>1));
         return return_json(1,'设置成功');
+    }
+
+
+    public function outLogin(){
+        Session::delete('USERID');
+        return return_json(1,'已退出,正在前往登录',url('login/index'));
     }
 }

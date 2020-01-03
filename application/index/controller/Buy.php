@@ -95,6 +95,7 @@ class Buy extends Base
             $arr[$k]['price'] = $v['totalprice'];
             $arr[$k]['num'] = $v['num'];
             $arr[$k]['skuId'] = $v['skuId'];
+            DB('goods')->where(array('id'=>$v['goodsId']))->setInc('num',1);
         }
         db('orderInfo')->insertAll($arr);
     }

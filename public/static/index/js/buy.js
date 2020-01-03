@@ -53,7 +53,9 @@ $('[_cartbuy]').click(function () {
     var totalnum = $('#totalnum').attr('dataTotalNum');
     var url = $('#addOrderUrl').attr('ajaxUrl');
     var remarks = $('[name=remarks]').val();
-    var data = {totalMoney:totalprice,totalNum:totalnum,remarks:remarks}
+    var addrman = $('#addrman').text();
+    var addr = $('#addr').text();
+    var data = {totalMoney:totalprice,totalNum:totalnum,remarks:remarks,addr:addr,addrman:addrman}
     _ajax(url,data,function (e) {
         console.log(e);
         if(e.status == 1 ){

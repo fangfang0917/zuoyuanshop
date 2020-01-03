@@ -38,5 +38,5 @@ return [
         'uppass' => url('user/uppass'),
         'uprealname' => url('user/uprealname'),
     ]
-    ,'NOTSHOWFOOTER' =>['order']
+    ,'NOTSHOWFOOTER' =>['Order','Login']
 ];

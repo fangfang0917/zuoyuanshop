@@ -47,8 +47,18 @@ class Order extends Controller
         }else{
             $id = $this ->request->param('id');
             $vo = Db('order')->where(array('id'=>$id))->find();
+            $list = $this ->getGoods($vo['id']);
             $this ->view->assign('vo',$vo);
+            $this ->view->assign('list',$list);
             return $this->view->fetch();
         }
+    }
+
+
+    public  function getGoods($id){
+        $map['orderId'] = $id;
+        $list = Db('orderInfo')->alias('oi')->join('goods g','oi.goodsId = g.id')->where($map)
+            ->field(array('oi.num','oi.price','g.name','g.thumb','g.int'))->select();
+        return $list;
     }
 }

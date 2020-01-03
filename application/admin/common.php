@@ -534,8 +534,8 @@ function GetGoodsC($cid = 0){
  * @param string $Db   数据表明
  * @return mixed
  */
-function getName($id = 0,$Db = 'goods'){
-    return Db($Db)->where(array('id'=>$id))->value('name');
+function getName($id = 0,$Db = 'goods',$name='name'){
+    return Db($Db)->where(array('id'=>$id))->value($name);
 }
 
 

@@ -4,7 +4,6 @@
 <td>{:getName($vo.cid,'GoodsClassify') ?? '--'}</td>
 <td>{$vo.name|high_light=$Request.param.name}</td>
 <td>{:Img($vo.thumb,$vo.name)}</td>
-<td>{$vo.description}</td>
 <td>{$vo.int|high_light=$Request.param.int}</td>
 <td>{:tt($vo.createtime,'Y-m-d')}</td>
 <td>{$vo.stock|high_light=$Request.param.stock}</td>

@@ -37,15 +37,19 @@ class Goods extends Controller
             $goodsId = DB('goods')->insertGetId($data);
             $url = url('index/goods/detail', array('id' => $goodsId));
             Db('goods')->where(array('id' => $goodsId))->update(array('url' => $url));
-            $AttrArr = Session::get('goodsAttr');
-            $Arr = [];
-            foreach ($AttrArr as $k => $v) {
-                $Arr[$k]['goods_id'] = $goodsId;
-                $Arr[$k]['attr_symbol_path'] = $v['attr_id'];
-                $Arr[$k]['price'] = $v['attr_price'];
-                $Arr[$k]['stock'] = $v['attr_gold'];
+            if (Session::has('goodsAttr')) {
+                $AttrArr = Session::get('goodsAttr');
+                if (count($AttrArr) > 0) {
+                    $Arr = [];
+                    foreach ($AttrArr as $k => $v) {
+                        $Arr[$k]['goods_id'] = $goodsId;
+                        $Arr[$k]['attr_symbol_path'] = $v['attr_id'];
+                        $Arr[$k]['price'] = $v['attr_price'];
+                        $Arr[$k]['stock'] = $v['attr_gold'];
+                    }
+                    db('goods_sku')->insertAll($Arr);
+                }
             }
-            db('goods_sku')->insertAll($Arr);
             return ajax_return_adv('添加成功!!!!');
         } else {
             return $this->view->fetch('edit');
@@ -84,14 +88,15 @@ class Goods extends Controller
     {
         $cid = $this->request->param('cid');
         $ids = [];
+        $a = [];
         if (Session::has('attrArr')) {
             $a = Session::get('attrArr');
             foreach ($a as $k => $v) {
-                if(strlen($v['attr_id'])>1){
+                if (strlen($v['attr_id']) > 1) {
                     $aa = explode(',', $v['attr_id']);
-                    $ids = array_merge($ids,$aa);
-                }else{
-                    array_push($ids,$v['attr_id']);
+                    $ids = array_merge($ids, $aa);
+                } else {
+                    array_push($ids, $v['attr_id']);
                 }
 
             }
@@ -151,19 +156,38 @@ class Goods extends Controller
      */
     public function setGoodsSku($id)
     {
-        $AttrArr = Session::get('goodsAttr');
-        $Arr = [];
-        if(count($AttrArr)>0){
-            Db('goods_sku')->where(array('goods_id' => $id))->delete();
-            foreach ($AttrArr as $k => $v) {
-                $Arr[$k]['goods_id'] = $id;
-                $Arr[$k]['attr_symbol_path'] = $v['attr_id'];
-                $Arr[$k]['price'] = $v['attr_price'];
-                $Arr[$k]['stock'] = $v['attr_gold'];
+        if (Session::has('goodsAttr')) {
+            $AttrArr = Session::get('goodsAttr');
+            $Arr = [];
+            if (count($AttrArr) > 0) {
+                Db('goods_sku')->where(array('goods_id' => $id))->delete();
+                foreach ($AttrArr as $k => $v) {
+                    $Arr[$k]['goods_id'] = $id;
+                    $Arr[$k]['attr_symbol_path'] = $v['attr_id'];
+                    $Arr[$k]['price'] = $v['attr_price'];
+                    $Arr[$k]['stock'] = $v['attr_gold'];
+                }
+                db('goods_sku')->insertAll($Arr);
             }
-            db('goods_sku')->insertAll($Arr);
+            Session::delete('goodsAttr');
         }
 
-        Session::delete('goodsAttr');
+    }
+
+
+    public function addgoodspic()
+    {
+        return $this->view->fetch();
+    }
+
+    public function getcomment(){
+        $id = $this->request->param('id');
+        $map['gc.goodsId'] = $id;
+        $list = Db('goodsComment')->alias('gc')->join('user u','gc.userId = u.id')->where($map)
+                ->field(array('u.realname','gc.content','gc.createtime','gc.id'))->paginate(10,false,['query'=>request()->param()]);
+        $this->view->assign('list',$list);
+        $this->view->assign('page',$list->render());
+        $this->view->assign('count',$list->count());
+        return  $this->view->fetch();
     }
 }

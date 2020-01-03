@@ -1,10 +1,11 @@
 {extend name="template/base" /}
 {block name='C'}
 <header class="mui-bar mui-bar-nav report-header box-s" id="header">
-    <a href="javascript:history.go(-1)"><i class="iconfont icon-fanhui fl"></i></a>
+    <a href="{:url('order/index')}"><i class="iconfont icon-fanhui fl"></i></a>
     <p>收货评价</p>
 </header>
 <div id="main" class="mui-clearfix">
+    <div id="orderId" dataOrderId="{$orderId}"></div>
     {volist name='list' id='r'}
     <div class="assess clearfloat">
         <div class="goodsId" dataGoodsId="{$r.id}"></div>
@@ -92,6 +93,7 @@
 
     $('[_setGoodsCommont]').click(function () {
         var len = $('.assess').length;
+        var orderId = $('#orderId').attr('dataOrderId');
         var arr = [];
         var url = $('#setgoodscomment').attr('ajaxUrl');
         for(var i=0;i<len;i++){
@@ -103,7 +105,7 @@
         }
         console.log(len);
         console.log(arr);
-        _ajax(url,arr,function (e) {
+        _ajax(url,{data:arr,orderId:orderId},function (e) {
             console.log(e)
             if(e.status == 1){
                 _msg({title:e.msg,time:1000},function () {
