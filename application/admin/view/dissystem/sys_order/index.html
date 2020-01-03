@@ -3,8 +3,12 @@
 <div class="page-container">
     <form class="mb-20" method="get" action="{:\\think\\Url::build($Request.action)}">
         <input type="text" class="input-text" style="width:250px" placeholder="ID" name="id" value="{$Request.param.id}" >
-        <input type="text" class="input-text" style="width:250px" placeholder="用户" name="userId" value="{$Request.param.userId}" >
-        <input type="text" class="input-text" style="width:250px" placeholder="状态" name="type" value="{$Request.param.type}" >
+        <input type="text" class="input-text" style="width:250px" placeholder="用户ID" name="userId" value="{$Request.param.userId}" >
+        <select name="type" class="select-box" style="height: 31px;width: 250px;" id="">
+            {foreach name="$Think.config.systype" item='v' key='k'}
+            <option value="{$k}" {if $Request.param.type == $k} selected {/if}>{$v}</option>
+            {/foreach}
+        </select>
         <button type="submit" class="btn btn-success"><i class="Hui-iconfont">&#xe665;</i> 搜索</button>
     </form>
     <div class="cl pd-5 bg-1 bk-gray">
@@ -18,14 +22,15 @@
         <thead>
         <tr class="text-c">
             <th width="25"><input type="checkbox"></th>
-            <th width="">{:sort_by('ID','id')}</th>
-            <th width="">用户</th>
-            <th width="">状态</th>
-            <th width="">提交人</th>
-            <th width="">提交人联系方式</th>
-            <th width="">房屋面积</th>
-            <th width="">备注</th>
-            <th width="70">操作</th>
+            <th width="50">{:sort_by('ID','id')}</th>
+            <th width="50">用户ID</th>
+            <th width="150">用户</th>
+            <th width="50">状态</th>
+            <th width="150">提交人</th>
+            <th width="150">提交人联系方式</th>
+            <th width="50">房屋面积</th>
+            <th width="100">备注</th>
+            <th width="150">操作</th>
         </tr>
         </thead>
         <tbody>
@@ -33,16 +38,17 @@
         <tr class="text-c">
             <td><input type="checkbox" name="id[]" value="{$vo.id}"></td>
             <td>{$vo.id|high_light=$Request.param.id}</td>
+            <td>{$vo.userId}</td>
             <td>{:gettableval('user','realname',$vo.userId)}</td>
-            <td>{if $vo.type == 0}
+            <td>{if $vo.type == 1}
                 <span style="color:#999">已报名</span>
-                {elseif $vo.type ==1 }
+                {elseif $vo.type ==2 }
                 <span style="color:#998E0A">量房</span>
-                {elseif $vo.type == 2}
-                <span style="color:#739915">洽谈</span>
                 {elseif $vo.type == 3}
-                <span style="color:#0BB20C">签约</span>
+                <span style="color:#739915">洽谈</span>
                 {elseif $vo.type == 4}
+                <span style="color:#0BB20C">签约</span>
+                {elseif $vo.type == 5}
                 <span style="color:red">无效</span>
                 {/if}</td>
             <td>{$vo.name}</td>

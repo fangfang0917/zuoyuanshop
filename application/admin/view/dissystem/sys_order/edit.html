@@ -41,12 +41,15 @@
         <div class="row cl">
             <label class="form-label col-xs-3 col-sm-3">状态：</label>
             <div class="formControls col-xs-6 col-sm-6 skin-minimal">
-                {foreach name="$Think.config.conf.systype" item='v' key='k'}
+                {foreach name="$Think.config.systype" item='v' key='k'}
+                {if $k != 0}
                 <div class="radio-box">
                     <input type="radio" name="type" id="radio-{$k}" {if isset($vo)}{if $vo.type == $k} checked {/if}{/if} value="{$k}">
                     <label for="radio-{$k}">{$v}</label>
                 </div>
+                {/if}
                 {/foreach}
+
             </div>
             <div class="col-xs-3 col-sm-3"></div>
         </div>

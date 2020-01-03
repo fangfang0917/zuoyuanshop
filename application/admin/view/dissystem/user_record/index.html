@@ -5,7 +5,11 @@
         <input type="text" class="input-text" style="width:250px" placeholder="ID" name="id" value="{$Request.param.id}" >
         <input type="text" class="input-text" style="width:250px" placeholder="用户id" name="userId" value="{$Request.param.userId}" >
         <input type="text" class="input-text" style="width:250px" placeholder="金额" name="amount" value="{$Request.param.amount}" >
-        <input type="text" class="input-text" style="width:250px" placeholder="状态" name="type" value="{$Request.param.type}" >
+        <select name="type" class="select-box" style="height: 31px;width: 250px;" id="">
+            {foreach name="$Think.config.userRecord" item='v' key='k'}
+            <option value="{$k}" {if $Request.param.type == $k} selected {/if}>{$v}</option>
+            {/foreach}
+        </select>
         <button type="submit" class="btn btn-success"><i class="Hui-iconfont">&#xe665;</i> 搜索</button>
     </form>
     <div class="cl pd-5 bg-1 bk-gray">
@@ -20,12 +24,14 @@
         <tr class="text-c">
             <th width="25"><input type="checkbox"></th>
             <th width="50">ID</th>
+            <th width="50">收益id</th>
             <th width="100">收益人</th>
             <th width="100">金额</th>
             <th width="150">添加时间</th>
             <th width="50">状态</th>
+            <th width="50">返点id</th>
             <th width="100">返点人</th>
-            <th width="200">操作</th>
+            <!--<th width="200">操作</th>-->
         </tr>
         </thead>
         <tbody>
@@ -33,22 +39,24 @@
         <tr class="text-c">
             <td><input type="checkbox" name="id[]" value="{$vo.id}"></td>
             <td>{$vo.id|high_light=$Request.param.id}</td>
+            <td>{$vo.userId}</td>
             <td>{:gettableval('user','realname',$vo.userId)}</td>
-            <td>{if $vo.type == 0}<span style="color:#999999">+{$vo.amount}</span>
-                {elseif $vo.type == 1}<span  style="color:green">+{$vo.amount}</span>
+            <td>{if $vo.type == 1}<span style="color:#999999">+{$vo.amount}</span>
+                {elseif $vo.type == 2}<span  style="color:green">+{$vo.amount}</span>
                 {else}<span style="color:red">-{$vo.amount}</span>
                 {/if}</td>
             <td>{:date('Y-m-d H:i:s',$vo.createtime)}</td>
-            <td>{if $vo.type == 0}<span style="color:#999999">待入账</span>
-                {elseif $vo.type == 1}<span  style="color:green">已入账</span>
+            <td>{if $vo.type == 1}<span style="color:#999999">待入账</span>
+                {elseif $vo.type == 2}<span  style="color:green">已入账</span>
                 {else}<span style="color:red">已兑换</span>
                 {/if}</td>
+            <td>{$vo.sonid}</td>
             <td>{:gettableval('user','realname',$vo.sonid)}</td>
 
-            <td class="f-14">
-                {tp:menu menu='sedit' /}
-                {tp:menu menu='sdeleteforever' /}
-            </td>
+            <!--<td class="f-14">-->
+                <!--{tp:menu menu='sedit' /}-->
+                <!--{tp:menu menu='sdeleteforever' /}-->
+            <!--</td>-->
         </tr>
         {/volist}
         </tbody>

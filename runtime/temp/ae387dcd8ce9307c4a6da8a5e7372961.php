@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:89:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\dissystem\user_record\edit.html";i:1578030686;s:76:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\template\base.html";i:1577958449;s:87:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\template\javascript_vars.html";i:1577958449;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:82:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\dissystem\ret\index.html";i:1578042749;s:76:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\template\base.html";i:1577958449;s:87:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\template\javascript_vars.html";i:1577958449;}*/ ?>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -46,36 +46,51 @@
 
 <div class="page-container">
     <form class="form form-horizontal" id="form" method="post" action="<?php echo \think\Request::instance()->baseUrl(); ?>">
-        <input type="hidden" name="id" value="<?php echo isset($vo['id']) ? $vo['id'] :  ''; ?>">
         <div class="row cl">
-            <label class="form-label col-xs-3 col-sm-3">用户id：</label>
+            <label class="form-label col-xs-3 col-sm-3">升级条件：</label>
             <div class="formControls col-xs-6 col-sm-6">
-                <input type="text" class="input-text" placeholder="用户id" name="userId" value="<?php echo isset($vo['userId']) ? $vo['userId'] :  ''; ?>" >
+                <?php if(is_array(\think\Config::get('level')) || \think\Config::get('level') instanceof \think\Collection || \think\Config::get('level') instanceof \think\Paginator): if( count(\think\Config::get('level'))==0 ) : echo "" ;else: foreach(\think\Config::get('level') as $k=>$v): if($k != 0): ?>
+                <div style="margin:15px 0">
+                    <div style="float: left;width: 20%;text-align: right"><span><?php echo $v; ?>:</span></div>
+                    <div  style="width: 70%;float: left">
+                        <input type="text" class="input-text"  style="width: 50%;margin: 0 15px 0 15px" placeholder="<?php echo $v; ?>升级所需的订单量" name="uplevelorder<?php echo $k; ?>" value="<?php echo isset($vo['uplevelorder'.$k]) ? $vo['uplevelorder'.$k] :  ''; ?>">单
+                    </div>
+                    <div style="clear: both"></div>
+                </div>
+                <?php endif; endforeach; endif; else: echo "" ;endif; ?>
             </div>
             <div class="col-xs-3 col-sm-3"></div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-3 col-sm-3">金额：</label>
+            <label class="form-label col-xs-3 col-sm-3">量房收益：</label>
             <div class="formControls col-xs-6 col-sm-6">
-                <input type="text" class="input-text" placeholder="金额" name="amount" value="<?php echo isset($vo['amount']) ? $vo['amount'] :  ''; ?>" >
+                <?php if(is_array(\think\Config::get('level')) || \think\Config::get('level') instanceof \think\Collection || \think\Config::get('level') instanceof \think\Paginator): if( count(\think\Config::get('level'))==0 ) : echo "" ;else: foreach(\think\Config::get('level') as $k=>$v): if($k != 0): ?>
+                <div style="margin:15px 0">
+                    <div style="float: left;width: 20%;text-align: right"><span><?php echo $v; ?>:</span></div>
+                    <div  style="width: 70%;float: left">
+                        <input type="text" class="input-text" style="width: 50%;margin: 0 15px 0 15px" placeholder="<?php echo $v; ?>量房收益" name="lfsy<?php echo $k; ?>" value="<?php echo isset($vo['lfsy'.$k]) ? $vo['lfsy'.$k] :  ''; ?>">币
+                    </div>
+                    <div style="clear: both"></div>
+                </div>
+                <?php endif; endforeach; endif; else: echo "" ;endif; ?>
             </div>
             <div class="col-xs-3 col-sm-3"></div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-3 col-sm-3">添加时间：</label>
+            <label class="form-label col-xs-3 col-sm-3">成交收益：</label>
             <div class="formControls col-xs-6 col-sm-6">
-                <input type="text" class="input-text" placeholder="添加时间" name="createtime" value="<?php echo isset($vo['createtime']) ? $vo['createtime'] :  ''; ?>" >
+                <?php if(is_array(\think\Config::get('level')) || \think\Config::get('level') instanceof \think\Collection || \think\Config::get('level') instanceof \think\Paginator): if( count(\think\Config::get('level'))==0 ) : echo "" ;else: foreach(\think\Config::get('level') as $k=>$v): if($k != 0): ?>
+                <div style="margin:15px 0">
+                    <div style="float: left;width: 20%;text-align: right"><span><?php echo $v; ?>:</span></div>
+                    <div  style="width: 70%;float: left">
+                        <input type="text" class="input-text"  style="width: 50%;margin: 0 15px 0 15px" placeholder="<?php echo $v; ?>成交收益" name="cjsy<?php echo $k; ?>" value="<?php echo isset($vo['cjsy'.$k]) ? $vo['cjsy'.$k] :  ''; ?>">元
+                    </div>
+                    <div style="clear: both"></div>
+                </div>
+                <?php endif; endforeach; endif; else: echo "" ;endif; ?>
             </div>
             <div class="col-xs-3 col-sm-3"></div>
         </div>
-        <div class="row cl">
-            <label class="form-label col-xs-3 col-sm-3">状态：</label>
-            <div class="formControls col-xs-6 col-sm-6">
-                <input type="text" class="input-text" placeholder="状态" name="type" value="<?php echo isset($vo['type']) ? $vo['type'] :  ''; ?>" >
-            </div>
-            <div class="col-xs-3 col-sm-3"></div>
-        </div>
-
         <div class="row cl">
             <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
                 <button type="submit" class="btn btn-primary radius">&nbsp;&nbsp;提交&nbsp;&nbsp;</button>
@@ -107,7 +122,7 @@
             tiptype: 2,
             ajaxPost: true,
             showAllError: true,
-            callback: function (ret){
+            callback: function (ret) {
                 ajax_progress(ret);
             }
         });

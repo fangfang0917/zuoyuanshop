@@ -5,12 +5,17 @@
         <input type="text" class="input-text" style="width:250px" placeholder="申请人" name="userId" value="{$Request.param.userId}" >
         <div class="select-box" style="width:250px">
             <select name="level" class="select">
-                <option value=""></option>
+                {foreach name="$Think.config.level" item='v' key='k'}
+                <option value="{$k}" {if $Request.param.level == $k} selected {/if}>{$v}</option>
+                {/foreach}
             </select>
         </div>
         <div class="select-box" style="width:250px">
             <select name="type" class="select">
-                <option value=""></option>
+                <option value="0" {if $Request.param.level == 0} selected {/if}>请选择状态</option>
+                <option value="1" {if $Request.param.level == 1} selected {/if}>待审核</option>
+                <option value="2" {if $Request.param.level == 2} selected {/if}>审核通过</option>
+                <option value="3" {if $Request.param.level == 3} selected {/if}>审核未通过</option>
             </select>
         </div>
         <button type="submit" class="btn btn-success"><i class="Hui-iconfont">&#xe665;</i> 搜索</button>
@@ -27,6 +32,7 @@
         <tr class="text-c">
             <th width="25"><input type="checkbox"></th>
             <th width="50">{:sort_by('ID','id')}</th>
+            <th width="100">申请ID</th>
             <th width="100">申请人</th>
             <th width="150">申请时间</th>
             <th width="50">申请等级</th>
@@ -41,12 +47,16 @@
         <tr class="text-c">
             <td><input type="checkbox" name="id[]" value="{$vo.id}"></td>
             <td>{$vo.id}</td>
+            <td>{$vo.userId}</td>
             <td>{:gettableval('user','realname',$vo.userId)}</td>
             <td>{$vo.createtiem ? date('Y-m-d H:i:s',$vo.createtiem) : '--'}</td>
-            <td>{$vo.level}</td>
-            <td>{$vo.type == 1 ?? '待审核'}</td>
+            <td>{foreach name="$Think.config.level" item='v' key='k'}{if $k == $vo.level}{$v}{/if}{/foreach}</td>
+            <td>{if $vo.type == 1} <span style="color:#999">待审核</span>
+                {elseif $vo.type == 2}<span style="color:green">审核通过</span>
+                {else}<span style="color:red">审核未通过</span>
+                {/if}</td>
             <td>{$vo.remarks ?? '--'}</td>
-            <td>{$vo.uptime ?? '--'}</td>
+            <td>{$vo.uptime ? date('Y-m-d H:i:s',$vo.uptime) : '--'}</td>
             <td class="f-14">
                 {tp:menu menu='sedit' /}
                 {tp:menu menu='sdeleteforever' /}

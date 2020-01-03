@@ -19,31 +19,27 @@ class SysOrder extends Controller
             $map['id'] = ["like", "%" . $this->request->param("id") . "%"];
         }
         if ($this->request->param("userId")) {
-            $map['userId'] = ["like", "%" . $this->request->param("userId") . "%"];
+            $map['userId'] = $this->request->param("userId");
         }
         if ($this->request->param("type")) {
-            $map['type'] = ["like", "%" . $this->request->param("type") . "%"];
+            if($this ->request->param('type') != 6) {
+                $map['type'] = $this->request->param("type");
+            }
         }
     }
     public function index()
     {
-
+        $map = [];
         $model = $this->getModel('SysOrder');
-        // 列表过滤器，生成查询Map对象
-        $map = $this->search($model, [$this->fieldIsDelete => $this::$isdelete]);
-
-        // 特殊过滤器，后缀是方法名的
-        $actionFilter = 'filter' . $this->request->action();
-
-        if (method_exists($this, $actionFilter)) {
-            $this->$actionFilter($map);
+        if ($this->request->param("id")) {
+            $map['id'] = ["like", "%" . $this->request->param("id") . "%"];
         }
-
-        // 自定义过滤器
-        if (method_exists($this, 'filter')) {
-            $this->filter($map);
+        if ($this->request->param("userId")) {
+            $map['userId'] = $this->request->param("userId");
         }
-
+        if ($this->request->param("type")) {
+                $map['type'] = $this->request->param("type");
+        }
 
         $this->datalist($model, $map);
 

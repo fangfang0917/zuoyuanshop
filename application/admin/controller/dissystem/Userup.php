@@ -13,33 +13,20 @@ class Userup extends Controller
 
     protected static $isdelete = false;
 
-    protected function filter(&$map)
-    {
-        if ($this->request->param("userId")) {
-            $map['userId'] = ["like", "%" . $this->request->param("userId") . "%"];
-        }
-    }
 
     public function index(){
 
-
+        $map = [];
         $model = $this->getModel('userup');
-        // 列表过滤器，生成查询Map对象
-        $map = $this->search($model, [$this->fieldIsDelete => $this::$isdelete]);
-
-        // 特殊过滤器，后缀是方法名的
-        $actionFilter = 'filter' . $this->request->action();
-
-        if (method_exists($this, $actionFilter)) {
-            $this->$actionFilter($map);
+        if ($this->request->param("userId")) {
+            $map['userId'] = $this->request->param("userId");
         }
-
-        // 自定义过滤器
-        if (method_exists($this, 'filter')) {
-            $this->filter($map);
+        if ($this->request->param("type")) {
+            $map['type'] = $this->request->param("type");
         }
-
-
+        if ($this->request->param("level")) {
+            $map['level'] = $this->request->param("level");
+        }
         $this->datalist($model, $map);
 
         return $this->view->fetch();
