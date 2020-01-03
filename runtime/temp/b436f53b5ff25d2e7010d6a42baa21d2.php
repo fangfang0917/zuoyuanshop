@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:90:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\dissystem\user_record\index.html";i:1578032402;s:76:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\template\base.html";i:1577958449;s:87:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\template\javascript_vars.html";i:1577958449;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:78:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\sys_order\index.html";i:1578032894;s:76:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\template\base.html";i:1577958449;s:87:"D:\phpstudy_pro\WWW\shop\public/../application/admin\view\template\javascript_vars.html";i:1577958449;}*/ ?>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -47,13 +47,13 @@
 <div class="page-container">
     <form class="mb-20" method="get" action="<?php echo \think\Url::build(\think\Request::instance()->action()); ?>">
         <input type="text" class="input-text" style="width:250px" placeholder="ID" name="id" value="<?php echo \think\Request::instance()->param('id'); ?>" >
-        <input type="text" class="input-text" style="width:250px" placeholder="用户id" name="userId" value="<?php echo \think\Request::instance()->param('userId'); ?>" >
-        <input type="text" class="input-text" style="width:250px" placeholder="金额" name="amount" value="<?php echo \think\Request::instance()->param('amount'); ?>" >
+        <input type="text" class="input-text" style="width:250px" placeholder="用户" name="userId" value="<?php echo \think\Request::instance()->param('userId'); ?>" >
         <input type="text" class="input-text" style="width:250px" placeholder="状态" name="type" value="<?php echo \think\Request::instance()->param('type'); ?>" >
         <button type="submit" class="btn btn-success"><i class="Hui-iconfont">&#xe665;</i> 搜索</button>
     </form>
     <div class="cl pd-5 bg-1 bk-gray">
         <span class="l">
+            <?php if (\Rbac::AccessCheck('add')) : ?><a class="btn btn-primary radius mr-5" href="javascript:;" onclick="layer_open('添加','<?php echo \think\Url::build('add', []); ?>')"><i class="Hui-iconfont">&#xe600;</i> 添加</a><?php endif; ?>
         </span>
         <span class="r pt-5 pr-5">
             共有数据 ：<strong><?php echo isset($count) ? $count :  '0'; ?></strong> 条
@@ -63,13 +63,14 @@
         <thead>
         <tr class="text-c">
             <th width="25"><input type="checkbox"></th>
-            <th width="50">ID</th>
-            <th width="100">收益人</th>
-            <th width="100">金额</th>
-            <th width="150">添加时间</th>
-            <th width="50">状态</th>
-            <th width="100">返点人</th>
-            <th width="200">操作</th>
+            <th width=""><?php echo sort_by('ID','id'); ?></th>
+            <th width="">用户</th>
+            <th width="">状态</th>
+            <th width="">提交人</th>
+            <th width="">提交人联系方式</th>
+            <th width="">房屋面积</th>
+            <th width="">备注</th>
+            <th width="70">操作</th>
         </tr>
         </thead>
         <tbody>
@@ -77,18 +78,12 @@
         <tr class="text-c">
             <td><input type="checkbox" name="id[]" value="<?php echo $vo['id']; ?>"></td>
             <td><?php echo high_light($vo['id'],\think\Request::instance()->param('id')); ?></td>
-            <td><?php echo gettableval('user','realname',$vo['userId']); ?></td>
-            <td><?php if($vo['type'] == 0): ?><span style="color:#999999">+<?php echo $vo['amount']; ?></span>
-                <?php elseif($vo['type'] == 1): ?><span  style="color:green">+<?php echo $vo['amount']; ?></span>
-                <?php else: ?><span style="color:red">-<?php echo $vo['amount']; ?></span>
-                <?php endif; ?></td>
-            <td><?php echo date('Y-m-d H:i:s',$vo['createtime']); ?></td>
-            <td><?php if($vo['type'] == 0): ?><span style="color:#999999">待入账</span>
-                <?php elseif($vo['type'] == 1): ?><span  style="color:green">已入账</span>
-                <?php else: ?><span style="color:red">已兑换</span>
-                <?php endif; ?></td>
-            <td><?php echo gettableval('user','realname',$vo['sonid']); ?></td>
-
+            <td><?php echo high_light($vo['userId'],\think\Request::instance()->param('userId')); ?></td>
+            <td><?php echo high_light($vo['type'],\think\Request::instance()->param('type')); ?></td>
+            <td><?php echo $vo['name']; ?></td>
+            <td><?php echo $vo['phone']; ?></td>
+            <td><?php echo $vo['mm']; ?></td>
+            <td><?php echo $vo['remarks']; ?></td>
             <td class="f-14">
                 <?php if (\Rbac::AccessCheck('edit')) : ?> <a title="编辑" href="javascript:;" class="label label-success radius  ml-5" onclick="layer_open('编辑','<?php echo \think\Url::build('edit', ['id' => $vo["id"], ]); ?>')" style="text-decoration:none">编辑</a><?php endif; if (\Rbac::AccessCheck('deleteforever')) : ?> <a href="javascript:;" onclick="del_forever(this,'<?php echo $vo['id']; ?>','<?php echo \think\Url::build('deleteforever', []); ?>')" class="label label-danger radius ml-5">彻底删除</a><?php endif; ?>
             </td>

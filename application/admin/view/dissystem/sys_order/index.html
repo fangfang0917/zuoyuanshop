@@ -3,13 +3,13 @@
 <div class="page-container">
     <form class="mb-20" method="get" action="{:\\think\\Url::build($Request.action)}">
         <input type="text" class="input-text" style="width:250px" placeholder="ID" name="id" value="{$Request.param.id}" >
-        <input type="text" class="input-text" style="width:250px" placeholder="用户id" name="userId" value="{$Request.param.userId}" >
-        <input type="text" class="input-text" style="width:250px" placeholder="金额" name="amount" value="{$Request.param.amount}" >
+        <input type="text" class="input-text" style="width:250px" placeholder="用户" name="userId" value="{$Request.param.userId}" >
         <input type="text" class="input-text" style="width:250px" placeholder="状态" name="type" value="{$Request.param.type}" >
         <button type="submit" class="btn btn-success"><i class="Hui-iconfont">&#xe665;</i> 搜索</button>
     </form>
     <div class="cl pd-5 bg-1 bk-gray">
         <span class="l">
+            {tp:menu menu="add" /}
         </span>
         <span class="r pt-5 pr-5">
             共有数据 ：<strong>{$count ?? '0'}</strong> 条
@@ -19,13 +19,14 @@
         <thead>
         <tr class="text-c">
             <th width="25"><input type="checkbox"></th>
-            <th width="50">ID</th>
-            <th width="100">收益人</th>
-            <th width="100">金额</th>
-            <th width="150">添加时间</th>
-            <th width="50">状态</th>
-            <th width="100">返点人</th>
-            <th width="200">操作</th>
+            <th width="">{:sort_by('ID','id')}</th>
+            <th width="">用户</th>
+            <th width="">状态</th>
+            <th width="">提交人</th>
+            <th width="">提交人联系方式</th>
+            <th width="">房屋面积</th>
+            <th width="">备注</th>
+            <th width="70">操作</th>
         </tr>
         </thead>
         <tbody>
@@ -33,18 +34,12 @@
         <tr class="text-c">
             <td><input type="checkbox" name="id[]" value="{$vo.id}"></td>
             <td>{$vo.id|high_light=$Request.param.id}</td>
-            <td>{:gettableval('user','realname',$vo.userId)}</td>
-            <td>{if $vo.type == 0}<span style="color:#999999">+{$vo.amount}</span>
-                {elseif $vo.type == 1}<span  style="color:green">+{$vo.amount}</span>
-                {else}<span style="color:red">-{$vo.amount}</span>
-                {/if}</td>
-            <td>{:date('Y-m-d H:i:s',$vo.createtime)}</td>
-            <td>{if $vo.type == 0}<span style="color:#999999">待入账</span>
-                {elseif $vo.type == 1}<span  style="color:green">已入账</span>
-                {else}<span style="color:red">已兑换</span>
-                {/if}</td>
-            <td>{:gettableval('user','realname',$vo.sonid)}</td>
-
+            <td>{$vo.userId|high_light=$Request.param.userId}</td>
+            <td>{$vo.type|high_light=$Request.param.type}</td>
+            <td>{$vo.name}</td>
+            <td>{$vo.phone}</td>
+            <td>{$vo.mm}</td>
+            <td>{$vo.remarks}</td>
             <td class="f-14">
                 {tp:menu menu='sedit' /}
                 {tp:menu menu='sdeleteforever' /}
